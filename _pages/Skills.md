@@ -1,0 +1,4 @@
+---
+permalink: /skills/
+title: "Skills"
+---
