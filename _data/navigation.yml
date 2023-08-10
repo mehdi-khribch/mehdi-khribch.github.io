@@ -3,16 +3,16 @@ main:
   - title: "Education"
     url: /education/
 
-  - title: "Research Experience"
-    url: /research-experience/    
+  - title: "Publications"
+    url: /publications/    
 
   - title: "Teaching Experience "
     url: /teaching-experience/    
-    
-  - title: "Skills"
-    url: /skills/    
 
-  - title: "Additional Information "
+  - title: "Talks"
+    url: /talks/
+
+  - title: "Additional Information"
     url: /additional-information/ 
     
   - title: "CV"
