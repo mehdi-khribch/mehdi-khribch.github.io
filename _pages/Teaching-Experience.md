@@ -1,19 +1,29 @@
 ---
 permalink: /teaching-experience/
 title: "Teaching Experience"
+author_profile: true
 ---
-I have been a teaching assistant and tutor in the following courses:
 
-Teaching Assitant
+Teaching Assistant
 ------
-[Simulation and Monte-Carlo Methods, ENSAE Paris, 2024](https://www.ensae.fr/en/courses/328-simulation-and-monte-carlo-methods)
+<address>
+[Simulation and Monte-Carlo Methods](https://www.ensae.fr/en/courses/328-simulation-and-monte-carlo-methods)
 
+ENSAE Paris, 2023-2025
+</address>
 
-Teaching Assitant
+Teaching Assistant
 ------
-[Introduction to Stochastic Processes, ENSAE Paris, 2023](https://www.ensae.fr/en/courses/269)
+<address>
+[Introduction to Stochastic Processes](https://www.ensae.fr/en/courses/269)
 
+ENSAE Paris, 2023-2025
+</address>
 
-Teaching Assitant
+Teaching Assistant
 ------
-High dimensional Statistics course, ENPC, ParisTech, 2023
+<address>
+High Dimensional Statistics
+
+ENPC ParisTech, 2023-2025
+</address>
