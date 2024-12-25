@@ -1,15 +1,16 @@
----
+------
 permalink: /publications/
 title: "Publications"
 ---
 
-[On Mixing Times of Metropolized Algorithm With Optimization Step (MAO): A New Framework](https://arxiv.org/abs/2112.00565/)
+[On importance sampling and independent Metropolis-Hastings with an unbounded weight function](https://arxiv.org/abs/2411.09514)
 ------
+George Deligiannidis (University of Oxford), Pierre E. Jacob (ESSEC Business School), El Mahdi Khribch (ESSEC Business School), Guanyang Wang (Rutgers University)
 
-<address>
-Master’s Dissertation, Oxford, UK.
-</address>
+arXiv preprint, 2024
 
-Developed a new Algorithm from the class of Metropolis-Hasting Sampling Algorithms targeting
-a class of thin tailed distributions and derived non-asymptotic upper bounds on mixing times
-achieving state of the art results extending previous results obtained for MALA.
+[Convergence of Statistical Estimators via Mutual Information Bounds](https://arxiv.org/abs/2412.18539)
+------
+El Mahdi Khribch, Pierre Alquier
+
+arXiv preprint, 2024
