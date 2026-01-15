@@ -1,14 +1,25 @@
 ---
 permalink: /talks/
 title: "Talks"
+author_profile: true
 ---
-### ☇ [Bayes Comp 2023: Poster Session](https://bayescomp2023.com/)  
-Presented a poster.
-### ☇ [Bayesian Young Statisticians Meeting (BAYSM 2025)](https://baysm2025.github.io/)  
-"El Mahdi Khribch, ESSEC Business School: Convergence of Statistical Estimators via Mutual Information Bounds" — Talk, 7–11 April 2025 (online).
-### ☇ [Bayes Comp 2025: Poster Session (Singapore)](https://bayescomp2025.sg/index.php#)  
-Awarded **Best Poster Prize**.
-### ☇ ESSEC APAC–CNRS–SMU Mini-Workshop (Singapore)  
-Talk, 13 June 2025.
-### ☇ [Advances in MCMC Methods (EURANDOM, Eindhoven)](https://www.eurandom.tue.nl/event/methodology-and-theory-mcmc/)  
-Poster, 10–12 December 2025.
+
+<h3>☇ <a href="https://bayescomp2023.com/">Bayes Comp 2023</a></h3>
+<p>Poster Session<br>
+Levi, Finland</p>
+
+<h3>☇ <a href="https://baysm2025.github.io/">Bayesian Young Statisticians Meeting (BAYSM 2025)</a></h3>
+<p>Talk: "Convergence of Statistical Estimators via Mutual Information Bounds"<br>
+7–11 April 2025 (online)</p>
+
+<h3>☇ <a href="https://bayescomp2025.sg/index.php#">Bayes Comp 2025</a></h3>
+<p>Poster Session — <strong>Best Poster Prize</strong><br>
+Singapore</p>
+
+<h3>☇ ESSEC APAC–CNRS–SMU Mini-Workshop</h3>
+<p>Talk<br>
+13 June 2025, Singapore</p>
+
+<h3>☇ <a href="https://www.eurandom.tue.nl/event/methodology-and-theory-mcmc/">Advances in MCMC Methods (EURANDOM)</a></h3>
+<p>Poster<br>
+10–12 December 2025, Eindhoven</p>
