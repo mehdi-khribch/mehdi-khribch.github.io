@@ -8,6 +8,15 @@ redirect_from:
   - /about.html
 ---
 
-I am a fourth-year PhD student in the [IDS Department](https://isds-department.essec.edu/home/) at ESSEC Business School, working with [Pierre E. Jacob](https://sites.google.com/site/pierrejacob/) and [Pierre Alquier](https://pierrealquier.github.io/). Prior to that, I received an Engineering Degree from [Mines Paris PSL University](https://www.minesparis.psl.eu/). Before that, I obtained the Master MVA [(Mathématiques, Vision, Apprentissage)](https://www.master-mva.com/) MSc at [ENS Paris-Saclay](https://ens-paris-saclay.fr/), and I also hold an MSc in Statistical Science from the [Department of Statistics, University of Oxford](https://www.stats.ox.ac.uk/).
+<p>I am a final-year PhD candidate in the <a href="https://isds-department.essec.edu/home/">IDS Department</a> at ESSEC Business School, supervised by <a href="https://sites.google.com/site/pierrejacob/">Pierre E. Jacob</a> and <a href="https://pierrealquier.github.io/">Pierre Alquier</a>.</p>
 
-My research interests are in Bayesian statistics more broadly, and in particular Bayesian nonparametric statistics and its intersection with statistical machine learning. I have a keen focus on Monte Carlo methods—especially the dynamics of Markov Chain Monte Carlo (MCMC) and unbiased estimation via coupling techniques—as well as variational approximations and PAC-Bayes theory, all aimed at developing scalable, robust algorithms for computational statistics and machine learning.
+<p>Prior to my PhD, I received an Engineering Degree from <a href="https://www.minesparis.psl.eu/">Mines Paris PSL University</a>, the <a href="https://www.master-mva.com/">Master MVA (Mathématiques, Vision, Apprentissage)</a> from <a href="https://ens-paris-saclay.fr/">ENS Paris-Saclay</a>, and an MSc in Statistical Science from the <a href="https://www.stats.ox.ac.uk/">University of Oxford</a>.</p>
+
+<p>My research focuses on computational statistics and robust Bayesian inference. I am particularly interested in:</p>
+<ul>
+  <li><strong>Unbiased MCMC methods</strong> using coupling techniques for Monte Carlo estimation</li>
+  <li><strong>PAC-Bayesian theory</strong> with applications to robust statistical inference and variational approximations</li>
+  <li><strong>Importance sampling</strong> and the convergence analysis of Monte Carlo algorithms</li>
+</ul>
+
+<p>My goal is to develop scalable and theoretically grounded algorithms that bridge classical robust estimation with modern machine learning.</p>
