@@ -11,4 +11,4 @@ Awarded **Best Poster Prize**.
 ### ☇ ESSEC APAC–CNRS–SMU Mini-Workshop (Singapore)  
 Talk, 13 June 2025.
 ### ☇ [Advances in MCMC Methods (EURANDOM, Eindhoven)](https://www.eurandom.tue.nl/event/methodology-and-theory-mcmc/)  
-Talk, 10–12 December 2025.
+Poster, 10–12 December 2025.
