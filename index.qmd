@@ -26,8 +26,7 @@ title-block-banner: false
 <div class="painting-section">
   <img src="images/delacroix-fantasia.jpg" class="featured-painting" alt="Eugène Delacroix, Fantasia arabe, 1833">
   <div class="painting-caption">
-    <strong>Eugène Delacroix</strong>, <em>Fantasia arabe</em>, 1833. Oil on canvas, 60 × 73.5 cm. Städel Museum, Frankfurt am Main.<br>
-    <span class="painting-description">Painted after Delacroix's voyage to Morocco in 1832, this work captures the <em>fantasia</em> — a traditional North African equestrian display in which riders charge forward in unison and fire a volley of rifles before wheeling their horses. Delacroix filled notebooks with sketches during his six months in the Maghreb, and the intensity of colour and movement he witnessed there transformed his palette permanently. This painting is one of the finest distillations of that encounter.</span>
+    Eugène Delacroix, <em>Fantasia arabe</em>, 1833. Oil on canvas, Städel Museum, Frankfurt am Main.
   </div>
 </div>
 ```
