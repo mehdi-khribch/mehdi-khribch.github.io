@@ -1,5 +1,5 @@
 ---
-title: "El Mahdi (Mehdi) Khribch"
+title: "Mehdi Khribch"
 subtitle: "Ph.D. Candidate in Statistics & Machine Learning"
 page-layout: full
 ---

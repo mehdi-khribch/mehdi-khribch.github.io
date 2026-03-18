@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "El Mahdi (Mehdi) Khribch"
+  title: "Mehdi Khribch"
   description: "Ph.D. candidate in Statistics & Machine Learning"
   site-url: https://mehdi-khribch.github.io
   navbar:

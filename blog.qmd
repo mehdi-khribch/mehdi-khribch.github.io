@@ -1,9 +1,10 @@
 ---
 title: "Blog"
+subtitle: "Notes on statistics, art, books, and miscellaneous thoughts."
 listing:
   contents: posts
   sort: "date desc"
   type: default
-  categories: false
-  fields: [date, title, description]
+  categories: true
+  fields: [date, title, description, categories]
 ---
