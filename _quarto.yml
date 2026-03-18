@@ -45,9 +45,7 @@ website:
       theme: light
 
   page-footer:
-    center: |
-      © 2026 Mehdi Khribch<br>
-      <span class="art-credit">Background: Ahmed Cherkaoui, <em>Le couronnement</em>, 1964. Centre national des arts plastiques. Dépôt au Palais de la Porte Dorée, Paris.</span>
+    center: "© 2026 Mehdi Khribch"
 
 format:
   html:
