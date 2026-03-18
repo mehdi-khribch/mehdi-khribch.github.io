@@ -2,10 +2,29 @@
 pagetitle: "Mehdi Khribch"
 page-layout: full
 title-block-banner: false
-body-classes: home-page
 ---
 
 ```{=html}
+<style>
+  body {
+    background: url('images/cherkaoui-bg.jpg') center center / cover no-repeat fixed !important;
+    background-color: #1a1a2e !important;
+  }
+  #quarto-content {
+    background: rgba(255, 255, 255, 0.88) !important;
+    border-radius: 8px;
+    padding: 2.5em 3em !important;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    backdrop-filter: blur(2px);
+  }
+  .nav-footer {
+    background: rgba(0, 0, 0, 0.7) !important;
+    color: #ccc !important;
+  }
+</style>
+
 <div class="about-container">
   <div class="about-sidebar">
     <img src="images/profile.png" class="about-photo" alt="Mehdi Khribch">
