@@ -1,6 +1,7 @@
 ---
 title: "Blog"
 subtitle: "Notes on statistics, art, books, and miscellaneous thoughts."
+image: images/belkahia.jpg
 listing:
   contents: posts
   sort: "date desc"
@@ -8,3 +9,9 @@ listing:
   categories: true
   fields: [date, title, description, categories]
 ---
+
+```{=html}
+<div style="text-align:center; margin-bottom:2em;">
+  <img src="images/belkahia.jpg" style="max-width:200px; border-radius:6px; box-shadow:0 2px 12px rgba(0,0,0,0.1);" alt="Blog">
+</div>
+```
