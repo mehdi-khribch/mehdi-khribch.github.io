@@ -30,6 +30,9 @@ website:
         aria-label: Google Scholar
       - icon: github
         href: https://github.com/mehdi-khribch
+      - icon: linkedin
+        href: https://www.linkedin.com/in/el-mahdi-khribch/
+        aria-label: LinkedIn
       - icon: envelope
         href: mailto:elmahdi.khribch@essec.edu
 
