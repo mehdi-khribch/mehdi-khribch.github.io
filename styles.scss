@@ -29,8 +29,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 1.8em;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 0.3em;
+  color: #1a5276;
 }
 
 h2 {
@@ -53,36 +52,47 @@ a {
 
 // Navbar
 .navbar {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 2px solid #d0d9e0;
   font-family: "CMU Serif", "Latin Modern Roman", Georgia, serif !important;
   font-size: 10.5pt;
+  padding: 0.6em 0;
 
   .navbar-brand {
     font-weight: 700;
-    font-size: 1.1em;
+    font-size: 1.15em;
+    color: #1a5276 !important;
   }
 
   .nav-link {
     font-weight: 400;
     letter-spacing: 0.02em;
+    padding: 0.5em 0.8em !important;
+    border-radius: 4px;
+    transition: background 0.15s;
+
+    &:hover {
+      background: rgba(26, 82, 118, 0.08);
+      text-decoration: none;
+    }
   }
 }
 
-// Profile sidebar
+// Profile sidebar (for trestles template fallback)
 .about-entity {
   text-align: center;
 
   img {
-    border-radius: 4px;
-    max-width: 180px;
-    border: 1px solid #ddd;
+    border-radius: 6px;
+    max-width: 200px;
+    border: 1px solid #d0d9e0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
 }
 
 // Content cards for publications, talks, teaching
 .entry-card {
   padding: 1em 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #eef2f5;
 
   &:last-child {
     border-bottom: none;
@@ -107,18 +117,20 @@ a {
 
 // Page footer
 .nav-footer {
-  border-top: 1px solid #ddd;
+  border-top: 2px solid #d0d9e0;
   font-size: 0.85em;
   color: #888;
+  padding: 1em 0;
 }
 
 // Theorem-like blocks
 .theorem, .definition, .lemma, .proposition {
-  background: #f9f9f9;
+  background: #f8fafc;
   border-left: 3px solid #1a5276;
   padding: 1em 1.2em;
   margin: 1.5em 0;
   font-style: italic;
+  border-radius: 0 4px 4px 0;
 
   strong {
     font-style: normal;
@@ -128,8 +140,8 @@ a {
 
 // CV iframe
 iframe {
-  border: 1px solid #ddd;
-  border-radius: 3px;
+  border: 1px solid #d0d9e0;
+  border-radius: 4px;
 }
 
 // Print styles

@@ -1,0 +1,7 @@
+---
+title: "Welcome to my blog"
+description: "A space for notes on statistics, probability, and machine learning."
+date: "2026-03-18"
+---
+
+Welcome! I'll be using this blog to share thoughts and notes on topics in computational statistics, Bayesian inference, and machine learning. Stay tuned.

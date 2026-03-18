@@ -1,8 +1,6 @@
-/* Additional LaTeX-inspired styling */
-
-/* Make the page feel like a paper */
+/* Full width content */
 #quarto-content {
-  max-width: 760px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 2em 1.5em;
 }
@@ -14,51 +12,121 @@ p {
   -webkit-hyphens: auto;
 }
 
-/* Section numbering feel */
+/* Page titles */
 .quarto-title h1.title {
   font-size: 2em;
   text-align: center;
-  margin-bottom: 0.3em;
+  margin-bottom: 0.2em;
 }
 
 .quarto-title .subtitle {
   text-align: center;
   font-style: italic;
-  color: #666;
-  font-size: 1.1em;
+  color: #5a5a5a;
+  font-size: 1.05em;
+  margin-bottom: 1.5em;
 }
 
-/* Profile image on about page */
-.profile-pic {
-  float: left;
-  margin-right: 1.5em;
-  margin-bottom: 1em;
+/* === ABOUT PAGE: sidebar layout === */
+.about-container {
+  display: flex;
+  gap: 3em;
+  align-items: flex-start;
+  margin-top: 1em;
+}
+
+.about-sidebar {
+  flex-shrink: 0;
+  width: 220px;
+  text-align: center;
+}
+
+.about-photo {
+  width: 200px;
+  border-radius: 6px;
+  border: 1px solid #d0d9e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.about-links {
+  margin-top: 1.2em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.about-links a {
+  color: #1a5276;
+  text-decoration: none;
+  font-size: 0.92em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  padding: 0.3em 0;
   border-radius: 4px;
-  border: 1px solid #ccc;
-  width: 180px;
+  transition: background 0.15s;
 }
 
-/* Clear floats */
-.clearfix::after {
-  content: "";
-  display: table;
-  clear: both;
+.about-links a:hover {
+  background: #f0f5fa;
+  text-decoration: none;
 }
 
-/* Publication list styling */
+.about-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.about-main h2 {
+  margin-top: 0;
+  font-size: 1.35em;
+  color: #1a5276;
+  border-bottom: 1px solid #d0d9e0;
+  padding-bottom: 0.25em;
+  margin-bottom: 0.6em;
+}
+
+.about-main h2:not(:first-child) {
+  margin-top: 1.5em;
+}
+
+@media (max-width: 700px) {
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .about-main h2 {
+    text-align: center;
+  }
+  .about-main p {
+    text-align: left;
+  }
+}
+
+/* === PUBLICATION items === */
 .pub-item {
   margin-bottom: 1.5em;
   padding-left: 0;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #eef2f5;
+}
+
+.pub-item:last-child {
+  border-bottom: none;
 }
 
 .pub-item .pub-title {
   font-weight: 600;
   font-size: 1.02em;
+  color: #1a5276;
 }
 
 .pub-item .pub-authors {
   color: #444;
   font-size: 0.95em;
+  margin-top: 0.15em;
 }
 
 .pub-item .pub-venue {
@@ -67,15 +135,31 @@ p {
   font-size: 0.9em;
 }
 
-/* Talk items with lightning bolt */
+/* === TALK items === */
 .talk-item {
-  margin-bottom: 1.2em;
-  padding-left: 0;
+  margin-bottom: 0;
+  padding: 0.9em 0;
+  border-bottom: 1px solid #eef2f5;
 }
 
-/* Education entries */
+.talk-item:last-child {
+  border-bottom: none;
+}
+
+.talk-item p {
+  margin: 0;
+  text-align: left;
+}
+
+/* === EDUCATION entries === */
 .edu-entry {
   margin-bottom: 1.2em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #eef2f5;
+}
+
+.edu-entry:last-child {
+  border-bottom: none;
 }
 
 .edu-entry .degree {
@@ -91,8 +175,8 @@ p {
 /* Horizontal rule divider */
 hr {
   border: none;
-  border-top: 0.5px solid #ccc;
-  margin: 2em 0;
+  border-top: 1px solid #d0d9e0;
+  margin: 1.5em 0;
 }
 
 /* Math display */
@@ -102,8 +186,11 @@ hr {
 
 /* Blockquotes */
 blockquote {
-  border-left: 2px solid #1a5276;
+  border-left: 3px solid #1a5276;
   padding-left: 1em;
   color: #555;
   font-style: italic;
+  background: #f8fafc;
+  padding: 0.8em 1.2em;
+  border-radius: 0 4px 4px 0;
 }
