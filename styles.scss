@@ -1,0 +1,143 @@
+/*-- scss:defaults --*/
+$font-family-sans-serif: "Latin Modern Roman", "Computer Modern", "CMU Serif", Georgia, serif;
+$font-family-monospace: "Latin Modern Mono", "CMU Typewriter Text", "Courier New", monospace;
+$body-bg: #ffffff;
+$body-color: #333333;
+$link-color: #1a5276;
+$navbar-bg: #f4f8fb;
+
+/*-- scss:rules --*/
+
+// Global LaTeX feel
+body {
+  font-family: "CMU Serif", "Latin Modern Roman", "Computer Modern", Georgia, serif !important;
+  font-size: 11.5pt;
+  line-height: 1.6;
+  color: #333;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+// Headings — LaTeX style
+h1, h2, h3, h4, h5, h6 {
+  font-family: "CMU Serif", "Latin Modern Roman", "Computer Modern", Georgia, serif !important;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: 1.8em;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.3em;
+}
+
+h2 {
+  font-size: 1.4em;
+}
+
+h3 {
+  font-size: 1.15em;
+}
+
+// Links — blue academic style
+a {
+  color: #1a5276;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    color: #0e3a57;
+  }
+}
+
+// Navbar
+.navbar {
+  border-bottom: 1px solid #ddd;
+  font-family: "CMU Serif", "Latin Modern Roman", Georgia, serif !important;
+  font-size: 10.5pt;
+
+  .navbar-brand {
+    font-weight: 700;
+    font-size: 1.1em;
+  }
+
+  .nav-link {
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+}
+
+// Profile sidebar
+.about-entity {
+  text-align: center;
+
+  img {
+    border-radius: 4px;
+    max-width: 180px;
+    border: 1px solid #ddd;
+  }
+}
+
+// Content cards for publications, talks, teaching
+.entry-card {
+  padding: 1em 0;
+  border-bottom: 1px solid #eee;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  h3 {
+    margin-top: 0;
+    font-size: 1.05em;
+  }
+
+  .meta {
+    color: #666;
+    font-size: 0.92em;
+    font-style: italic;
+  }
+
+  .venue {
+    color: #555;
+    font-size: 0.9em;
+  }
+}
+
+// Page footer
+.nav-footer {
+  border-top: 1px solid #ddd;
+  font-size: 0.85em;
+  color: #888;
+}
+
+// Theorem-like blocks
+.theorem, .definition, .lemma, .proposition {
+  background: #f9f9f9;
+  border-left: 3px solid #1a5276;
+  padding: 1em 1.2em;
+  margin: 1.5em 0;
+  font-style: italic;
+
+  strong {
+    font-style: normal;
+    color: #1a5276;
+  }
+}
+
+// CV iframe
+iframe {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+// Print styles
+@media print {
+  body {
+    font-size: 10pt;
+  }
+  .navbar, .nav-footer {
+    display: none;
+  }
+}

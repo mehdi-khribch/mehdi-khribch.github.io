@@ -1,0 +1,49 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "El Mahdi (Mehdi) Khribch"
+  description: "Ph.D. candidate in Statistics & Machine Learning"
+  site-url: https://mehdi-khribch.github.io
+  navbar:
+    background: "#f4f8fb"
+    foreground: "#333333"
+    left:
+      - text: "About"
+        href: index.qmd
+      - text: "Education"
+        href: education.qmd
+      - text: "Publications"
+        href: publications.qmd
+      - text: "Teaching"
+        href: teaching.qmd
+      - text: "Talks"
+        href: talks.qmd
+      - text: "CV"
+        href: cv.qmd
+    right:
+      - icon: github
+        href: https://github.com/mehdi-khribch
+      - icon: envelope
+        href: mailto:elmahdi.khribch@essec.edu
+
+  page-footer:
+    center: "© 2026 Mehdi Khribch"
+
+format:
+  html:
+    theme:
+      light: [cosmo, styles.scss]
+    css: latex.css
+    fontsize: "11.5pt"
+    linestretch: 1.5
+    mainfont: "Latin Modern Roman"
+    monofont: "Latin Modern Mono"
+    toc: false
+    code-copy: true
+    highlight-style: github
+    include-in-header:
+      - text: |
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css">
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">

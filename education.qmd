@@ -1,0 +1,31 @@
+---
+title: "Education"
+---
+
+::: {.edu-entry}
+### Ph.D. in Statistics and Machine Learning
+**ESSEC Business School**, 2022 -- present
+
+[Paris, France]{.location}
+:::
+
+::: {.edu-entry}
+### Master of Science & Executive Engineering
+**Mines-ParisTech (PSL University)**, 2018 -- 2022
+
+[Paris, France]{.location}
+:::
+
+::: {.edu-entry}
+### Master MVA (Mathématiques, Vision, Apprentissage)
+**ENS Paris-Saclay**, 2022
+
+[Paris, France]{.location}
+:::
+
+::: {.edu-entry}
+### Master of Science in Statistical Science
+**University of Oxford**, 2021
+
+[Oxford, United Kingdom]{.location}
+:::

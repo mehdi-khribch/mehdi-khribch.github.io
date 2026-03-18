@@ -1,0 +1,23 @@
+---
+title: "El Mahdi (Mehdi) Khribch"
+subtitle: "Ph.D. Candidate in Statistics & Machine Learning"
+about:
+  template: trestles
+  image: images/profile.png
+  image-shape: rounded
+  links:
+    - icon: envelope
+      text: Email
+      href: mailto:elmahdi.khribch@essec.edu
+    - icon: github
+      text: GitHub
+      href: https://github.com/mehdi-khribch
+---
+
+## About Me
+
+I am a final-year PhD candidate in the [IDS Department](https://isds-department.essec.edu/home/) at ESSEC Business School, working with [Pierre E. Jacob](https://sites.google.com/site/pierrejacob/) and [Pierre Alquier](https://pierrealquier.github.io/). Prior to that, I received an Engineering Degree from [Mines Paris PSL University](https://www.minesparis.psl.eu/). Before that, I obtained the [Master MVA (Mathématiques, Vision, Apprentissage)](https://www.master-mva.com/) at [ENS Paris-Saclay](https://ens-paris-saclay.fr/), and I also hold an MSc in Statistical Science from the [Department of Statistics, University of Oxford](https://www.stats.ox.ac.uk/).
+
+## Research Interests
+
+My research interests lie in computational statistics and Bayesian inference. I focus on unbiased MCMC methods using coupling techniques, PAC-Bayesian theory for robust statistical inference, and variational approximations. My goal is to develop scalable, theoretically grounded algorithms for computational statistics and machine learning.

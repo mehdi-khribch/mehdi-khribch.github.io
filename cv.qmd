@@ -1,0 +1,9 @@
+---
+title: "Curriculum Vitæ"
+---
+
+```{=html}
+<iframe src="files/CV/Mehdi-Khribch-CV.pdf" width="100%" height="600" style="border: 1px solid #ddd; border-radius: 3px;"></iframe>
+```
+
+You can download a PDF copy of my CV [here](files/CV/Mehdi-Khribch-CV.pdf).

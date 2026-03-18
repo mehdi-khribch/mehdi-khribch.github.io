@@ -1,2 +1,6 @@
-_site/
-
+/.quarto/
+/docs/
+/_site/
+.DS_Store
+*.html
+!.github/

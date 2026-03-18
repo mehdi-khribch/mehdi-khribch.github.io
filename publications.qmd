@@ -1,0 +1,27 @@
+---
+title: "Publications"
+---
+
+::: {.pub-item}
+[Variational Approximations for Robust Bayesian Inference via Rho-Posteriors](https://arxiv.org/abs/2601.07325){.pub-title}
+
+[El Mahdi Khribch, Pierre Alquier]{.pub-authors}
+
+[*Preprint*]{.pub-venue}
+:::
+
+::: {.pub-item}
+[On importance sampling and independent Metropolis--Hastings with an unbounded weight function](https://arxiv.org/abs/2411.09514){.pub-title}
+
+[George Deligiannidis, Pierre E. Jacob, El Mahdi Khribch, Guanyang Wang]{.pub-authors}
+
+[*Major revision at The Annals of Statistics*]{.pub-venue}
+:::
+
+::: {.pub-item}
+[Convergence of Statistical Estimators via Mutual Information Bounds](https://arxiv.org/abs/2412.18539){.pub-title}
+
+[El Mahdi Khribch, Pierre Alquier]{.pub-authors}
+
+[*Submitted and under review for Journal of Machine Learning Research*]{.pub-venue}
+:::
