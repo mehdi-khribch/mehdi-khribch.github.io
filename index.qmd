@@ -24,9 +24,9 @@ title-block-banner: false
 </div>
 
 <div class="painting-section">
-  <img src="images/delacroix-fantasia.jpg" class="featured-painting" alt="Eugène Delacroix, Fantasia arabe, 1833">
+  <img src="images/cherkaoui-couronnement.jpg" class="featured-painting" alt="Ahmed Cherkaoui, Le couronnement, 1964">
   <div class="painting-caption">
-    Eugène Delacroix, <em>Fantasia arabe</em>, 1833. Oil on canvas, Städel Museum, Frankfurt am Main.
+    Ahmed Cherkaoui, <em>Le couronnement</em>, 1964. Centre national des arts plastiques. Dépôt au Palais de la Porte Dorée, Paris.
   </div>
 </div>
 ```

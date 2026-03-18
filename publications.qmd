@@ -42,9 +42,9 @@ where $D_\alpha$ is the Rényi divergence of order $\alpha$, $r_n$ is the log-li
 
 ```{=html}
 <div class="painting-section">
-  <img src="images/cherkaoui-couronnement.jpg" class="featured-painting" alt="Ahmed Cherkaoui, Le couronnement, 1964">
+  <img src="images/delacroix-fantasia.jpg" class="featured-painting" alt="Eugène Delacroix, Fantasia arabe, 1833">
   <div class="painting-caption">
-    Ahmed Cherkaoui, <em>Le couronnement</em>, 1964. Centre national des arts plastiques. Dépôt au Palais de la Porte Dorée, Paris.
+    Eugène Delacroix, <em>Fantasia arabe</em>, 1833. Oil on canvas, Städel Museum, Frankfurt am Main.
   </div>
 </div>
 ```
