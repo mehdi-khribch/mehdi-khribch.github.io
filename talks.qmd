@@ -3,6 +3,16 @@ title: "Talks & Presentations"
 ---
 
 ::: {.talk-item}
+[**Fundamentals of Statistical Machine Learning (FSML) Research Group, UCL**](https://fsml-ucl.github.io/) --- Talk\
+March 2026, London
+:::
+
+::: {.talk-item}
+[**Computational Statistics and Machine Learning Reading Group, University of Warwick**](https://warwick.ac.uk/fac/sci/statistics/) --- Talk\
+February 2026, Coventry
+:::
+
+::: {.talk-item}
 [**Advances in MCMC Methods (EURANDOM)**](https://www.eurandom.tue.nl/event/methodology-and-theory-mcmc/) --- Poster\
 10--12 December 2025, Eindhoven
 :::

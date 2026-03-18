@@ -8,9 +8,6 @@ title: "Publications"
 [El Mahdi Khribch, Pierre Alquier]{.pub-authors}
 
 [*Preprint*]{.pub-venue}
-
-We study variational approximations of $\rho$-posteriors, which replace the log-likelihood with a general loss $\rho$, yielding robustness to model misspecification. We derive PAC-Bayesian bounds of the form:
-$$\mathbb{E}_{\hat{\rho}}[\ell(\theta)] \leq \inf_{\rho \in \mathcal{P}} \left\{ \mathbb{E}_{\rho}[\ell(\theta)] + \frac{1}{\lambda}\mathrm{KL}(\rho \| \pi) \right\} + \varepsilon_n$$
 :::
 
 ::: {.pub-item}
@@ -19,8 +16,6 @@ $$\mathbb{E}_{\hat{\rho}}[\ell(\theta)] \leq \inf_{\rho \in \mathcal{P}} \left\{
 [George Deligiannidis, Pierre E. Jacob, El Mahdi Khribch, Guanyang Wang]{.pub-authors}
 
 [*Major revision at The Annals of Statistics*]{.pub-venue}
-
-We establish convergence conditions for importance sampling and independent Metropolis--Hastings when the weight function $w(\theta) = \pi(\theta)/q(\theta)$ is unbounded. We show that finite variance $\mathrm{Var}_q[w(\theta)] < \infty$ is sufficient but not necessary, and provide sharp conditions on the tail behaviour of $w$.
 :::
 
 ::: {.pub-item}
@@ -29,8 +24,4 @@ We establish convergence conditions for importance sampling and independent Metr
 [El Mahdi Khribch, Pierre Alquier]{.pub-authors}
 
 [*Submitted and under review for Journal of Machine Learning Research*]{.pub-venue}
-
-We introduce a general framework connecting mutual information to the convergence of statistical estimators. For a posterior $\rho$ over parameters $\theta$ given data $Y_{1:n}$, we derive bounds of the form:
-$$\mathbb{E}[R(\hat{\theta}_n)] \leq \frac{I(\Theta; Y_{1:n}) + \log(1/\delta)}{n}$$
-with applications to PAC-Bayes, aggregation, and online learning.
 :::
