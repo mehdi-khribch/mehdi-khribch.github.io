@@ -15,14 +15,14 @@
 
 .featured-painting {
   width: 100%;
-  max-width: 500px;
+  max-width: 320px;
   border-radius: 4px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.12);
   border: 1px solid #d0d9e0;
 }
 
 .painting-caption {
-  max-width: 500px;
+  max-width: 320px;
   margin: 0.8em auto 0 auto;
   font-size: 0.82em;
   color: #555;
