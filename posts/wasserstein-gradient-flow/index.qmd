@@ -1,0 +1,125 @@
+---
+title: "Wasserstein Gradient Flows: Working Out the KL Divergence Gradient"
+description: "An attempt to carefully work through the Wasserstein gradient of the KL divergence, its connection to the heat equation, and some thoughts on statistical optimal transport."
+date: "2026-03-18"
+categories: [optimal transport, gradient flows, KL divergence]
+toc: true
+toc-depth: 3
+bibliography: references.bib
+comments:
+  giscus:
+    repo: mehdi-khribch/mehdi-khribch.github.io
+    category: "Comments"
+    mapping: pathname
+    reactions-enabled: true
+    theme: light
+---
+
+*This is my attempt to work through the details of the Wasserstein gradient of the KL divergence. The goal is just to carefully do the calculations, build some intuition, and connect the pieces to the heat equation and statistical optimal transport. I will keep appending to this post as I work through more of the material.*
+
+---
+
+## Setup and notation
+
+Let $\mathcal{P}_2(\mathbb{R}^d)$ denote the space of probability measures on $\mathbb{R}^d$ with finite second moment, equipped with the 2-Wasserstein distance
+$$
+W_2(\mu, \nu) = \left( \inf_{\gamma \in \Pi(\mu,\nu)} \int_{\mathbb{R}^d \times \mathbb{R}^d} \|x - y\|^2 \, \mathrm{d}\gamma(x,y) \right)^{1/2},
+$$
+where $\Pi(\mu,\nu)$ is the set of couplings of $\mu$ and $\nu$. This is the Otto calculus setting [@villani2003topics; @ambrosio2005gradient].
+
+We fix a target measure $\pi$ with density $\pi(x) \propto e^{-V(x)}$ for some smooth potential $V : \mathbb{R}^d \to \mathbb{R}$. The functional of interest is the KL divergence
+$$
+\mathcal{F}(\rho) = \mathrm{KL}(\rho \| \pi) = \int_{\mathbb{R}^d} \rho(x) \log \frac{\rho(x)}{\pi(x)} \, \mathrm{d}x.
+$$
+We can split this as $\mathcal{F}(\rho) = \int \rho \log \rho \, \mathrm{d}x + \int \rho \, V \, \mathrm{d}x + \log Z$, where $Z$ is the normalising constant of $\pi$. The first term is the negative entropy, the second is the potential energy.
+
+## The first variation
+
+To compute the Wasserstein gradient, we first need the *first variation* (or functional derivative) of $\mathcal{F}$. This is the function $\frac{\delta \mathcal{F}}{\delta \rho}$ satisfying
+$$
+\left.\frac{\mathrm{d}}{\mathrm{d}\varepsilon}\right|_{\varepsilon=0} \mathcal{F}(\rho + \varepsilon \chi) = \int_{\mathbb{R}^d} \frac{\delta \mathcal{F}}{\delta \rho}(x) \, \chi(x) \, \mathrm{d}x
+$$
+for all admissible perturbations $\chi$ (with $\int \chi = 0$).
+
+**Entropy term.** For $\mathcal{H}(\rho) = \int \rho \log \rho \, \mathrm{d}x$:
+$$
+\frac{\mathrm{d}}{\mathrm{d}\varepsilon} \int (\rho + \varepsilon\chi) \log(\rho + \varepsilon\chi) \, \mathrm{d}x \bigg|_{\varepsilon=0} = \int \chi(x)(\log \rho(x) + 1) \, \mathrm{d}x.
+$$
+So $\frac{\delta \mathcal{H}}{\delta \rho} = \log \rho + 1$.
+
+**Potential energy term.** For $\mathcal{V}(\rho) = \int \rho \, V \, \mathrm{d}x$, clearly $\frac{\delta \mathcal{V}}{\delta \rho} = V$.
+
+Combining (and noting the constant $\log Z$ drops out):
+$$
+\frac{\delta \mathcal{F}}{\delta \rho}(x) = \log \rho(x) + 1 + V(x).
+$$
+
+## The Wasserstein gradient
+
+In the Otto calculus framework, the Wasserstein gradient of a functional $\mathcal{F}$ at $\rho$ is *not* simply the first variation. Instead, it is defined through the *continuity equation*. The key insight of @jordan1998variational and @otto2001geometry is that the tangent space to $\mathcal{P}_2$ at $\rho$ can be identified with gradient vector fields, and the Wasserstein gradient is
+$$
+\mathrm{grad}_{W_2} \mathcal{F}(\rho) = -\nabla \cdot \left( \rho \, \nabla \frac{\delta \mathcal{F}}{\delta \rho} \right),
+$$
+or equivalently, the velocity field driving the gradient flow is
+$$
+v = -\nabla \frac{\delta \mathcal{F}}{\delta \rho}.
+$$
+
+Substituting our first variation:
+$$
+v(x) = -\nabla \left( \log \rho(x) + 1 + V(x) \right) = -\frac{\nabla \rho(x)}{\rho(x)} - \nabla V(x).
+$$
+
+The continuity equation $\partial_t \rho = -\nabla \cdot (\rho \, v)$ then gives the **Wasserstein gradient flow of the KL divergence**:
+$$
+\boxed{\partial_t \rho = \nabla \cdot \left( \rho \, \nabla \log \frac{\rho}{\pi} \right) = \Delta \rho + \nabla \cdot (\rho \, \nabla V).}
+$$
+
+Let me spell this out. We have
+\begin{align}
+\partial_t \rho &= -\nabla \cdot(\rho \, v) \\
+&= -\nabla \cdot\!\left(\rho\left(-\frac{\nabla\rho}{\rho} - \nabla V\right)\right) \\
+&= \nabla \cdot(\nabla\rho + \rho\,\nabla V) \\
+&= \Delta\rho + \nabla\cdot(\rho\,\nabla V).
+\end{align}
+
+This is the **Fokker--Planck equation** associated with the Langevin diffusion $\mathrm{d}X_t = -\nabla V(X_t)\,\mathrm{d}t + \sqrt{2}\,\mathrm{d}B_t$.
+
+## Connection to the heat equation
+
+In the special case $V = 0$ (i.e., $\pi$ is the Lebesgue measure, or more properly we consider the entropy functional alone), the gradient flow becomes
+$$
+\partial_t \rho = \Delta \rho,
+$$
+which is precisely the **heat equation**. This is the celebrated result of @jordan1998variational: *heat diffusion is the gradient flow of the entropy in Wasserstein space*. The heat kernel
+$$
+\rho(x,t) = \frac{1}{(4\pi t)^{d/2}} \exp\!\left(-\frac{\|x\|^2}{4t}\right) \ast \rho_0
+$$
+arises as the solution starting from $\rho_0$, and one can verify that the entropy $\mathcal{H}(\rho_t)$ is monotonically decreasing along this flow --- a consequence of the fact that we are descending in the Wasserstein metric.
+
+For general $V$, the flow converges to $\pi \propto e^{-V}$ as $t \to \infty$, since $\mathrm{KL}(\rho_t \| \pi)$ decreases monotonically and $\pi$ is the unique minimiser of the KL.
+
+## A word on statistical optimal transport
+
+From a statistical perspective, the Wasserstein distance and its gradient flows connect naturally to several modern topics. The JKO scheme [@jordan1998variational] provides a variational discretisation:
+$$
+\rho_{k+1} = \arg\min_{\rho \in \mathcal{P}_2} \left\{ \frac{1}{2\tau} W_2^2(\rho, \rho_k) + \mathcal{F}(\rho) \right\},
+$$
+where $\tau > 0$ is the step size. This is an implicit Euler scheme in Wasserstein space, and it converges to the continuous-time gradient flow as $\tau \to 0$.
+
+This viewpoint has been influential in connecting optimal transport to sampling algorithms. The Langevin diffusion, viewed as the particle-level counterpart of the Fokker--Planck equation above, is a gradient flow in the space of measures. Modern analyses of the convergence of Langevin MCMC rely heavily on this structure --- particularly through log-Sobolev inequalities and the relationship
+$$
+\frac{\mathrm{d}}{\mathrm{d}t} \mathrm{KL}(\rho_t \| \pi) = -\mathcal{I}(\rho_t \| \pi),
+$$
+where $\mathcal{I}(\rho \| \pi) = \int \rho \left\|\nabla \log \frac{\rho}{\pi}\right\|^2 \mathrm{d}x$ is the Fisher information. Under a log-Sobolev inequality $\mathrm{KL}(\rho\|\pi) \leq \frac{1}{2\lambda}\mathcal{I}(\rho\|\pi)$, this gives exponential convergence $\mathrm{KL}(\rho_t\|\pi) \leq e^{-2\lambda t}\mathrm{KL}(\rho_0\|\pi)$.
+
+For a comprehensive treatment of optimal transport in statistics, see @panaretos2020invitation.
+
+---
+
+*To be continued. I plan to add sections on: the Benamou--Brenier formulation and its computational aspects, displacement convexity and its implications for convergence rates, and connections to variational inference through the Wasserstein natural gradient.*
+
+## References
+
+::: {#refs}
+:::
