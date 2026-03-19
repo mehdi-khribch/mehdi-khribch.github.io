@@ -234,3 +234,35 @@ blockquote {
   padding: 0.8em 1.2em;
   border-radius: 0 4px 4px 0;
 }
+
+/* === ROTATING GALLERY === */
+.rotating-gallery {
+  margin-top: 3em;
+  padding-top: 2em;
+  border-top: 1px solid #d0d9e0;
+  text-align: center;
+}
+
+.gallery-fade {
+  display: flex;
+  justify-content: center;
+}
+
+.gallery-painting {
+  max-width: 320px;
+  width: 100%;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  border: 1px solid #d0d9e0;
+  transition: opacity 0.6s ease;
+}
+
+.gallery-caption {
+  max-width: 400px;
+  margin: 0.8em auto 0 auto;
+  font-size: 0.82em;
+  color: #555;
+  line-height: 1.5;
+  text-align: center;
+  font-style: italic;
+}

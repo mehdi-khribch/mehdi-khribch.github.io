@@ -1,7 +1,5 @@
 ---
 title: "Blog"
-subtitle: "Notes on statistics, art, books, and miscellaneous thoughts."
-image: images/belkahia.jpg
 listing:
   contents: posts
   sort: "date desc"
@@ -9,12 +7,3 @@ listing:
   categories: true
   fields: [date, title, description, categories]
 ---
-
-```{=html}
-<div class="painting-section" style="border-top:none; margin-top:0; padding-top:0;">
-  <img src="images/belkahia.jpg" class="featured-painting" style="max-width:320px;" alt="Farid Belkahia, Main, 1980">
-  <div class="painting-caption">
-    Farid Belkahia, <em>Main</em>, henné sur peau, 1980.
-  </div>
-</div>
-```
