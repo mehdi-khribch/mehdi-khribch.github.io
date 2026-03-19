@@ -2,6 +2,7 @@
 title: "Wasserstein Gradient Flows: Working Out the KL Divergence Gradient"
 description: "An attempt to carefully work through the Wasserstein gradient of the KL divergence, its connection to the heat equation, and some thoughts on statistical optimal transport."
 date: "2026-03-18"
+image: ../../images/temepsta-galilea-rembrandt.jpg
 categories: [optimal transport, gradient flows, KL divergence]
 toc: true
 toc-depth: 3
@@ -123,3 +124,12 @@ For a comprehensive treatment of optimal transport in statistics, see @panaretos
 
 ::: {#refs}
 :::
+
+```{=html}
+<div class="painting-section">
+  <img src="../../images/temepsta-galilea-rembrandt.jpg" class="featured-painting" style="max-width:450px;" alt="Rembrandt, The Storm on the Sea of Galilee, 1633">
+  <div class="painting-caption">
+    Rembrandt van Rijn, <em>The Storm on the Sea of Galilee</em>, 1633. Oil on canvas. Stolen from the Isabella Stewart Gardner Museum, Boston, in 1990. Still missing.
+  </div>
+</div>
+```
