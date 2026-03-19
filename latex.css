@@ -5,6 +5,55 @@
   padding: 2.5em 2em;
 }
 
+/* === HERO NAME HEADER === */
+.hero-name {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.hero-name h1 {
+  font-size: 2.4em;
+  color: #1b4f72;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.hero-subtitle {
+  font-style: italic;
+  color: #6a7a8a;
+  font-size: 1.05em;
+  margin: 0.3em 0 0 0;
+}
+
+.hero-line {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, #1b4f72, #c0392b);
+  margin: 1em auto 0 auto;
+  border-radius: 2px;
+}
+
+/* === ABOUT CARD === */
+.about-card {
+  background: #ffffff;
+  border: 1px solid #dce3e8;
+  border-radius: 8px;
+  padding: 2.5em;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+  position: relative;
+}
+
+.about-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, #1b4f72, #2980b9, #1b4f72);
+  border-radius: 8px 8px 0 0;
+}
+
 /* === FEATURED PAINTING SECTION === */
 .painting-section {
   margin-top: 3em;
@@ -22,7 +71,7 @@
 }
 
 .painting-caption {
-  max-width: 400px;
+  max-width: 550px;
   margin: 0.8em auto 0 auto;
   font-size: 0.82em;
   color: #777;
@@ -63,7 +112,6 @@ p {
   display: flex;
   gap: 3em;
   align-items: flex-start;
-  margin-top: 1.5em;
 }
 
 .about-sidebar {
@@ -72,35 +120,57 @@ p {
   text-align: center;
 }
 
+.photo-frame {
+  position: relative;
+  display: inline-block;
+}
+
+.photo-frame::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: -8px;
+  bottom: -8px;
+  border: 2px solid #1b4f72;
+  border-radius: 6px;
+  z-index: -1;
+  opacity: 0.3;
+}
+
 .about-photo {
   width: 200px;
   border-radius: 6px;
   border: 1px solid #dce3e8;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 1;
 }
 
 .about-links {
-  margin-top: 1.2em;
+  margin-top: 1.5em;
   display: flex;
   flex-direction: column;
-  gap: 0.5em;
+  gap: 0.4em;
 }
 
 .about-links a {
   color: #1b4f72;
   text-decoration: none;
-  font-size: 0.92em;
+  font-size: 0.9em;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4em;
-  padding: 0.35em 0;
-  border-radius: 4px;
-  transition: all 0.15s;
+  gap: 0.5em;
+  padding: 0.4em 0.8em;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  transition: all 0.2s;
 }
 
 .about-links a:hover {
   background: #e8f0f7;
+  border-color: #1b4f72;
   color: #c0392b;
   text-decoration: none;
 }
@@ -116,11 +186,12 @@ p {
   color: #1b4f72;
   border-bottom: 2px solid #1b4f72;
   padding-bottom: 0.25em;
-  margin-bottom: 0.6em;
+  margin-bottom: 0.7em;
+  display: inline-block;
 }
 
 .about-main h2:not(:first-child) {
-  margin-top: 1.5em;
+  margin-top: 1.8em;
 }
 
 @media (max-width: 700px) {
@@ -129,8 +200,12 @@ p {
     align-items: center;
     text-align: center;
   }
+  .about-card {
+    padding: 1.5em;
+  }
   .about-main h2 {
     text-align: center;
+    display: block;
   }
   .about-main p {
     text-align: left;
