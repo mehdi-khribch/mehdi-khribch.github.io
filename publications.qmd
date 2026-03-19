@@ -22,7 +22,7 @@ with empirical average $\hat{R}_\psi(\theta,\theta') := \frac{1}{n}\sum_{i=1}^n 
 [*Major revision at The Annals of Statistics*]{.pub-venue}
 
 We study importance sampling (IS) and the particle independent Metropolis--Hastings (PIMH) algorithm when the weight function is unbounded but has finite moments of order $p$. For PIMH with $N$ particles, we establish the convergence rate
-$$\left|\bar{q}P^t - \bar{\pi}\right|_{\mathrm{TV}} \leq \frac{C}{\sqrt{N}}\,(1+t)^{p-1}.$$
+$$\left|\bar{q}P^t - \bar{\pi}\right|_{\mathrm{TV}} \leq \frac{C}{\sqrt{N}}\,\frac{1}{(1+t)^{p-1}}.$$
 For the single-chain IMH, we prove that the common random numbers (CRN) coupling is maximal, yielding the exact identity
 $$\left|P^t(x,\cdot) - P^t(y,\cdot)\right|_{\mathrm{TV}} = P_{x,y}(\tau > t).$$
 This allows a formal comparison of the finite-time biases of IS and IMH, showing IMH to have strictly smaller bias.
