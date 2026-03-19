@@ -1,10 +1,10 @@
 /*-- scss:defaults --*/
 $font-family-sans-serif: "Latin Modern Roman", "Computer Modern", "CMU Serif", Georgia, serif;
 $font-family-monospace: "Latin Modern Mono", "CMU Typewriter Text", "Courier New", monospace;
-$body-bg: #ffffff;
-$body-color: #333333;
-$link-color: #1a5276;
-$navbar-bg: #f4f8fb;
+$body-bg: #fafbfd;
+$body-color: #2c2c2c;
+$link-color: #1b4f72;
+$navbar-bg: #1b4f72;
 
 /*-- scss:rules --*/
 
@@ -12,72 +12,89 @@ $navbar-bg: #f4f8fb;
 body {
   font-family: "CMU Serif", "Latin Modern Roman", "Computer Modern", Georgia, serif !important;
   font-size: 11.5pt;
-  line-height: 1.6;
-  color: #333;
+  line-height: 1.65;
+  color: #2c2c2c;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
-// Headings — LaTeX style
+// Headings
 h1, h2, h3, h4, h5, h6 {
   font-family: "CMU Serif", "Latin Modern Roman", "Computer Modern", Georgia, serif !important;
   font-weight: 700;
-  color: #1a1a1a;
+  color: #1b2a3d;
   margin-top: 1.5em;
   margin-bottom: 0.5em;
 }
 
 h1 {
   font-size: 1.8em;
-  color: #1a5276;
+  color: #1b4f72;
 }
 
 h2 {
   font-size: 1.4em;
+  color: #1b4f72;
 }
 
 h3 {
   font-size: 1.15em;
 }
 
-// Links — blue academic style
+// Links
 a {
-  color: #1a5276;
+  color: #1b4f72;
   text-decoration: none;
+  transition: color 0.15s;
   &:hover {
     text-decoration: underline;
-    color: #0e3a57;
+    color: #c0392b;
   }
 }
 
-// Navbar
+// Navbar — deep blue with white text
 .navbar {
-  border-bottom: 2px solid #d0d9e0;
+  border-bottom: none;
   font-family: "CMU Serif", "Latin Modern Roman", Georgia, serif !important;
   font-size: 10.5pt;
-  padding: 0.6em 0;
+  padding: 0.7em 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 
   .navbar-brand {
     font-weight: 700;
-    font-size: 1.15em;
-    color: #1a5276 !important;
+    font-size: 1.2em;
+    color: #ffffff !important;
+    letter-spacing: 0.01em;
   }
 
   .nav-link {
     font-weight: 400;
     letter-spacing: 0.02em;
-    padding: 0.5em 0.8em !important;
+    color: rgba(255,255,255,0.85) !important;
+    padding: 0.5em 0.9em !important;
     border-radius: 4px;
-    transition: background 0.15s;
+    transition: all 0.15s;
 
     &:hover {
-      background: rgba(26, 82, 118, 0.08);
+      background: rgba(255,255,255,0.15);
+      color: #ffffff !important;
       text-decoration: none;
     }
+
+    &.active {
+      color: #ffffff !important;
+      background: rgba(255,255,255,0.2);
+    }
+  }
+
+  // Icons in navbar (scholar, github, linkedin, email)
+  .navbar-nav .nav-item .nav-link i,
+  .navbar-nav .nav-item .nav-link .bi {
+    color: rgba(255,255,255,0.85);
   }
 }
 
-// Profile sidebar (for trestles template fallback)
+// Profile sidebar
 .about-entity {
   text-align: center;
 
@@ -89,10 +106,10 @@ a {
   }
 }
 
-// Content cards for publications, talks, teaching
+// Content cards
 .entry-card {
   padding: 1em 0;
-  border-bottom: 1px solid #eef2f5;
+  border-bottom: 1px solid #e8ecf0;
 
   &:last-child {
     border-bottom: none;
@@ -117,16 +134,24 @@ a {
 
 // Page footer
 .nav-footer {
-  border-top: 2px solid #d0d9e0;
+  background: #1b2a3d;
+  border-top: none;
   font-size: 0.85em;
-  color: #888;
-  padding: 1em 0;
+  color: rgba(255,255,255,0.6);
+  padding: 1.2em 0;
+
+  a {
+    color: rgba(255,255,255,0.7);
+    &:hover {
+      color: #ffffff;
+    }
+  }
 }
 
 // Theorem-like blocks
 .theorem, .definition, .lemma, .proposition {
-  background: #f8fafc;
-  border-left: 3px solid #1a5276;
+  background: #f0f4f8;
+  border-left: 3px solid #1b4f72;
   padding: 1em 1.2em;
   margin: 1.5em 0;
   font-style: italic;
@@ -134,7 +159,7 @@ a {
 
   strong {
     font-style: normal;
-    color: #1a5276;
+    color: #1b4f72;
   }
 }
 

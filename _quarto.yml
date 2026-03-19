@@ -7,8 +7,8 @@ website:
   description: "Ph.D. candidate in Statistics & Machine Learning"
   site-url: https://mehdi-khribch.github.io
   navbar:
-    background: "#f4f8fb"
-    foreground: "#333333"
+    background: "#1b4f72"
+    foreground: "#ffffff"
     left:
       - text: "About"
         href: index.qmd
