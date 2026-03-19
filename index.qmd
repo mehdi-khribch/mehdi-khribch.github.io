@@ -24,7 +24,7 @@ title-block-banner: false
 </div>
 
 <div class="painting-section">
-  <img src="images/cherkaoui-couronnement.jpg" class="featured-painting" alt="Ahmed Cherkaoui, Le couronnement, 1964">
+  <img src="images/cherkaoui-couronnement.jpg" class="featured-painting" style="max-width:550px;" alt="Ahmed Cherkaoui, Le couronnement, 1964">
   <div class="painting-caption">
     Ahmed Cherkaoui, <em>Le couronnement</em>, 1964. Centre national des arts plastiques. Dépôt au Palais de la Porte Dorée, Paris.
   </div>
