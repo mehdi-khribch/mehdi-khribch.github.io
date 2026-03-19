@@ -39,3 +39,12 @@ We introduce a unified mutual information bound for general statistical models, 
 $$\mathbb{E}_{\theta\sim\hat{\rho}}\!\left[D_\alpha(P_\theta\|P_{\theta_0})\right] - \frac{\alpha}{n(1-\alpha)}\,\mathbb{E}_{\theta\sim\hat{\rho}}\!\left[r_n(\theta,\theta_0)\right] \leq \frac{I(\theta,S)}{n(1-\alpha)},$$
 where $D_\alpha$ is the Rényi divergence of order $\alpha$, $r_n$ is the log-likelihood ratio evaluated on the sample $S$, and $I(\theta,S)$ is the mutual information between the estimator and the data.
 :::
+
+```{=html}
+<div class="painting-section">
+  <img src="images/delacroix-fantasia.jpg" class="featured-painting" alt="Eugène Delacroix, Fantasia arabe, 1833">
+  <div class="painting-caption">
+    Eugène Delacroix, <em>Fantasia arabe</em>, 1833. Oil on canvas, Städel Museum, Frankfurt am Main.
+  </div>
+</div>
+```

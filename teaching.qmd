@@ -14,3 +14,12 @@ title: "Teaching Experience"
 
 ### Teaching Assistant --- High Dimensional Statistics
 **ENPC ParisTech**, 2023--2025
+
+```{=html}
+<div class="painting-section">
+  <img src="images/david-marat.png" class="featured-painting" alt="Jacques-Louis David, La Mort de Marat, 1793">
+  <div class="painting-caption">
+    Jacques-Louis David, <em>La Mort de Marat</em>, 1793. Oil on canvas, Musées royaux des Beaux-Arts de Belgique, Brussels.
+  </div>
+</div>
+```

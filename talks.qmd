@@ -37,3 +37,12 @@ Singapore
 [**Bayes Comp 2023**](https://bayescomp2023.com/) --- Poster Session\
 Levi, Finland
 :::
+
+```{=html}
+<div class="painting-section">
+  <img src="images/belkahia-dignite.png" class="featured-painting" alt="Farid Belkahia, La dignité de l'homme, 1994">
+  <div class="painting-caption">
+    Farid Belkahia, <em>La dignité de l'homme</em>, henné sur peau, 248 × 289 cm, 1994.
+  </div>
+</div>
+```

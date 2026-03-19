@@ -22,4 +22,11 @@ title-block-banner: false
     <p>My research interests lie in computational statistics and Bayesian inference. I focus on unbiased MCMC methods using coupling techniques, PAC-Bayesian theory for robust statistical inference, and variational approximations. My goal is to develop scalable, theoretically grounded algorithms for computational statistics and machine learning.</p>
   </div>
 </div>
+
+<div class="painting-section">
+  <img src="images/cherkaoui-couronnement.jpg" class="featured-painting" alt="Ahmed Cherkaoui, Le couronnement, 1964">
+  <div class="painting-caption">
+    Ahmed Cherkaoui, <em>Le couronnement</em>, 1964. Centre national des arts plastiques. Dépôt au Palais de la Porte Dorée, Paris.
+  </div>
+</div>
 ```

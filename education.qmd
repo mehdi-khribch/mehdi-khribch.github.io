@@ -29,3 +29,12 @@ title: "Education"
 
 [Oxford, United Kingdom]{.location}
 :::
+
+```{=html}
+<div class="painting-section">
+  <img src="images/david-horaces.jpg" class="featured-painting" alt="Jacques-Louis David, Le Serment des Horaces, 1784">
+  <div class="painting-caption">
+    Jacques-Louis David, <em>Le Serment des Horaces</em>, 1784. Oil on canvas, Musée du Louvre, Paris.
+  </div>
+</div>
+```
