@@ -1,12 +1,13 @@
 ---
 title: "Blog"
 subtitle: "Notes on mathematics, statistics, books, music, and miscellaneous thoughts."
+image: images/belkahia.jpg
 listing:
   contents: posts
   sort: "date desc"
   type: default
   categories: true
-  fields: [date, title, description, categories]
+  fields: [image, date, title, description, categories]
 ---
 
 ```{=html}
