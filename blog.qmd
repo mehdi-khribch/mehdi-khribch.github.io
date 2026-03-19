@@ -1,5 +1,6 @@
 ---
 title: "Blog"
+subtitle: "Notes on mathematics, statistics, books, music, and miscellaneous thoughts."
 listing:
   contents: posts
   sort: "date desc"
