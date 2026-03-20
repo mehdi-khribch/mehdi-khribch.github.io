@@ -6,7 +6,7 @@ title-block-banner: false
 
 ```{=html}
 <div class="hero-name">
-  <h1>Mehdi Khribch</h1>
+  <h1>Mehdi Khribch <span class="arabic-name">(المهدي خريبش)</span></h1>
   <p class="hero-subtitle">Ph.D. Candidate in Statistics & Machine Learning</p>
   <div class="hero-line"></div>
 </div>
