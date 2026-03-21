@@ -9,9 +9,9 @@ title: "Publications"
 
 [*Preprint*]{.pub-venue}
 
-The $\rho$-estimator is a robust alternative to MLE defined via a coordinate-wise contrast function. For a function $\psi$ and observations $X_i$, the contrast between $\theta$ and $\theta'$ is
-$$\ell_\psi(x_i;\theta,\theta') := \psi\!\left(\frac{p^i_{\theta'}(x_i)}{p^i_{\theta}(x_i)}\right),$$
-with empirical average $\hat{R}_\psi(\theta,\theta') := \frac{1}{n}\sum_{i=1}^n \ell_\psi(X_i;\theta,\theta')$. The $\rho$-estimator $\hat{\theta}_{n,\psi}$ minimizes the supremum contrast $\hat{R}^*_\psi(\theta) := \sup_{\theta'\in\Theta}\hat{R}_\psi(\theta,\theta')$ over $\Theta$. This paper introduces this framework and derives finite-sample PAC-Bayesian oracle inequalities for the resulting estimator, bridging robust estimation with Bayesian computation through tractable variational approximations that inherit the robustness properties of the exact $\rho$-posterior.
+[[arXiv](https://arxiv.org/abs/2601.07325)]{.pub-link} | [[BibTeX](files/bib/khribch2026variational.bib)]{.pub-link} | [[Google Scholar](https://scholar.google.com/scholar?q=%22Variational+Approximations+for+Robust+Bayesian+Inference+via+Rho-Posteriors%22)]{.pub-link}
+
+We introduce the $\tilde{\rho}$-posterior, a generalized $\rho$-posterior and a modified version of the $\rho$-posterior of Baraud (2020), obtained by replacing the supremum over competitor parameters with a softmax aggregation. Unlike the original $\rho$-posteriors, whose minimax-theoretic analysis relies on testing arguments that preclude tractable computation, we show that $\tilde{\rho}$-posteriors admit a PAC-Bayesian analysis. This yields finite-sample oracle inequalities with explicit convergence rates that inherit the key robustness properties of the original framework, in particular graceful degradation under model misspecification and data contamination. Crucially, the PAC-Bayesian oracle inequalities extend to variational approximations of the $\tilde{\rho}$-posterior, providing theoretical guarantees for tractable inference. Numerical experiments on exponential families, regression, and real-world datasets confirm that the resulting variational procedures achieve robustness competitive with theoretical predictions at computational cost comparable to standard variational Bayes.
 :::
 
 ::: {.pub-item}
@@ -20,6 +20,8 @@ with empirical average $\hat{R}_\psi(\theta,\theta') := \frac{1}{n}\sum_{i=1}^n 
 [George Deligiannidis, Pierre E. Jacob, El Mahdi Khribch, Guanyang Wang]{.pub-authors}
 
 [*Major revision at The Annals of Statistics*]{.pub-venue}
+
+[[arXiv](https://arxiv.org/abs/2411.09514)]{.pub-link} | [[BibTeX](files/bib/deligiannidis2024importance.bib)]{.pub-link} | [[Google Scholar](https://scholar.google.com/scholar?q=%22On+importance+sampling+and+independent+Metropolis-Hastings+with+an+unbounded+weight+function%22)]{.pub-link}
 
 We study importance sampling (IS) and the particle independent Metropolis--Hastings (PIMH) algorithm when the weight function is unbounded but has finite moments of order $p$. For PIMH with $N$ particles, we establish the convergence rate
 $$\left|\bar{q}P^t - \bar{\pi}\right|_{\mathrm{TV}} \leq \frac{C}{\sqrt{N}}\,\frac{1}{(1+t)^{p-1}}.$$
@@ -34,6 +36,8 @@ This allows a formal comparison of the finite-time biases of IS and IMH, showing
 [El Mahdi Khribch, Pierre Alquier]{.pub-authors}
 
 [*Submitted and under review for Journal of Machine Learning Research*]{.pub-venue}
+
+[[arXiv](https://arxiv.org/abs/2412.18539)]{.pub-link} | [[BibTeX](files/bib/khribch2024convergence.bib)]{.pub-link} | [[Google Scholar](https://scholar.google.com/scholar?q=%22Convergence+of+Statistical+Estimators+via+Mutual+Information+Bounds%22)]{.pub-link}
 
 We introduce a unified mutual information bound for general statistical models, bridging PAC-Bayesian theory, Bayesian nonparametrics, and classical estimation. The bound yields sharper contraction rates for fractional posteriors and applies to a wide family of estimators including variational inference and MLE. The central inequality is
 $$\mathbb{E}_{\theta\sim\hat{\rho}}\!\left[D_\alpha(P_\theta\|P_{\theta_0})\right] - \frac{\alpha}{n(1-\alpha)}\,\mathbb{E}_{\theta\sim\hat{\rho}}\!\left[r_n(\theta,\theta_0)\right] \leq \frac{I(\theta,S)}{n(1-\alpha)},$$

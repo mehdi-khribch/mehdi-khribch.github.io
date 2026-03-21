@@ -254,6 +254,26 @@ p {
   font-size: 0.9em;
 }
 
+.pub-item .pub-link {
+  font-size: 0.88em;
+}
+
+.pub-item .pub-link a {
+  color: #1b4f72;
+  text-decoration: none;
+  padding: 0.15em 0.5em;
+  border: 1px solid #1b4f72;
+  border-radius: 3px;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.pub-item .pub-link a:hover {
+  background: #1b4f72;
+  color: #ffffff;
+  text-decoration: none;
+}
+
 /* === TALK items === */
 .talk-item {
   margin-bottom: 0;
