@@ -7,8 +7,11 @@
 
 /* === HERO NAME HEADER === */
 .hero-name {
-  text-align: center;
+  text-align: center !important;
   margin-bottom: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero-name h1 {
@@ -16,6 +19,7 @@
   color: #1b4f72;
   margin: 0;
   letter-spacing: 0.01em;
+  text-align: center !important;
 }
 
 .arabic-name {
@@ -31,6 +35,7 @@
   color: #6a7a8a;
   font-size: 1.05em;
   margin: 0.3em 0 0 0;
+  text-align: center !important;
 }
 
 .hero-line {
