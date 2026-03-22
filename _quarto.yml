@@ -12,8 +12,6 @@ website:
     left:
       - text: "About"
         href: index.qmd
-      - text: "Education"
-        href: education.qmd
       - text: "Publications"
         href: publications.qmd
       - text: "Teaching"
