@@ -104,9 +104,10 @@ p {
 }
 
 /* Page titles */
-.quarto-title h1.title {
+.quarto-title h1.title,
+.quarto-title-block h1.title {
   font-size: 2em;
-  text-align: center;
+  text-align: center !important;
   margin-bottom: 0.2em;
   color: #1b4f72;
 }
