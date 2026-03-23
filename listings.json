@@ -1,0 +1,9 @@
+[
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/posts/regenerative-rejection-sampling/index.html",
+      "/posts/wasserstein-gradient-flow/index.html"
+    ]
+  }
+]
