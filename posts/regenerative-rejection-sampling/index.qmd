@@ -81,7 +81,11 @@ By the law of large numbers, $N^{-1}\tilde{Z}_N \to q(\omega) = 1$ and $N^{-1}\s
 $$
 \mathbb{E}[\hat{F}_N] = \pi(f) + O(1/N).
 $$
-The $O(1/N)$ term arises from the ratio structure: using a delta-method expansion, the leading bias term is proportional to $\mathrm{Cov}_q(\omega f, \omega) / q(\omega)^2 \cdot 1/N$.
+The $O(1/N)$ term arises from the ratio structure. More precisely, under the conditions $q(|f - \pi(f)| \omega) < \infty$, $q(|f - \pi(f)| \cdot \omega^3) < \infty$, and $q(\omega^{-\eta}) < \infty$ for some $\eta > 0$, Theorem 2.1 of [@djkw] gives the exact leading coefficient:
+$$
+\lim_{N \to \infty} N \times \mathbb{E}_{\bar{q}}[\hat{F}(\mathbf{x}) - \pi(f)] = -\int (f(x) - \pi(f)) \, \omega^2(x) \, q(dx).
+$$
+So the bias is $-q((f - \pi(f))\omega^2)/N + o(1/N)$: it is of order $1/N$, with a coefficient that depends on the covariance between $f$ and $\omega$ under the size-biased distribution.
 
 [*PIMH and unbiased estimation.*]{style="color: #1a5276;"} One key contribution of [@djkw] is to show how the SNIS bias can be removed entirely via the particle independent Metropolis--Hastings (PIMH) algorithm [@andrieu2010]. The idea is to view SNIS through the lens of IMH on an extended space. Given $N$ proposals $\mathbf{x} = (x_1, \ldots, x_N) \overset{\text{iid}}{\sim} q$, define the extended target $\bar{\pi}(\mathbf{x}) = \hat{Z}(\mathbf{x}) \prod_{n=1}^N q(x_n)$ and the extended proposal $\bar{q}(\mathbf{x}) = \prod_{n=1}^N q(x_n)$, where $\hat{Z}(\mathbf{x}) = N^{-1}\sum_{n=1}^N \omega(x_n)$. Since $\mathbb{E}_{\bar{q}}[\hat{Z}(\mathbf{x})] = q(\omega) = 1$, the distribution $\bar{\pi}$ is properly normalised, and the weight on the extended space is simply $\bar{\omega}(\mathbf{x}) = \bar{\pi}(\mathbf{x})/\bar{q}(\mathbf{x}) = \hat{Z}(\mathbf{x})$. Running IMH with proposal $\bar{q}$ and target $\bar{\pi}$ gives the PIMH algorithm, whose acceptance probability is $\alpha(\mathbf{x}, \mathbf{x}^\star) = \min(1, \hat{Z}(\mathbf{x}^\star)/\hat{Z}(\mathbf{x}))$.
 
