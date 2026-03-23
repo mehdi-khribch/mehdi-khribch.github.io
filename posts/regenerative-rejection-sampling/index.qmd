@@ -32,18 +32,18 @@ $$
 $$
 We write $\omega_n := \omega(x_n)$ whenever $x_n$ is a draw from $q$. Following [@djkw], we use the shorthand $q(h) := \mathbb{E}_q[h(X)] = \int h(x) \, q(x) \, dx$ for the expectation of any measurable $h$ under the proposal. In particular $q(\omega) = Z$, and the target integral satisfies $\pi(f) = q(\omega f) / q(\omega)$.
 
-**Standing normalisation.** We assume throughout $q(\omega) = 1$, i.e. $Z = 1$ and both $\pi$ and $q$ are probability densities. This is without loss of generality; in the unnormalised case all results hold with $\mu := q(\omega)$ replacing $1$. Under this convention:
+[*Standing normalisation.*]{style="color: #1a5276;"} We assume throughout $q(\omega) = 1$, i.e. $Z = 1$ and both $\pi$ and $q$ are probability densities. This is without loss of generality; in the unnormalised case all results hold with $\mu := q(\omega)$ replacing $1$. Under this convention:
 $$
 \pi(f) = q(\omega f), \qquad q(\omega) = 1.
 $$
 
-**The weight distribution.** The pushforward of $q$ under $x \mapsto \omega(x)$ is a probability distribution $F_\omega$ on $[0, \infty)$:
+[*The weight distribution.*]{style="color: #1a5276;"} The pushforward of $q$ under $x \mapsto \omega(x)$ is a probability distribution $F_\omega$ on $[0, \infty)$:
 $$
 F_\omega(y) := q(\omega(X) \leq y) = \int_\mathcal{X} \mathbb{1}[\omega(x) \leq y] \, q(x) \, dx, \qquad y \geq 0.
 $$
 Under our normalisation, $F_\omega$ has mean $\mu = q(\omega) = 1$. It turns out to be the interarrival distribution of the renewal process underlying RRS, and its tail properties (finite moments, spread-outness, exponential moments) govern everything: convergence rate, bias order, and the validity of debiasing.
 
-**Moment notation.** We write $\mu_k := q(\omega^k) = \mathbb{E}_q[\omega(X)^k]$ for the $k$-th moment of $F_\omega$ under $q$, so $\mu_1 = 1$, $\mu_2 = q(\omega^2)$, $\mu_3 = q(\omega^3)$, etc.
+[*Moment notation.*]{style="color: #1a5276;"} We write $\mu_k := q(\omega^k) = \mathbb{E}_q[\omega(X)^k]$ for the $k$-th moment of $F_\omega$ under $q$, so $\mu_1 = 1$, $\mu_2 = q(\omega^2)$, $\mu_3 = q(\omega^3)$, etc.
 
 ## Classical rejection sampling and why it fails
 
@@ -63,11 +63,11 @@ To make this concrete, here is a simple example: sampling from an $\mathrm{Exp}(
 
 This works because $M = 2$ is known and finite. But the requirement $M = \|\omega\|_\infty < \infty$ (known) is genuinely restrictive. There are three failure modes:
 
-1. **Non-existence.** When $\pi$ has heavier tails than $q$, for instance $\pi$ Student-$t$ and $q$ Gaussian, then $\|\omega\|_\infty = \infty$ and no finite $M$ exists.
-2. **Analytical intractability.** Even when finite, computing $\|\omega\|_\infty$ requires solving a global maximisation of $\pi(x)/q(x)$, which is often impossible in high dimensions.
-3. **Inefficiency.** Even when $M$ is known and finite, if $M \gg 1$ the acceptance rate $1/M$ is tiny and most proposals are wasted.
+1. [*Non-existence.*]{style="color: #1a5276;"} When $\pi$ has heavier tails than $q$, for instance $\pi$ Student-$t$ and $q$ Gaussian, then $\|\omega\|_\infty = \infty$ and no finite $M$ exists.
+2. [*Analytical intractability.*]{style="color: #1a5276;"} Even when finite, computing $\|\omega\|_\infty$ requires solving a global maximisation of $\pi(x)/q(x)$, which is often impossible in high dimensions.
+3. [*Inefficiency.*]{style="color: #1a5276;"} Even when $M$ is known and finite, if $M \gg 1$ the acceptance rate $1/M$ is tiny and most proposals are wasted.
 
-**The IMH alternative and its limitation.** The Independent Metropolis--Hastings algorithm [@tierney1994; @mengersen1996], studied in depth in [@djkw], avoids the need for $M$ by using the acceptance probability $\alpha(x, x') = \min(1, \omega(x')/\omega(x))$. This always defines a valid Markov chain with stationary distribution $\pi$. However, as established rigorously in @mengersen1996 and recalled in [@djkw]: IMH converges geometrically in total variation if and only if $\|\omega\|_\infty \leq M < \infty$. When $\|\omega\|_\infty = \infty$, IMH can still converge but only sub-geometrically. This is precisely the regime where RRS offers a genuine improvement.
+[*The IMH alternative and its limitation.*]{style="color: #1a5276;"} The Independent Metropolis--Hastings algorithm [@tierney1994; @mengersen1996], studied in depth in [@djkw], avoids the need for $M$ by using the acceptance probability $\alpha(x, x') = \min(1, \omega(x')/\omega(x))$. This always defines a valid Markov chain with stationary distribution $\pi$. However, as established rigorously in @mengersen1996 and recalled in [@djkw]: IMH converges geometrically in total variation if and only if $\|\omega\|_\infty \leq M < \infty$. When $\|\omega\|_\infty = \infty$, IMH can still converge but only sub-geometrically. This is precisely the regime where RRS offers a genuine improvement.
 
 ## Self-normalised importance sampling and its $O(1/N)$ bias
 
@@ -83,7 +83,7 @@ $$
 $$
 The $O(1/N)$ term arises from the ratio structure: using a delta-method expansion, the leading bias term is proportional to $\mathrm{Cov}_q(\omega f, \omega) / q(\omega)^2 \cdot 1/N$. One key contribution of [@djkw] is to study this bias carefully and show how lagged coupling of IMH chains can debias SNIS exactly, yielding an estimator with $\mathbb{E}[\Delta_T^{\mathrm{PIMH}}] = \pi(f)$ for all $T \geq 0$.
 
-**RRS as a renewal-theoretic SNIS.** RRS can be understood as running SNIS on a random sample size $N(t)$, determined by a threshold $t$ on the cumulative weight $\tilde{Z}_{N(t)}$. As we will show, this renewal stopping rule reduces the bias from $O(1/N)$ to $O(1/N^2)$, exactly one order better than fixed-$N$ SNIS. The improvement is a structural consequence of the inspection paradox of renewal theory.
+[*RRS as a renewal-theoretic SNIS.*]{style="color: #1a5276;"} RRS can be understood as running SNIS on a random sample size $N(t)$, determined by a threshold $t$ on the cumulative weight $\tilde{Z}_{N(t)}$. As we will show, this renewal stopping rule reduces the bias from $O(1/N)$ to $O(1/N^2)$, exactly one order better than fixed-$N$ SNIS. The improvement is a structural consequence of the inspection paradox of renewal theory.
 
 
 ## The RRS algorithm
@@ -98,30 +98,30 @@ N(t) := \inf\{n \geq 1 : \tilde{Z}_n > t\}, \qquad t \geq 0.
 $$
 
 ::: {.callout-note appearance="minimal" icon=false}
-**Algorithm** (Regenerative rejection sampling, Algorithm 2 of @bozzi2026).
+[*Algorithm*]{style="color: #1a5276;"} (Regenerative rejection sampling, Algorithm 2 of @bozzi2026).
 
-**Input:** threshold $t > 0$, proposal $q$, weight function $\omega$.
+[*Input:*]{style="color: #1a5276;"} threshold $t > 0$, proposal $q$, weight function $\omega$.
 
 1. Set $S \leftarrow 0$.
-2. **Repeat:**
+2. [*Repeat:*]{style="color: #1a5276;"}
     a. Draw $x \sim q$.
     b. Compute $w \leftarrow \omega(x)$.
     c. Set $S \leftarrow S + w$.
-3. **Until** $S > t$.
-4. **Return** $Y_t \leftarrow x$.
+3. [*Until*]{style="color: #1a5276;"} $S > t$.
+4. [*Return*]{style="color: #1a5276;"} $Y_t \leftarrow x$.
 :::
 
 For threshold $t > 0$, the RRS output is $Y_t := x_{N(t)}$. The process $\{Y_t\}_{t \geq 0}$ is piecewise-constant and regenerative: for each $n \geq 1$, it holds the constant value $x_n$ on the entire random interval $[\tilde{Z}_{n-1}, \tilde{Z}_n)$. The i.i.d. pairs $(x_n, \omega_n)_{n \geq 1}$ constitute the embedded renewal structure, with $\omega_n$ playing the dual role of IS weight and cycle length.
 
 The algorithm terminates almost surely as long as $q(\omega > 0) > 0$, which is guaranteed by our assumptions.
 
-**Connection with rejection sampling.** Classical rejection sampling draws from $q$ until a single condition $u \leq \omega(x)/M$ is met, a hard threshold on one weight. RRS draws from $q$ until the cumulative weight $\tilde{Z}_n$ exceeds a deterministic threshold $t$, a soft boundary on the running sum. Rejection sampling returns an exact sample by construction; RRS returns an approximate sample that becomes more accurate as $t \to \infty$. The decisive difference is that RRS requires no knowledge of $M = \|\omega\|_\infty$, not even its finiteness.
+[*Connection with rejection sampling.*]{style="color: #1a5276;"} Classical rejection sampling draws from $q$ until a single condition $u \leq \omega(x)/M$ is met, a hard threshold on one weight. RRS draws from $q$ until the cumulative weight $\tilde{Z}_n$ exceeds a deterministic threshold $t$, a soft boundary on the running sum. Rejection sampling returns an exact sample by construction; RRS returns an approximate sample that becomes more accurate as $t \to \infty$. The decisive difference is that RRS requires no knowledge of $M = \|\omega\|_\infty$, not even its finiteness.
 
 ## Stationary distribution
 
 Before analysing the bias of the estimator, let us establish that the RRS process converges to the right target.
 
-**Conditions for convergence:**
+[*Conditions for convergence:*]{style="color: #1a5276;"}
 
 - (B1) $q(\omega) = 1$.
 - (B2) $F_\omega$ has finite mean $\mu = 1$ and is nonlattice.
@@ -130,7 +130,7 @@ Before analysing the bias of the estimator, let us establish that the RRS proces
 The spread-out condition (B3) is mild. In the RRS context, $F_\omega$ is the law of $\omega(X)$ under $q$. Whenever $\pi$ and $q$ are smooth densities on $\mathbb{R}^d$ and $\omega$ is continuous and positive on its support, $F_\omega$ is absolutely continuous, which trivially implies spread-outness with $m = 1$.
 
 ::: {.theorem}
-**Theorem** (Theorem 5.3 of @bozzi2026). *Under (B1)--(B3), $\|\mathcal{L}(Y_t) - \pi\|_{\mathrm{TV}} \to 0$ as $t \to \infty$, and the stationary distribution is exactly $\pi$.*
+[*Theorem*]{style="color: #1a5276;"} (Theorem 5.3 of @bozzi2026). *Under (B1)--(B3), $\|\mathcal{L}(Y_t) - \pi\|_{\mathrm{TV}} \to 0$ as $t \to \infty$, and the stationary distribution is exactly $\pi$.*
 :::
 
 *Proof.* The process $\{Y_t\}_{t \geq 0}$ is regenerative (Definition 3.4 of @bozzi2026) with embedded renewal process $\{\tilde{Z}_n\}$ and i.i.d. cycle lengths $\omega_n \sim F_\omega$. All conditions of the regenerative process limit theorem (Theorem 3.2 of @bozzi2026, a consequence of the Key Renewal Theorem) are satisfied: $F_\omega$ is spread-out with finite mean $\mu = 1$, and the paths are right-continuous.
@@ -153,7 +153,7 @@ $$
 Convergence to $\pi$ is established. What about the rate? The answer requires a stronger condition on the tails of $F_\omega$.
 
 ::: {.theorem}
-**Theorem** (Corollary 4.13 of @bozzi2026). *Under (B1)--(B3), if additionally $q(e^{\eta \omega}) := \mathbb{E}_q[e^{\eta \omega(X)}] < \infty$ for some $\eta > 0$, then there exists $\varepsilon > 0$ such that $\|\mathcal{L}(Y_t) - \pi\|_{\mathrm{TV}} = O(e^{-\varepsilon t})$.*
+[*Theorem*]{style="color: #1a5276;"} (Corollary 4.13 of @bozzi2026). *Under (B1)--(B3), if additionally $q(e^{\eta \omega}) := \mathbb{E}_q[e^{\eta \omega(X)}] < \infty$ for some $\eta > 0$, then there exists $\varepsilon > 0$ such that $\|\mathcal{L}(Y_t) - \pi\|_{\mathrm{TV}} = O(e^{-\varepsilon t})$.*
 :::
 
 The proof goes through three layers, following Theorem 4.10 and Lemma 4.11 of @bozzi2026.
@@ -167,7 +167,7 @@ $$
 \|\mathcal{L}(Y_t) - \pi\|_{\mathrm{TV}} \leq \mathbb{P}(T_\tau > t) \leq \mathbb{P}(\tau > t/A) \leq e^{-\varepsilon' t/A} \, \mathbb{E}[e^{\varepsilon' \tau}] = O(e^{-\varepsilon t}). \qquad \square
 $$
 
-**Why this beats IMH.** In [@djkw], the convergence rate of IMH is shown to be geometric if and only if $\|\omega\|_\infty \leq M < \infty$. The condition $q(e^{\eta \omega}) < \infty$ for RRS is strictly weaker: if $\|\omega\|_\infty \leq M$, then $q(e^{\eta \omega}) \leq e^{\eta M} < \infty$ for all $\eta > 0$, so the condition holds trivially. Conversely, it can hold with $\|\omega\|_\infty = \infty$. For instance, if $\omega(X) \sim \mathrm{Exp}(1)$ under $q$, then $q(e^{\eta \omega}) = 1/(1-\eta) < \infty$ for all $\eta < 1$, yet $\|\omega\|_\infty = \infty$. In this regime, IMH does not converge geometrically but RRS does.
+[*Why this beats IMH.*]{style="color: #1a5276;"} In [@djkw], the convergence rate of IMH is shown to be geometric if and only if $\|\omega\|_\infty \leq M < \infty$. The condition $q(e^{\eta \omega}) < \infty$ for RRS is strictly weaker: if $\|\omega\|_\infty \leq M$, then $q(e^{\eta \omega}) \leq e^{\eta M} < \infty$ for all $\eta > 0$, so the condition holds trivially. Conversely, it can hold with $\|\omega\|_\infty = \infty$. For instance, if $\omega(X) \sim \mathrm{Exp}(1)$ under $q$, then $q(e^{\eta \omega}) = 1/(1-\eta) < \infty$ for all $\eta < 1$, yet $\|\omega\|_\infty = \infty$. In this regime, IMH does not converge geometrically but RRS does.
 
 ## The estimator and its $O(1/N^2)$ bias
 
@@ -195,18 +195,18 @@ Assumption (A3) is the key moment condition. The requirement $\mu_3 < \infty$, t
 ### Main result
 
 ::: {.theorem}
-**Theorem** (Theorem 6.1 of @bozzi2026; @meketon1982). *Under (A1)--(A4):*
+[*Theorem*]{style="color: #1a5276;"} (Theorem 6.1 of @bozzi2026; @meketon1982). *Under (A1)--(A4):*
 $$
 \mathbb{E}[\hat{F}_t] = \pi(f) + \frac{b_2}{t^2} + \frac{b_3}{t^3} + \cdots
 $$
-*where $b_2 := \lim_{t \to \infty} \mathbb{E}[R_t S_{N(t)}] \in \mathbb{R}$. Since $N(t) \approx t$, this gives $O(1/N^2)$ bias. The coefficient of $1/t$ is **exactly zero** for all $t > 0$.*
+*where $b_2 := \lim_{t \to \infty} \mathbb{E}[R_t S_{N(t)}] \in \mathbb{R}$. Since $N(t) \approx t$, this gives $O(1/N^2)$ bias. The coefficient of $1/t$ is [*exactly zero*]{style="color: #c0392b;"} for all $t > 0$.*
 :::
 
 ### Proof
 
 I'll go through the proof in detail, since the interplay between Wald's identities, Lorden's inequality, and the Key Renewal Theorem is really what makes the whole thing tick.
 
-**The fundamental decomposition.** Define the centred cycle reward for each $n \geq 1$:
+[*The fundamental decomposition.*]{style="color: #1a5276;"} Define the centred cycle reward for each $n \geq 1$:
 $$
 Z_n := \omega_n(f(x_n) - \pi(f)) = \omega_n f(x_n) - \pi(f) \, \omega_n.
 $$
@@ -221,7 +221,7 @@ $$
 \hat{F}_t - \pi(f) = \frac{\bar{Z}_t}{1 + R_t/t}. \tag{$\ast$}
 $$
 
-**Wald kills the $O(1/N)$ term.** Take expectations in ($\ast$) and write:
+[*Wald kills the $O(1/N)$ term.*]{style="color: #1a5276;"} Take expectations in ($\ast$) and write:
 $$
 \mathbb{E}[\hat{F}_t - \pi(f)] = \mathbb{E}[\bar{Z}_t] + \mathbb{E}\!\left[\bar{Z}_t \left(\frac{1}{1 + R_t/t} - 1\right)\right].
 $$
@@ -238,7 +238,7 @@ $$
 $$
 This is the key structural insight. The $O(1/N)$ bias would require $\mathbb{E}[\bar{Z}_t] \neq 0$, but Wald forces it to zero, not asymptotically, but for every $t > 0$. The bias is therefore at most $O(1/t)$ times $\mathbb{E}[R_t |\bar{Z}_t|]$. We now show this product is $O(1/t)$, giving an overall $O(1/t^2) = O(1/N^2)$ bias.
 
-**Controlling $\mathbb{E}[R_t^2]$ via Lorden's inequality.** Lorden's inequality [@lorden1970] gives uniform bounds on the moments of the overshoot $R_t$. For a renewal process with interarrival distribution $F_\omega$, mean $\mu$, and finite $(k+1)$-th moment $\mu_{k+1} < \infty$:
+[*Controlling $\mathbb{E}[R_t^2]$ via Lorden's inequality.*]{style="color: #1a5276;"} Lorden's inequality [@lorden1970] gives uniform bounds on the moments of the overshoot $R_t$. For a renewal process with interarrival distribution $F_\omega$, mean $\mu$, and finite $(k+1)$-th moment $\mu_{k+1} < \infty$:
 $$
 \sup_{t \geq 0} \, \mathbb{E}[R_t^k] \leq \frac{\mu_{k+1}}{(k+1)\mu}.
 $$
@@ -260,7 +260,7 @@ $$
 
 This is why we need $\mu_3$ and not just $\mu_2$. Lorden's inequality for $\mathbb{E}[R_t^2]$ requires the $(2+1) = 3$rd moment of $F_\omega$. Under only $\mu_2 < \infty$, Lorden gives $\sup_t \mathbb{E}[R_t] \leq \mu_2/2$, but says nothing about $\mathbb{E}[R_t^2]$. This is why (A3) imposes $\mu_3 < \infty$.
 
-**Controlling $\mathbb{E}[\bar{Z}_t^2]$ via Wald's second moment identity.** For i.i.d. $(Z_n)$ with $q(Z_1) = 0$, $q(Z_1^2) < \infty$, and stopping time $\nu$ with $\mathbb{E}[\nu] < \infty$, Wald's second moment identity gives $\mathbb{E}[S_\nu^2] = \mathbb{E}[\nu] \cdot q(Z_1^2)$.
+[*Controlling $\mathbb{E}[\bar{Z}_t^2]$ via Wald's second moment identity.*]{style="color: #1a5276;"} For i.i.d. $(Z_n)$ with $q(Z_1) = 0$, $q(Z_1^2) < \infty$, and stopping time $\nu$ with $\mathbb{E}[\nu] < \infty$, Wald's second moment identity gives $\mathbb{E}[S_\nu^2] = \mathbb{E}[\nu] \cdot q(Z_1^2)$.
 
 The proof is a martingale argument: the process $M_n := S_n^2 - n \, q(Z_1^2)$ is a martingale since $q(Z_1) = 0$, and optional stopping at $\nu = N(t)$ gives $\mathbb{E}[M_{N(t)}] = M_0 = 0$, i.e. $\mathbb{E}[S_{N(t)}^2] = \mathbb{E}[N(t)] \, q(Z_1^2)$.
 
@@ -273,7 +273,7 @@ $$
 \mathbb{E}[\bar{Z}_t^2] \leq \frac{4K^2 \mu_2(t + \mu_2)}{t^2}.
 $$
 
-**The non-asymptotic bound.** Since $1/(1 + R_t/t) \leq 1$, from ($\ast\ast$):
+[*The non-asymptotic bound.*]{style="color: #1a5276;"} Since $1/(1 + R_t/t) \leq 1$, from ($\ast\ast$):
 $$
 |\mathbb{E}[\hat{F}_t - \pi(f)]| \leq \frac{1}{t} \, \mathbb{E}[R_t |\bar{Z}_t|] \leq \frac{1}{t} \sqrt{\mathbb{E}[R_t^2]} \sqrt{\mathbb{E}[\bar{Z}_t^2]},
 $$
@@ -283,7 +283,7 @@ $$
 $$
 This holds for all $t > 0$, no asymptotic approximation needed. It decays as $O(t^{-3/2})$, and every component ($\mu_2$, $\mu_3$, $K$) is estimable from the simulation output. The bound is conservative: the true rate is $O(1/t^2)$, not $O(1/t^{3/2})$. The gap comes from the Cauchy--Schwarz step and the crude bound $1/(1 + R_t/t) \leq 1$.
 
-**Sharpening to $O(1/N^2)$ via the Key Renewal Theorem.** To get the sharp result, we use a finite Taylor expansion. For $u = R_t/t \geq 0$ and $p \geq 1$:
+[*Sharpening to $O(1/N^2)$ via the Key Renewal Theorem.*]{style="color: #1a5276;"} To get the sharp result, we use a finite Taylor expansion. For $u = R_t/t \geq 0$ and $p \geq 1$:
 $$
 \frac{1}{1+u} = \sum_{k=0}^p (-1)^k u^k + (-1)^{p+1} \frac{u^{p+1}}{1+u}.
 $$
@@ -310,9 +310,9 @@ $$
 \mathbb{E}[\hat{F}_t] = \pi(f) + \frac{b_2}{t^2} + \frac{b_3}{t^3} + \cdots + \frac{b_p}{t^p} + O(1/t^{p+1}). \qquad \square
 $$
 
-**Why $O(1/N)$ is structurally absent.** The $k = 0$ term in the Taylor expansion contributes $\mathbb{E}[\bar{Z}_t] = t^{-1} \mathbb{E}[S_{N(t)}]$, which is zero by Wald's first identity for every $t > 0$. There is no term of order $O(1/N)$ because the stopped sum $S_{N(t)}$ is always centred: $\mathbb{E}[S_{N(t)}] = 0$ is an exact equality for all $t$, a direct consequence of the zero-mean condition $q(Z_1) = 0$ and the stopping time property of $N(t)$. This is what enhances the $O(1/N)$ bias of SNIS to $O(1/N^2)$.
+[*Why $O(1/N)$ is structurally absent.*]{style="color: #1a5276;"} The $k = 0$ term in the Taylor expansion contributes $\mathbb{E}[\bar{Z}_t] = t^{-1} \mathbb{E}[S_{N(t)}]$, which is zero by Wald's first identity for every $t > 0$. There is no term of order $O(1/N)$ because the stopped sum $S_{N(t)}$ is always centred: $\mathbb{E}[S_{N(t)}] = 0$ is an exact equality for all $t$, a direct consequence of the zero-mean condition $q(Z_1) = 0$ and the stopping time property of $N(t)$. This is what enhances the $O(1/N)$ bias of SNIS to $O(1/N^2)$.
 
-**The inspection paradox.** The bias improvement can also be understood through the inspection paradox of renewal theory (Remark 2.11 of @bozzi2026). At time $t$, the "current cycle", the one being sampled when the threshold is hit, is stochastically larger than a typical cycle. The overshoot $R_t = \tilde{Z}_{N(t)} - t$ is the extra weight above $t$ in the final cycle: by length-biased sampling, this cycle is preferentially the long ones. Including this over-represented final cycle in the denominator $\tilde{Z}_{N(t)} = t + R_t$ inflates the denominator above $t$, creating a negative correction to the ratio that precisely cancels the $O(1/N)$ term. This is the renewal-theoretic mechanism that gives RRS its bias advantage over fixed-$N$ SNIS.
+[*The inspection paradox.*]{style="color: #1a5276;"} The bias improvement can also be understood through the inspection paradox of renewal theory (Remark 2.11 of @bozzi2026). At time $t$, the "current cycle", the one being sampled when the threshold is hit, is stochastically larger than a typical cycle. The overshoot $R_t = \tilde{Z}_{N(t)} - t$ is the extra weight above $t$ in the final cycle: by length-biased sampling, this cycle is preferentially the long ones. Including this over-represented final cycle in the denominator $\tilde{Z}_{N(t)} = t + R_t$ inflates the denominator above $t$, creating a negative correction to the ratio that precisely cancels the $O(1/N)$ term. This is the renewal-theoretic mechanism that gives RRS its bias advantage over fixed-$N$ SNIS.
 
 ![*Desolation and Regeneration*, Ron Waddams, 1987.](../../images/desolation-and-regeneration.jpg){width=70% fig-align="center"}
 
