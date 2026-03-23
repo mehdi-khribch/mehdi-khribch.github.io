@@ -39,7 +39,7 @@ $$
 
 **The weight distribution.** The pushforward of $q$ under $x \mapsto \omega(x)$ is a probability distribution $F_\omega$ on $[0, \infty)$:
 $$
-F_\omega(y) := q(\omega(X) \leq y) = \int_\mathcal{X} \mathds{1}[\omega(x) \leq y] \, q(x) \, dx, \qquad y \geq 0.
+F_\omega(y) := q(\omega(X) \leq y) = \int_\mathcal{X} \mathbb{1}[\omega(x) \leq y] \, q(x) \, dx, \qquad y \geq 0.
 $$
 Under our normalisation, $F_\omega$ has mean $\mu = q(\omega) = 1$. It turns out to be the interarrival distribution of the renewal process underlying RRS, and its tail properties (finite moments, spread-outness, exponential moments) govern everything: convergence rate, bias order, and the validity of debiasing.
 
@@ -53,7 +53,7 @@ Fix a known constant $M \geq \|\omega\|_\infty := \sup_{x \in \mathcal{X}} \omeg
 
 The returned sample has distribution exactly $\pi$. The proof is a direct calculation: for any $A \in \mathcal{B}(\mathcal{X})$,
 $$
-P(x \in A \mid \text{accept}) = \frac{\int_A \frac{\omega(x)}{M} q(x) \, dx}{q(\omega)/M} = \frac{q(\omega \mathds{1}_A)}{q(\omega)} = \pi(A),
+P(x \in A \mid \text{accept}) = \frac{\int_A \frac{\omega(x)}{M} q(x) \, dx}{q(\omega)/M} = \frac{q(\omega \mathbb{1}_A)}{q(\omega)} = \pi(A),
 $$
 using $q(\omega) = 1$ in the last step. The acceptance probability is $P(\text{accept}) = q(\omega)/M = 1/M$, so the expected number of trials is $M$. For the algorithm to be efficient, $M$ must be close to $1$.
 
@@ -297,7 +297,7 @@ The function $g(t) := \mathbb{E}[R_t S_{N(t)}]$ satisfies a renewal equation. Co
 $$
 g(t) = z_g(t) + \int_0^t g(t-u) \, F_\omega(du),
 $$
-with driving function $z_g(t) := \mathbb{E}[R_t S_{N(t)}; \omega_1 > t]$. Under (A1)--(A4), $z_g$ is bounded: $|z_g(t)| \leq 2K \, \mathbb{E}[\omega_1^2 \mathds{1}(\omega_1 > t)] \to 0$ as $t \to \infty$ (since $\mu_2 < \infty$), and $z_g$ is directly Riemann integrable on $[0,\infty)$ under $\mu_3 < \infty$ (by Proposition 2.13 of @bozzi2026). By the Key Renewal Theorem (Theorem 2.17 of @bozzi2026, the Feller-Blackwell theorem in the spread-out case):
+with driving function $z_g(t) := \mathbb{E}[R_t S_{N(t)}; \omega_1 > t]$. Under (A1)--(A4), $z_g$ is bounded: $|z_g(t)| \leq 2K \, \mathbb{E}[\omega_1^2 \mathbb{1}(\omega_1 > t)] \to 0$ as $t \to \infty$ (since $\mu_2 < \infty$), and $z_g$ is directly Riemann integrable on $[0,\infty)$ under $\mu_3 < \infty$ (by Proposition 2.13 of @bozzi2026). By the Key Renewal Theorem (Theorem 2.17 of @bozzi2026, the Feller-Blackwell theorem in the spread-out case):
 $$
 g(t) \xrightarrow{t \to \infty} \frac{1}{\mu} \int_0^\infty z_g(s) \, ds = \int_0^\infty z_g(s) \, ds =: b_2 \in \mathbb{R}.
 $$
