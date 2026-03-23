@@ -1,0 +1,180 @@
+---
+title: "Regenerative Rejection Sampling: Algorithm, $O(1/t^2)$ Bias, and Exponential Convergence"
+description: "Notes on regenerative rejection sampling (RRS), a method that replaces fixed-sample stopping with renewal-threshold stopping to achieve $O(1/t^2)$ bias and exponential convergence in total variation, based on the work of Bozzi (2026)."
+date: "2026-03-23"
+image: ../../images/desolation-and-regeneration.jpg
+categories: [Monte Carlo, importance sampling, renewal theory, rejection sampling]
+toc: true
+toc-depth: 3
+bibliography: references.bib
+comments:
+  giscus:
+    repo: mehdi-khribch/mehdi-khribch.github.io
+    category: "Comments"
+    mapping: pathname
+    reactions-enabled: true
+    theme: light
+---
+
+*These are my notes on regenerative rejection sampling (RRS), a beautiful idea that connects rejection sampling, renewal theory, and bias reduction. The main reference is the thesis of @bozzi2026; see also @djkw for related work on importance sampling and the independent Metropolis--Hastings algorithm. The goal here is to lay out the algorithm, its stationarity, and the bias analysis in a self-contained way.*
+
+## Setting and notation
+
+Let $(\mathcal{X}, \mathcal{B}(\mathcal{X}))$ be a measurable space. Fix a **target** $\pi$, known only up to the normalising constant $Z = \int \pi(x) \, dx$, and a **proposal** $q$ with $\mathrm{supp}(\pi) \subseteq \mathrm{supp}(q)$. The **importance weight** is
+$$
+\omega(x) := \frac{\pi(x)}{q(x)}, \qquad \omega_n := \omega(x_n).
+$$
+Write $q(h) := \mathbb{E}_q[h(X)] = \int h(x) \, q(x) \, dx$. We assume throughout that $q(\omega) = 1$ (i.e. $Z = 1$), so that $\pi(f) = q(\omega f)$.
+
+The **weight distribution** $F_\omega$ is the law of $\omega(X)$ under $q$:
+$$
+F_\omega(y) := q(\omega(X) \leq y), \qquad y \geq 0,
+$$
+with mean $\mu = q(\omega) = 1$ and moments $\mu_k := q(\omega^k)$.
+
+## Rejection sampling and its limitations
+
+The classical rejection sampler [von Neumann, 1951] draws $x \sim q$, $u \sim \mathrm{Unif}(0,1)$, and accepts $x$ when $u \leq \omega(x) / M$ where $M \geq \|\omega\|_\infty$. Correctness follows from
+$$
+P(x \in A \mid \text{accept}) = \frac{q(\omega \mathbf{1}_A)}{q(\omega)} = \pi(A).
+$$
+The acceptance probability is $P(\text{accept}) = q(\omega)/M = 1/M$. The method fails when $\|\omega\|_\infty = \infty$.
+
+The independent Metropolis--Hastings (IMH) sampler [@mengersen1996; @tierney1994; @djkw] uses the acceptance ratio $\alpha(x, x') = \min(1, \omega(x')/\omega(x))$ but converges geometrically only when $\|\omega\|_\infty \leq M < \infty$ [@mengersen1996]. RRS achieves geometric convergence under the weaker condition $q(e^{\eta \omega}) < \infty$.
+
+## SNIS and its $O(1/N)$ bias
+
+For $x_1, \ldots, x_N \overset{\text{iid}}{\sim} q$ with $\omega_n = \omega(x_n)$ and $\tilde{Z}_N = \sum_{k=1}^N \omega_k$, the self-normalised importance sampling (SNIS) estimator is
+$$
+\hat{F}_N := \frac{\sum_{k=1}^N \omega_k f(x_k)}{\tilde{Z}_N}, \qquad \mathbb{E}[\hat{F}_N] = \pi(f) + O(1/N).
+$$
+
+::: {.callout-note appearance="minimal" icon=false}
+**Algorithm 1** (Self-normalised importance sampling).
+
+1. Sample $N$ particles independently $x_1, \ldots, x_N$ from $q$.
+2. Compute the importance weights $\omega(x_n) = \pi(x_n) / q(x_n)$ for $n \in [N] = \{1, \ldots, N\}$.
+3. Compute
+$$
+\hat{Z}(x_1, \ldots, x_N) = N^{-1} \sum_{n=1}^{N} \omega(x_n).
+$$
+4. For any test function $f$, compute the IS estimator
+$$
+\hat{F}(x_1, \ldots, x_N) = \frac{\sum_{n=1}^{N} \omega(x_n) f(x_n)}{\sum_{n=1}^{N} \omega(x_n)}.
+$$
+5. Return $\hat{F}(x_1, \ldots, x_N)$ and $\hat{Z}(x_1, \ldots, x_N)$.
+:::
+
+RRS replaces fixed-$N$ stopping with renewal-threshold stopping, reducing the bias to $O(1/t^2) \approx O(1/N^2)$.
+
+## The RRS algorithm
+
+::: {.callout-note appearance="minimal" icon=false}
+**Algorithm 2** (Regenerative rejection sampling).
+
+**Input:** threshold $t > 0$, proposal $q$, unnormalised target $\pi$.
+
+1. Set $n \leftarrow 0$ and $\tilde{Z}_0 \leftarrow 0$.
+2. **While** $\tilde{Z}_n \leq t$:
+    a. Set $n \leftarrow n + 1$.
+    b. Sample $x_n \sim q$.
+    c. Compute $\omega_n = \pi(x_n) / q(x_n)$.
+    d. Update $\tilde{Z}_n \leftarrow \tilde{Z}_{n-1} + \omega_n$.
+3. Set $N(t) \leftarrow n$.
+4. **Output:** the sample path $Y_t := x_{N(t)}$ and the estimator
+$$
+\hat{F}_t := \frac{\sum_{k=1}^{N(t)} \omega_k f(x_k)}{\tilde{Z}_{N(t)}}.
+$$
+:::
+
+The key quantities are
+$$
+\tilde{Z}_n := \sum_{k=1}^n \omega_k, \qquad N(t) := \inf\{n \geq 1 : \tilde{Z}_n > t\}, \qquad Y_t := x_{N(t)}.
+$$
+The process $\{Y_t\}_{t \geq 0}$ is piecewise-constant and regenerative: it holds $x_n$ on the interval $[\tilde{Z}_{n-1}, \tilde{Z}_n)$, with cycle lengths $\omega_n \sim F_\omega$ i.i.d.
+
+## Stationary distribution
+
+::: {.theorem}
+**Theorem** (Theorem 5.3 of @bozzi2026). *If $F_\omega$ is spread-out with mean 1, then $\|\mathcal{L}(Y_t) - \pi\|_{\mathrm{TV}} \to 0$ and the stationary distribution is $\pi$.*
+:::
+
+*Proof.* By Theorem 3.2 of @bozzi2026, using $Y_s = x_1$ on $[0, \omega_1)$:
+$$
+\mathbb{E}_\pi[f(Y)] \leftarrow \mathbb{E}_e[f(Y_t)] \to \frac{1}{\mu} \mathbb{E}_0\!\left[\int_0^{\omega_1} f(Y_s) \, ds\right] = \frac{q(\omega f)}{1} = \pi(f). \qquad \square
+$$
+
+## Exponential convergence
+
+::: {.theorem}
+**Theorem** (Corollary 4.13 of @bozzi2026). *If $F_\omega$ is spread-out and $q(e^{\eta \omega}) < \infty$ for some $\eta > 0$, then there exists $\varepsilon > 0$ such that $\|\mathcal{L}(Y_t) - \pi\|_{\mathrm{TV}} = O(e^{-\varepsilon t})$.*
+:::
+
+*Proof sketch.* Lemma 4.9 of @bozzi2026 gives $F_\omega \geq \delta \, \mathrm{Unif}(0,b)$. The coupling of Theorem 4.10 of @bozzi2026 constructs two renewal processes sharing cycles at each attempt with probability $\delta$; the meeting index is $\tau \sim \mathrm{Geom}(\delta)$. The condition $q(e^{\eta \omega}) < \infty$ implies $\mathbb{E}[e^{\varepsilon \tau}] < \infty$ (Lemma 4.11 of @bozzi2026), giving
+$$
+\|\mathcal{L}(Y_t) - \pi\|_{\mathrm{TV}} \leq P(\tau > t/A) = O(e^{-\varepsilon t}). \qquad \square
+$$
+
+## The estimator and its $O(1/t^2)$ bias
+
+### The estimator
+
+After running RRS to threshold $t$:
+$$
+\hat{F}_t := \frac{\sum_{n=1}^{N(t)} \omega_n f(x_n)}{\tilde{Z}_{N(t)}}.
+$$ {#eq-Fhat}
+
+### Assumptions
+
+::: {.definition}
+**Assumption.** (A1) $q(\omega) = 1$; (A2) $F_\omega$ absolutely continuous; (A3) $\mu_2, \mu_3 < \infty$; (A4) $\|f\|_\infty \leq K$.
+:::
+
+### Main result
+
+::: {.theorem}
+**Theorem** (Theorem 6.1 of @bozzi2026; @meketon1982). *Under the assumptions above:*
+$$
+\mathbb{E}[\hat{F}_t] = \pi(f) + \frac{b_2}{t^2} + \frac{b_3}{t^3} + \cdots, \qquad b_2 := \lim_{t \to \infty} \mathbb{E}[R_t S_{N(t)}] \in \mathbb{R}.
+$$
+*The coefficient of $1/t$ is **exactly zero** for all $t > 0$.*
+:::
+
+### Proof
+
+**Decomposition.** Set $Z_n := \omega_n(f(x_n) - \pi(f))$, so $q(Z_1) = 0$, and $R_t := \tilde{Z}_{N(t)} - t$. With $S_{N(t)} := \sum_{n=1}^{N(t)} Z_n$:
+$$
+\hat{F}_t - \pi(f) = \frac{S_{N(t)}/t}{1 + R_t/t} =: \frac{\bar{Z}_t}{1 + R_t/t}.
+$$
+
+**Step 1: Wald kills $O(1/t)$.** We have
+$$
+\mathbb{E}[\hat{F}_t - \pi(f)] = \underbrace{\mathbb{E}[\bar{Z}_t]}_{= 0 \; (\text{Wald})} - \frac{1}{t} \mathbb{E}\!\left[\frac{R_t \bar{Z}_t}{1 + R_t/t}\right].
+$$
+Indeed $\mathbb{E}[\bar{Z}_t] = 0$ by Wald's first identity: $\mathbb{E}[S_{N(t)}] = \mathbb{E}[N(t)] \cdot q(Z_1) = 0$, valid since $\mathbb{E}[N(t)] \leq t + \mu_2 < \infty$ under (A3).
+
+**Step 2: Lorden bounds $\mathbb{E}[R_t^2]$.** Lorden's inequality [@lorden1970] with $\mu = 1$, $k = 2$ under (A3):
+$$
+\sup_{t \geq 0} \mathbb{E}[R_t^2] \leq \frac{\mu_3}{3} < \infty.
+$$
+
+**Step 3: Wald's second identity bounds $\mathbb{E}[\bar{Z}_t^2]$.** Optional stopping of the martingale $S_n^2 - n \, q(Z_1^2)$ at $N(t)$:
+$$
+\mathbb{E}[\bar{Z}_t^2] = \frac{\mathbb{E}[N(t)] \, q(Z_1^2)}{t^2} \leq \frac{4K^2 \mu_2(t + \mu_2)}{t^2}.
+$$
+
+**Step 4: Non-asymptotic $O(t^{-3/2})$ bound.** By Cauchy--Schwarz and $1/(1 + R_t/t) \leq 1$, combining Steps 2 and 3:
+$$
+|\mathbb{E}[\hat{F}_t] - \pi(f)| \leq \frac{1}{t^{3/2}} \sqrt{\frac{4K^2 \mu_2 \mu_3}{3} \left(1 + \frac{\mu_2}{t}\right)}.
+$$
+This holds for all $t > 0$ with all quantities estimable by simulation.
+
+**Step 5: Sharpening to $O(1/t^2)$.** Taylor expanding $\frac{1}{1 + R_t/t} = 1 - \frac{R_t}{t} + \mathrm{Rem}$, after taking expectations (the $k = 0$ term is zero by Wald):
+$$
+\mathbb{E}[\hat{F}_t - \pi(f)] = -\frac{\mathbb{E}[R_t S_{N(t)}]}{t^2} + O(1/t^3).
+$$
+The function $g(t) := \mathbb{E}[R_t S_{N(t)}]$ satisfies a renewal equation with bounded directly Riemann integrable driver under (A3); by the Key Renewal Theorem (Theorem 2.17 of @bozzi2026), $g(t) \to b_2 \in \mathbb{R}$, giving $\mathbb{E}[\hat{F}_t] = \pi(f) + b_2/t^2 + O(1/t^3)$. $\square$
+
+The $O(1/t)$ coefficient is zero for all $t$ because $\mathbb{E}[S_{N(t)}] = 0$ exactly by Wald, not merely asymptotically. The leading $O(1/t^2)$ term arises from the inspection paradox: $R_t = \tilde{Z}_{N(t)} - t$ is stochastically larger than a typical cycle by length-biasing, and its correlation with $S_{N(t)}$ enters at $O(1/t^2)$.
+
+## References
