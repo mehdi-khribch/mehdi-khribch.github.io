@@ -11,6 +11,25 @@ listing:
 ---
 
 ```{=html}
+<div class="subscribe-box">
+  <div class="subscribe-text">
+    <span class="subscribe-icon">&#9993;</span>
+    <strong>Subscribe</strong> &mdash; get notified when new posts are published.
+  </div>
+  <form
+    action="https://buttondown.com/api/emails/embed-subscribe/mehdikhribch"
+    method="post"
+    target="popupwindow"
+    onsubmit="window.open('https://buttondown.com/mehdikhribch', 'popupwindow')"
+    class="subscribe-form"
+  >
+    <input type="email" name="email" placeholder="your@email.com" required class="subscribe-input" />
+    <button type="submit" class="subscribe-btn">Subscribe</button>
+  </form>
+</div>
+```
+
+```{=html}
 <div class="painting-section" style="border-top:none; margin-top:0; padding-top:0;">
   <img src="images/belkahia.jpg" class="featured-painting" alt="Farid Belkahia, Main, 1980">
   <div class="painting-caption">

@@ -1,0 +1,92 @@
+name: Notify Subscribers
+
+on:
+  workflow_run:
+    workflows: ["Quarto Publish"]
+    types: [completed]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Check for new blog posts
+        id: check
+        run: |
+          # Check if any posts/ files changed in the triggering commit
+          CHANGED=$(git diff --name-only HEAD~1 HEAD -- 'posts/*/index.qmd' 2>/dev/null || echo "")
+          if [ -z "$CHANGED" ]; then
+            echo "No new blog posts detected."
+            echo "has_new_post=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "Changed post files: $CHANGED"
+          echo "has_new_post=true" >> "$GITHUB_OUTPUT"
+
+          # Extract the first changed post directory
+          POST_DIR=$(echo "$CHANGED" | head -1 | xargs dirname)
+          POST_FILE="$POST_DIR/index.qmd"
+
+          # Parse title from YAML front matter
+          TITLE=$(sed -n '/^---$/,/^---$/{ /^title:/{ s/^title: *//; s/^"//; s/"$//; p; q; } }' "$POST_FILE")
+          echo "title=$TITLE" >> "$GITHUB_OUTPUT"
+
+          # Parse description from YAML front matter
+          DESC=$(sed -n '/^---$/,/^---$/{ /^description:/{ s/^description: *//; s/^"//; s/"$//; p; q; } }' "$POST_FILE")
+          echo "description=$DESC" >> "$GITHUB_OUTPUT"
+
+          # Build the post URL from the directory name
+          POST_SLUG=$(basename "$POST_DIR")
+          URL="https://mehdi-khribch.github.io/posts/${POST_SLUG}/"
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+
+      - name: Send email to subscribers
+        if: steps.check.outputs.has_new_post == 'true'
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+        run: |
+          TITLE="${{ steps.check.outputs.title }}"
+          DESC="${{ steps.check.outputs.description }}"
+          URL="${{ steps.check.outputs.url }}"
+
+          # Build email body in markdown
+          BODY="$(cat <<EMAILEOF
+          Hi,
+
+          A new post has been published on [mehdi-khribch.github.io](https://mehdi-khribch.github.io):
+
+          ## [${TITLE}](${URL})
+
+          ${DESC}
+
+          [Read the full post](${URL})
+          EMAILEOF
+          )"
+
+          # Send via Buttondown API
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X POST \
+            "https://api.buttondown.com/v1/emails" \
+            -H "Authorization: Token ${BUTTONDOWN_API_KEY}" \
+            -H "Content-Type: application/json" \
+            -d "$(jq -n \
+              --arg subject "New post: ${TITLE}" \
+              --arg body "$BODY" \
+              '{subject: $subject, body: $body, status: "about_to_send"}')")
+
+          HTTP_CODE=$(echo "$RESPONSE" | tail -1)
+          BODY_RESP=$(echo "$RESPONSE" | head -n -1)
+
+          if [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 300 ]; then
+            echo "Email sent successfully to all subscribers!"
+            echo "$BODY_RESP"
+          else
+            echo "Failed to send email (HTTP $HTTP_CODE):"
+            echo "$BODY_RESP"
+            exit 1
+          fi
