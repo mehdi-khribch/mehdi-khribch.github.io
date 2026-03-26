@@ -3,6 +3,16 @@ title: "Talks & Presentations"
 ---
 
 ::: {.talk-item}
+[**Monte Carlo and Quasi-Monte Carlo Methods (MCQMC 2026)**](https://maths.ed.ac.uk/events/mcqmc-2026) --- Contributed Talk\
+Edinburgh
+:::
+
+::: {.talk-item}
+[**ISBA 2026 World Meeting**](https://isba2026.github.io/) --- Poster\
+Milano
+:::
+
+::: {.talk-item}
 [**Fundamentals of Statistical Machine Learning (FSML) Research Group, UCL**](https://fsml-ucl.github.io/) --- Talk\
 March 2026, London
 :::

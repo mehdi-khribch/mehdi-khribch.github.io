@@ -11,7 +11,7 @@ title: "Publications"
 
 [[arXiv](https://arxiv.org/abs/2601.07325)]{.pub-link} | [[BibTeX](files/bib/khribch2026variational.bib)]{.pub-link} | [[Google Scholar](https://scholar.google.com/scholar?q=%22Variational+Approximations+for+Robust+Bayesian+Inference+via+Rho-Posteriors%22)]{.pub-link}
 
-We introduce the $\tilde{\rho}$-posterior, a generalized $\rho$-posterior and a modified version of the $\rho$-posterior of Baraud (2020), obtained by replacing the supremum over competitor parameters with a softmax aggregation. Unlike the original $\rho$-posteriors, whose minimax-theoretic analysis relies on testing arguments that preclude tractable computation, we show that $\tilde{\rho}$-posteriors admit a PAC-Bayesian analysis. This yields finite-sample oracle inequalities with explicit convergence rates that inherit the key robustness properties of the original framework, in particular graceful degradation under model misspecification and data contamination. Crucially, the PAC-Bayesian oracle inequalities extend to variational approximations of the $\tilde{\rho}$-posterior, providing theoretical guarantees for tractable inference. Numerical experiments on exponential families, regression, and real-world datasets confirm that the resulting variational procedures achieve robustness competitive with theoretical predictions at computational cost comparable to standard variational Bayes.
+The $\rho$-posterior framework provides universal Bayesian estimation with explicit contamination rates and optimal convergence guarantees, but has remained computationally difficult due to an optimization over reference distributions that precludes intractable posterior computation. We develop a PAC-Bayesian framework that recovers these theoretical guarantees through temperature-dependent Gibbs posteriors, deriving finite-sample oracle inequalities with explicit rates and introducing tractable variational approximations that inherit the robustness properties of exact $\rho$-posteriors. Numerical experiments demonstrate that this approach achieves theoretical contamination rates while remaining computationally feasible, providing the first practical implementation of $\rho$-posterior inference with rigorous finite-sample guarantees.
 :::
 
 ::: {.pub-item}
@@ -40,8 +40,8 @@ This allows a formal comparison of the finite-time biases of IS and IMH, showing
 [[arXiv](https://arxiv.org/abs/2412.18539)]{.pub-link} | [[BibTeX](files/bib/khribch2024convergence.bib)]{.pub-link} | [[Google Scholar](https://scholar.google.com/scholar?q=%22Convergence+of+Statistical+Estimators+via+Mutual+Information+Bounds%22)]{.pub-link}
 
 We introduce a unified mutual information bound for general statistical models, bridging PAC-Bayesian theory, Bayesian nonparametrics, and classical estimation. The bound yields sharper contraction rates for fractional posteriors and applies to a wide family of estimators including variational inference and MLE. The central inequality is
-$$\mathbb{E}_{\theta\sim\hat{\rho}}\!\left[D_\alpha(P_\theta\|P_{\theta_0})\right] - \frac{\alpha}{n(1-\alpha)}\,\mathbb{E}_{\theta\sim\hat{\rho}}\!\left[r_n(\theta,\theta_0)\right] \leq \frac{I(\theta,S)}{n(1-\alpha)},$$
-where $D_\alpha$ is the Rényi divergence of order $\alpha$, $r_n$ is the log-likelihood ratio evaluated on the sample $S$, and $I(\theta,S)$ is the mutual information between the estimator and the data.
+$$\mathbb{E}_{\theta\sim\hat{\rho}}\!\left[D_\alpha(P_\theta\|P_{\theta_0})\right] - \frac{\alpha}{n(1-\alpha)}\,\mathbb{E}_{\theta\sim\hat{\rho}}\!\left[r_n(\theta,\theta_0)\right] \leq \frac{\mathcal{I}(\theta,\mathcal{S})}{n(1-\alpha)},$$
+where $D_\alpha$ is the Rényi divergence of order $\alpha$, $r_n$ is the log-likelihood ratio evaluated on the sample $\mathcal{S}$, and $\mathcal{I}(\theta,\mathcal{S})$ is the mutual information between the estimator and the data.
 :::
 
 ```{=html}

@@ -13,7 +13,7 @@ title: "Teaching Experience"
 ---
 
 ### Teaching Assistant --- High Dimensional Statistics
-**ENPC ParisTech**, 2023--2025
+**ENPC ParisTech**, 2023--2026
 
 ```{=html}
 <div class="painting-section">
