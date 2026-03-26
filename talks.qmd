@@ -4,12 +4,12 @@ title: "Talks & Presentations"
 
 ::: {.talk-item}
 [**Monte Carlo and Quasi-Monte Carlo Methods (MCQMC 2026)**](https://maths.ed.ac.uk/events/mcqmc-2026) --- Contributed Talk\
-Edinburgh
+June 2026, Edinburgh
 :::
 
 ::: {.talk-item}
 [**ISBA 2026 World Meeting**](https://isba2026.github.io/) --- Poster\
-Milano
+June 2026, Nagoya
 :::
 
 ::: {.talk-item}
