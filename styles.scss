@@ -55,36 +55,49 @@ a {
 // Navbar — deep blue with white text
 .navbar {
   border-bottom: none;
-  font-family: "CMU Serif", "Latin Modern Roman", Georgia, serif !important;
-  font-size: 10.5pt;
-  padding: 0.7em 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  font-family: 'Cormorant Garamond', "CMU Serif", Georgia, serif !important;
+  font-size: 11pt;
+  padding: 0.6em 0;
+  background: linear-gradient(135deg, #1b4f72 0%, #1a3a5c 100%) !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
 
   .navbar-brand {
     font-family: 'Cormorant Garamond', Georgia, serif !important;
-    font-weight: 600;
-    font-size: 1.35em;
+    font-weight: 700;
+    font-size: 1.4em;
     color: #ffffff !important;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+
+    img {
+      height: 28px;
+      width: 28px;
+      border-radius: 4px;
+    }
   }
 
   .nav-link {
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    color: rgba(255,255,255,0.85) !important;
-    padding: 0.5em 0.9em !important;
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-weight: 500;
+    font-size: 1.05em;
+    letter-spacing: 0.03em;
+    color: rgba(255,255,255,0.88) !important;
+    padding: 0.4em 0.85em !important;
     border-radius: 4px;
-    transition: all 0.15s;
+    transition: all 0.2s ease;
 
     &:hover {
-      background: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.12);
       color: #ffffff !important;
       text-decoration: none;
     }
 
     &.active {
       color: #ffffff !important;
-      background: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.18);
+      border-bottom: 2px solid rgba(255,255,255,0.6);
     }
   }
 
@@ -92,6 +105,12 @@ a {
   .navbar-nav .nav-item .nav-link i,
   .navbar-nav .nav-item .nav-link .bi {
     color: rgba(255,255,255,0.85);
+    font-size: 1.1em;
+    transition: color 0.2s;
+
+    &:hover {
+      color: #ffffff;
+    }
   }
 }
 
@@ -244,6 +263,133 @@ iframe {
   .subscribe-input {
     width: 100%;
   }
+}
+
+// === ENHANCED SITE-WIDE TYPOGRAPHY ===
+// Crisper, more refined text rendering across the whole site
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+// All page titles get Cormorant Garamond
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', "CMU Serif", Georgia, serif !important;
+}
+
+// === LRB-INSPIRED BLOG POST STYLES (blog section only) ===
+// Clean, literary-magazine aesthetic scoped to post pages
+
+// Post title block
+body.quarto-post .quarto-title-block {
+  margin-bottom: 2em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid #ccc;
+}
+
+body.quarto-post .quarto-title h1.title {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 2.6em;
+  font-weight: 600;
+  line-height: 1.15;
+  color: #1a1a1a;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.15em;
+}
+
+body.quarto-post .quarto-title .subtitle {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 1.2em;
+  font-style: italic;
+  color: #555;
+  line-height: 1.4;
+}
+
+body.quarto-post .quarto-title-meta {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.95em;
+  color: #666;
+  letter-spacing: 0.03em;
+}
+
+// Blog post body: generous reading width, refined line height
+body.quarto-post #quarto-document-content {
+  max-width: 720px;
+  margin: 0 auto;
+
+  p {
+    font-size: 11.5pt;
+    line-height: 1.75;
+    margin-bottom: 1.2em;
+  }
+
+  // Section headings: understated, LRB-style
+  h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-top: 2.5em;
+    margin-bottom: 0.6em;
+    padding-bottom: 0.2em;
+    border-bottom: 1px solid #ddd;
+  }
+
+  h3 {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #333;
+    font-style: italic;
+    margin-top: 2em;
+  }
+
+  // Blockquotes: refined, LRB-style indented
+  blockquote {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.05em;
+    line-height: 1.65;
+    color: #333;
+    font-style: italic;
+    border-left: 2px solid #999;
+    background: transparent;
+    padding: 0.3em 0 0.3em 1.5em;
+    margin: 1.8em 0 1.8em 1em;
+    border-radius: 0;
+  }
+
+  // Images: clean presentation
+  figure {
+    margin: 2em 0;
+  }
+
+  figcaption {
+    font-size: 0.85em;
+    color: #777;
+    font-style: italic;
+    text-align: center;
+    margin-top: 0.5em;
+  }
+
+  // Further reading section: subtle
+  hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 2.5em 0;
+  }
+}
+
+// Blog listing page: refined typography
+.quarto-listing-category .category {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.9em;
+}
+
+.quarto-listing .listing-title {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 600;
 }
 
 // Print styles
