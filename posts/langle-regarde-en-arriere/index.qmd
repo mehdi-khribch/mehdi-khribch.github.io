@@ -5,6 +5,8 @@ author: "Mehdi Khribch"
 date: "2026-03-27"
 categories: [literature, philosophy, review]
 image: "images/angelus-novus.jpg"
+title-block-banner: "images/angelus-novus.jpg"
+title-block-banner-color: white
 bibliography: []
 format:
   html:
