@@ -1,0 +1,10 @@
+[
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/posts/langle-regarde-en-arriere/index.html",
+      "/posts/regenerative-rejection-sampling/index.html",
+      "/posts/wasserstein-gradient-flow/index.html"
+    ]
+  }
+]
