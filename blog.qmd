@@ -23,7 +23,7 @@ listing:
 <div class="subscribe-box">
   <div class="subscribe-text">
     <span class="subscribe-icon">&#9993;</span>
-    If you'd like to hear when I post something new, leave your email below. No spam, just occasional notes on maths and statistics.
+    If you'd like to hear when I post something new, leave your email below. No spam, just occasional notes on maths, statistics, books, music, and whatever else I happen to be thinking about.
   </div>
   <form
     action="https://buttondown.com/api/emails/embed-subscribe/mehdikhribch"
