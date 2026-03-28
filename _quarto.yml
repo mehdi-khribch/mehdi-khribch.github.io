@@ -37,6 +37,18 @@ website:
   page-footer:
     center: "© 2026 Mehdi Khribch"
 
+comments:
+  giscus:
+    repo: mehdi-khribch/mehdi-khribch.github.io
+    repo-id: "R_kgDOI6ZiGA"
+    category: "Announcements"
+    category-id: "DIC_kwDOI6ZiGM4C4uew"
+    mapping: pathname
+    reactions-enabled: true
+    input-position: top
+    theme: light
+    language: en
+
 format:
   html:
     theme:
@@ -54,4 +66,4 @@ format:
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css">
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-          <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
