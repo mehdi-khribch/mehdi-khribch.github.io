@@ -5,9 +5,11 @@ image: images/belkahia.jpg
 listing:
   contents: posts
   sort: "date desc"
-  type: default
+  type: grid
+  grid-columns: 3
   categories: true
   fields: [image, date, title, description, categories]
+  grid-item-border: false
 ---
 
 ```{=html}
