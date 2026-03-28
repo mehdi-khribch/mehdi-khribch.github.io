@@ -1,0 +1,39 @@
+---
+title: "Blog"
+subtitle: "Notes on mathematics, statistics, books, music, and miscellaneous thoughts."
+image: images/belkahia.jpg
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  fields: [image, date, title, description, categories]
+---
+
+```{=html}
+<div class="painting-section" style="border-top:none; margin-top:0; padding-top:0;">
+  <img src="images/belkahia.jpg" class="featured-painting" alt="Farid Belkahia, Main, 1980">
+  <div class="painting-caption">
+    Farid Belkahia, <em>Main</em>, henné sur peau, 1980.
+  </div>
+</div>
+```
+
+```{=html}
+<div class="subscribe-box">
+  <div class="subscribe-text">
+    <span class="subscribe-icon">&#9993;</span>
+    If you'd like to hear when I post something new, leave your email below. No spam, just occasional notes on maths and statistics.
+  </div>
+  <form
+    action="https://buttondown.com/api/emails/embed-subscribe/mehdikhribch"
+    method="post"
+    target="popupwindow"
+    onsubmit="window.open('https://buttondown.com/mehdikhribch', 'popupwindow')"
+    class="subscribe-form"
+  >
+    <input type="email" name="email" placeholder="your@email.com" required class="subscribe-input" />
+    <button type="submit" class="subscribe-btn">Subscribe</button>
+  </form>
+</div>
+```

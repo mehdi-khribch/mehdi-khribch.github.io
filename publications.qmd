@@ -1,0 +1,54 @@
+---
+title: "Publications"
+---
+
+::: {.pub-item}
+[Robust Bayesian Inference via Variational Approximations of Generalized Rho-Posteriors](https://arxiv.org/abs/2601.07325){.pub-title}
+
+[El Mahdi Khribch, Pierre Alquier]{.pub-authors}
+
+[*Preprint*]{.pub-venue}
+
+[[arXiv](https://arxiv.org/abs/2601.07325)]{.pub-link} | [[BibTeX](files/bib/khribch2026variational.bib)]{.pub-link} | [[Google Scholar](https://scholar.google.com/scholar?q=%22Robust+Bayesian+Inference+via+Variational+Approximations+of+Generalized+Rho-Posteriors%22)]{.pub-link}
+
+We introduce the $\tilde{\rho}$-posterior, a modified version of the $\rho$-posterior of Baraud & Birgé (2020), obtained by replacing the supremum over competitor parameters with a softmax aggregation. This modification allows a PAC-Bayesian analysis of the $\tilde{\rho}$-posterior. This yields finite-sample oracle inequalities with explicit convergence rates that inherit the key robustness properties of the original framework, in particular graceful degradation under model misspecification and data contamination. Crucially, the PAC-Bayesian oracle inequalities extend to variational approximations of the $\tilde{\rho}$-posterior, providing theoretical guarantees for tractable inference. Numerical experiments on exponential families, regression, and real-world datasets confirm that the resulting variational procedures achieve robustness competitive with theoretical predictions at computational cost comparable to standard variational Bayes.
+:::
+
+::: {.pub-item}
+[On importance sampling and independent Metropolis--Hastings with an unbounded weight function](https://arxiv.org/abs/2411.09514){.pub-title}
+
+[George Deligiannidis, Pierre E. Jacob, El Mahdi Khribch, Guanyang Wang]{.pub-authors}
+
+[*Major revision at The Annals of Statistics*]{.pub-venue}
+
+[[arXiv](https://arxiv.org/abs/2411.09514)]{.pub-link} | [[BibTeX](files/bib/deligiannidis2024importance.bib)]{.pub-link} | [[Google Scholar](https://scholar.google.com/scholar?q=%22On+importance+sampling+and+independent+Metropolis-Hastings+with+an+unbounded+weight+function%22)]{.pub-link}
+
+We study importance sampling (IS) and the particle independent Metropolis--Hastings (PIMH) algorithm when the weight function is unbounded but has finite moments of order $p$. For PIMH with $N$ particles, we establish the convergence rate
+$$\left|\bar{q}P^t - \bar{\pi}\right|_{\mathrm{TV}} \leq \frac{C}{\sqrt{N}}\,\frac{1}{(1+t)^{p-1}}.$$
+For the single-chain IMH, we prove that the common random numbers (CRN) coupling is maximal, yielding the exact identity
+$$\left|P^t(x,\cdot) - P^t(y,\cdot)\right|_{\mathrm{TV}} = P_{x,y}(\tau > t).$$
+This allows a formal comparison of the finite-time biases of IS and IMH, showing IMH to have strictly smaller bias.
+:::
+
+::: {.pub-item}
+[Convergence of Statistical Estimators via Mutual Information Bounds](https://arxiv.org/abs/2412.18539){.pub-title}
+
+[El Mahdi Khribch, Pierre Alquier]{.pub-authors}
+
+[*Submitted and under review for Journal of Machine Learning Research*]{.pub-venue}
+
+[[arXiv](https://arxiv.org/abs/2412.18539)]{.pub-link} | [[BibTeX](files/bib/khribch2024convergence.bib)]{.pub-link} | [[Google Scholar](https://scholar.google.com/scholar?q=%22Convergence+of+Statistical+Estimators+via+Mutual+Information+Bounds%22)]{.pub-link}
+
+We introduce a unified mutual information bound for general statistical models, bridging PAC-Bayesian theory, Bayesian nonparametrics, and classical estimation. The bound yields sharper contraction rates for fractional posteriors and applies to a wide family of estimators including variational inference and MLE. The central inequality is
+$$\mathbb{E}_{\theta\sim\hat{\rho}}\!\left[D_\alpha(P_\theta\|P_{\theta_0})\right] - \frac{\alpha}{n(1-\alpha)}\,\mathbb{E}_{\theta\sim\hat{\rho}}\!\left[r_n(\theta,\theta_0)\right] \leq \frac{\mathcal{I}(\theta,\mathcal{S})}{n(1-\alpha)},$$
+where $D_\alpha$ is the Rényi divergence of order $\alpha$, $r_n$ is the log-likelihood ratio evaluated on the sample $\mathcal{S}$, and $\mathcal{I}(\theta,\mathcal{S})$ is the mutual information between the estimator and the data.
+:::
+
+```{=html}
+<div class="painting-section">
+  <img src="images/delacroix-fantasia.jpg" class="featured-painting" alt="Eugène Delacroix, Fantasia arabe, 1833">
+  <div class="painting-caption">
+    Eugène Delacroix, <em>Fantasia arabe</em>, 1833. Oil on canvas, Städel Museum, Frankfurt am Main.
+  </div>
+</div>
+```
