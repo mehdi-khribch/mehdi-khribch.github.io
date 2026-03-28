@@ -25,13 +25,11 @@ There is a particular vantage point from which this image resonates with an unex
 
 Which brings me, by a route that I promise is not as circuitous as it seems, to [Aurélien Bellanger's *Le Vingtième Siècle*](https://www.gallimard.fr/catalogue/le-vingtieme-siecle/9782072992551) (Gallimard, 2023), a novel that is not really a novel, about a philosopher who never really wrote a novel, structured as 49 fragments that do not really cohere, and which is, for all these negations, one of the most thrilling literary experiences I have had in years.
 
-::: {layout="[45,55]" layout-valign="center"}
-![*Le Vingtième Siècle*, Gallimard, 2023. Cover art after Paul Klee.](images/le-vingtieme-siecle-cover.jpg){fig-align="center"}
-
-![Aurélien Bellanger.](images/bellanger.jpg){fig-align="center"}
-:::
+![*Le Vingtième Siècle*, Gallimard, 2023.](images/le-vingtieme-siecle-cover.jpg){fig-align="center" width="35%"}
 
 Bellanger, for the uninitiated, is one of the most intellectually formidable novelists working in France today, and one of the most cheerfully elitist, in a way that would be intolerable if it were not so obviously earned. He began his literary career in the orbit of Michel Houellebecq, publishing *Houellebecq écrivain romantique* in 2010, a programmatic essay that reads less like literary criticism than like a declaration of lineage. Houellebecq's shadow hangs over his early novels: the same cold sociological eye, the same ambition to write the Balzacian *Comédie humaine* of contemporary France, the same willingness to bore the reader into submission with technical detail until the boredom itself becomes a kind of revelation. But where Houellebecq retreats into cynicism, Bellanger presses forward into erudition. His novels (*La Théorie de l'information*, *L'Aménagement du territoire*, *Le Grand Paris*) are vast, architecturally precise machines for thinking about power, technology, and the French state. He writes the way a cartographer draws borders: with total command and the serene assumption that the territory being mapped is worth the effort. His France Culture appearances, and there are many, have the intensity of a man conducting an argument with very smart ghosts.
+
+![Aurélien Bellanger.](images/bellanger.jpg){fig-align="center" width="50%"}
 
 ## Forty-Nine Shards of a Broken Century
 
