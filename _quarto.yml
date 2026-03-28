@@ -40,18 +40,6 @@ website:
   page-footer:
     center: "© 2026 Mehdi Khribch"
 
-comments:
-  giscus:
-    repo: mehdi-khribch/mehdi-khribch.github.io
-    repo-id: "R_kgDOI6ZiGA"
-    category: "Announcements"
-    category-id: "DIC_kwDOI6ZiGM4C4uew"
-    mapping: pathname
-    reactions-enabled: true
-    input-position: top
-    theme: light
-    language: en
-
 format:
   html:
     theme:
