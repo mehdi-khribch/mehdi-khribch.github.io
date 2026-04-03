@@ -7,7 +7,7 @@ title: "Publications"
 
 [El Mahdi Khribch, Pierre Alquier]{.pub-authors}
 
-[*Preprint*]{.pub-venue}
+[*Submitted*]{.pub-venue}
 
 [[arXiv](https://arxiv.org/abs/2601.07325)]{.pub-link} | [[BibTeX](files/bib/khribch2026variational.bib)]{.pub-link} | [[Google Scholar](https://scholar.google.com/scholar?q=%22Robust+Bayesian+Inference+via+Variational+Approximations+of+Generalized+Rho-Posteriors%22)]{.pub-link}
 
@@ -35,7 +35,7 @@ This allows a formal comparison of the finite-time biases of IS and IMH, showing
 
 [El Mahdi Khribch, Pierre Alquier]{.pub-authors}
 
-[*Submitted and under review for Journal of Machine Learning Research*]{.pub-venue}
+[*Submitted*]{.pub-venue}
 
 [[arXiv](https://arxiv.org/abs/2412.18539)]{.pub-link} | [[BibTeX](files/bib/khribch2024convergence.bib)]{.pub-link} | [[Google Scholar](https://scholar.google.com/scholar?q=%22Convergence+of+Statistical+Estimators+via+Mutual+Information+Bounds%22)]{.pub-link}
 
