@@ -1,0 +1,119 @@
+---
+title: "Origins of the Asymptotic Bias of SNIS"
+description: "A short note on the known $O(1/N)$ asymptotic bias formula for self-normalised importance sampling: where we could find it first written down, why turning it into a proper moment statement is subtler than one might think, and what we are currently trying to do about it in the revision of our paper."
+date: "2026-04-10"
+image: ../../images/origins.jpg
+categories: [Monte Carlo, importance sampling, Edgeworth expansions, uniform integrability]
+toc: true
+toc-depth: 3
+bibliography: references.bib
+comments:
+  giscus:
+    repo: mehdi-khribch/mehdi-khribch.github.io
+    category: "Comments"
+    mapping: pathname
+    reactions-enabled: true
+    theme: light
+---
+
+*This post is a small tale, written during the revision of [@djkw], about a formula that everyone who has used self-normalised importance sampling (SNIS) has seen at some point: the $O(1/N)$ expression for its asymptotic bias. There seems to be broad agreement and consensus, across several communities, both on the fact that SNIS is biased and on what its leading-order bias should look like. The question we found ourselves asking was a narrower one: under what exact conditions is this an honest statement about an expectation, and where was it first written down? The answer turned out to be trickier than we had expected, and this is an attempt to tell the story in a scientific and precise way.*
+
+![Hubert Robert, *Vue imaginaire de la Grande Galerie du Louvre en ruines*, 1796. Musée du Louvre, Paris.](../../images/origins.jpg){fig-align="center" width="85%"}
+
+## The setting and the formula
+
+Fix a measurable space $(\mathcal{X},\mathcal{B}(\mathcal{X}))$, a target probability density $\pi$, and a proposal $q$ with $\mathrm{supp}(\pi)\subseteq\mathrm{supp}(q)$. As in [@djkw] we write
+$$
+\omega : \mathcal{X}\to [0,\infty), \qquad \omega(x) := \frac{\pi(x)}{q(x)},
+$$
+for the importance weight function, $q(h) := \mathbb{E}_q[h(X)] = \int h(x)\, q(x)\, dx$ for expectations under the proposal, and standardise throughout to $q(\omega)=1$. The target integral of a test function $f:\mathcal{X}\to\mathbb{R}$ is then
+$$
+\pi(f) = q(\omega f).
+$$
+The self-normalised importance sampling estimator is given by the following algorithm.
+
+::: {.callout-note appearance="simple" icon=false}
+## Algorithm 1 (Self-normalised importance sampling)
+**Input.** Proposal $q$, unnormalised target $\pi$, test function $f$, sample size $N\geq 1$.
+
+1. Draw $x_1,\dots,x_N \overset{\text{i.i.d.}}{\sim} q$.
+2. Compute the importance weights $\omega_n := \omega(x_n) = \pi(x_n)/q(x_n)$ for $n=1,\dots,N$.
+3. Return the self-normalised estimator
+$$
+\widehat{F}_N \;:=\; \frac{\sum_{n=1}^N \omega_n f(x_n)}{\sum_{n=1}^N \omega_n}.
+$$
+:::
+
+The estimator $\widehat F_N$ is strongly consistent for $\pi(f)$ but biased, and the known expression for its leading-order bias, reproduced in essentially every review of importance sampling, is exactly
+$$
+\mathbb{E}[\widehat F_N] - \pi(f) \;=\; -\frac{1}{N} q(\omega^2 (f-\pi(f))) + o(1/N).
+$$
+What we wanted to understand, in the context of the revision of [@djkw], was where this expression first appeared and what assumptions had actually been used to justify it.
+
+## Where we first saw it written down
+
+The search in the historical literature was led by my supervisor [Pierre Jacob](https://sites.google.com/site/pierrejacob/), who also pushed me to try to understand how the expression had been derived. The earliest place we could find it clearly written down is Timothy Hesterberg's 1988 Stanford PhD thesis [@hesterberg1988], in Section 2.5.2, as his equation (2.63):
+$$
+\mathbb{E}[\hat\mu_{\text{ratio}} - \mu] \;=\; -\frac{1}{n} \mathbb{E}_g[W(Y-\mu W)] + \text{lower-order terms},
+$$
+which in our notation is precisely
+$$
+\mathbb{E}[\widehat F_N - \pi(f)] \;=\; -\frac{1}{N} q(\omega^2 (f-\pi(f))) + \text{lower-order terms}.
+$$
+Hesterberg is of course well known in the importance sampling community, so we are not claiming to have unearthed anything obscure; we just wanted to find the earliest written record we could, and this was it. What is more interesting than the date is how the expression is obtained there, and what Hesterberg himself is careful to claim (or, rather, not to claim) about it.
+
+The derivation proceeds in two steps. One writes $\widehat F_N$ as a ratio $\bar Y/\bar W$ of sample averages and performs a second-order Taylor expansion around the population means, taking expectations term by term to read off the $O(1/N)$ constant. To give this analytic support, Hesterberg then invokes the Edgeworth expansion of @bhattacharya1978 for smooth functions of sample means, and identifies the $-q(\omega^2(f-\pi(f)))$ as the "bias term" in that expansion. On page 40 he adds a sentence which, in hindsight, is the whole reason we are writing this post:
+
+> "These are the first order bias terms in the Edgeworth expansion of the distributions of these estimates. These are more useful than the actual biases, which may be infinite or undefined."
+
+So, from the beginning, what was available in the literature was an expression for the leading-order bias *in distribution*, together with an explicit warning that the corresponding moment statement about $\mathbb{E}[\widehat F_N]$ might fail to make sense at all. The same expression has since been reproduced, in variants adapted to particle filters, rare-event simulation, and variational inference; see for instance @liu2008 [Section 2.5]. The consensus is real, and so is the original caveat.
+
+## Why the distributional result does not give the moment result
+
+The subtlety that we had to come to terms with in the revision is a basic probabilistic one: knowing the distribution of a sequence of random variables, even to high accuracy pointwise, does not pin down their expectations. Writing $\mathbb{E}[X]$ as a tail integral,
+$$
+\mathbb{E}[X] \;=\; \int_0^\infty (1 - F_X(t))\, dt \;-\; \int_{-\infty}^0 F_X(t)\, dt,
+$$
+if one approximates $F_X$ by $\Phi + r_N$ with $|r_N(t)|$ pointwise small, there is no reason for $\int r_N(t)\, dt$ to be small: the CDF error can be tiny at every fixed $t$ and yet carry non-negligible mass in the tails.
+
+[*A simple counterexample.*]{style="color: #1a5276;"} For $N\geq 1$, let $Z \sim \mathcal{N}(0,1)$, and let $V_N$ be independent of $Z$ with
+$$
+V_N \;=\; \begin{cases} 0 & \text{with probability } 1 - 1/N,\\ N^{3/4} & \text{with probability } 1/N. \end{cases}
+$$
+Set $T_N := Z + V_N / \sqrt{N}$. Because $V_N = 0$ with probability $1 - 1/N$,
+$$
+F_{T_N}(z) \;=\; (1 - 1/N)\, \Phi(z) + (1/N)\, \Phi(z - N^{1/4}) \;=\; \Phi(z) + O(1/N)
+$$
+uniformly in $z$: at the level of the CDF, $T_N$ is Gaussian to order $O(1/N)$, so the "Edgeworth bias term" is $0$. Yet
+$$
+\mathbb{E}[T_N] \;=\; \frac{N^{3/4}}{N \sqrt{N}} \;=\; N^{-3/4} \;\neq\; 0.
+$$
+A rare but large spike is invisible to the CDF at any fixed $z$ while still shifting the mean. This is exactly the pathology Hesterberg warned about, and it is the reason the Edgeworth route cannot, by itself, certify that $\mathbb{E}[\widehat F_N]$ even exists, let alone obey the $O(1/N)$ expansion.
+
+[*The missing ingredient.*]{style="color: #1a5276;"} The standard way to bridge distributional and moment convergence is uniform integrability. By @billingsley1999 [Theorem 3.5], if $X_N \xrightarrow{d} X$ and $\{X_N\}$ is uniformly integrable then $\mathbb{E}[X_N] \to \mathbb{E}[X]$; a sufficient condition is a uniform bound $\sup_N \mathbb{E}[|X_N|^{1+\delta}] < \infty$ for some $\delta > 0$. An Edgeworth expansion does not supply this on its own, and in the SNIS case the issue is concentrated in the denominator $\bar\omega$, which can occasionally be very small and whose inverse moments need to be controlled separately. The general point that distributional expansions do not automatically transfer to moments is discussed in @bhattacharya1986 [Chapter 2] and @hall1992 [Section 2.5].
+
+## What we are trying to do about it
+
+In the current revision of [@djkw], what we are working on is precisely the missing moment statement: conditions on $\pi$, $q$ and $f$ under which the expression
+$$
+\lim_{N\to\infty} N \cdot \mathbb{E}[\widehat F_N - \pi(f)] \;=\; -\, q(\omega^2 (f-\pi(f)))
+$$
+holds as a genuine statement about expectations, rather than about CDFs. We are not claiming that this is a dramatic new result; the expression itself has been agreed upon for a long time. What we are hoping to contribute is a little bit of new light on a known object: a clean set of sufficient conditions under which the known asymptotic bias of SNIS is also a bona fide first-order expansion of $\mathbb{E}[\widehat F_N]$. We are still tuning the assumptions during the revision, in particular trying to see how much of the inverse-moment condition on $\omega$ we really need, and how it trades off against moment assumptions on $\omega$ and $\omega f$. The precise statements will appear in the revised paper, and we will update this post once they do.
+
+## A parallel, independent result
+
+While we were working on this, Kamélia Daudel and François Roueff were, essentially in parallel and independently, establishing a closely related moment statement in a rather different context: their paper [@DaudelRoueff2024Learning] studies asymptotics for gradient estimators of the VR-IWAE bound in importance weighted variational inference, and along the way proves, among other things, the kind of first-order moment expansion for self-normalised importance weights that we were trying to get in [@djkw]. Their assumptions and ours are written in different languages and motivated by different applications, but we see the two efforts as part of the same small movement towards turning the known asymptotic bias of SNIS into a fully rigorous moment statement. We are grateful to Kamélia Daudel for pointing out her work to us around the same time.
+
+## A short conclusion
+
+To summarise what we learned from this small detective exercise: there is a clear and long-standing consensus on the fact that SNIS is biased, and on the form of its leading-order asymptotic bias. The expression
+$$
+\mathbb{E}[\widehat F_N] - \pi(f) \;\approx\; -\frac{1}{N} q(\omega^2 (f-\pi(f)))
+$$
+is treated as known in many places. What we could not find in the literature was a self-contained moment-level proof: the Edgeworth-based derivation going back to @hesterberg1988, and repeated since, is a distributional statement, and the extra ingredient needed to turn it into a statement about $\mathbb{E}[\widehat F_N]$ is uniform integrability, which neither the Taylor expansion nor the Edgeworth expansion provide. That missing step is what the revision of [@djkw] is aiming to fill, and what Daudel and Roueff [@DaudelRoueff2024Learning] fill from a different angle. We are happy to shed a little bit of light on something already known, and will come back to this post once the revised paper is out.
+
+---
+
+*Acknowledgements.* The historical search behind this post, and in particular the effort to find Hesterberg's 1988 thesis and read it carefully enough to notice the "may be infinite or undefined" caveat, is due to my supervisor Pierre Jacob, who has also kept pushing me, throughout the revision, to turn our delta-method intuition into an honest moment argument.
+
+*Image: Hubert Robert, [Vue imaginaire de la Grande Galerie du Louvre en ruines](https://collections.louvre.fr/en/ark:/53355/cl010065518), 1796 (Musée du Louvre, Paris). Robert was curator of the Louvre under Louis XVI and imagined the building as a future ruin; a fitting picture, it seemed to us, for a post about tracing a familiar formula back to its earlier form.*
