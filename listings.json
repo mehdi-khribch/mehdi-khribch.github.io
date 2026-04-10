@@ -1,0 +1,11 @@
+[
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/posts/origins-asymptotic-bias/index.html",
+      "/posts/langle-regarde-en-arriere/index.html",
+      "/posts/regenerative-rejection-sampling/index.html",
+      "/posts/wasserstein-gradient-flow/index.html"
+    ]
+  }
+]
