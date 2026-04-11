@@ -116,6 +116,6 @@ Somewhat surprisingly to us, we could not locate a rigorous proof of this known 
 
 ---
 
-*Acknowledgements.* The search behind this post, including the effort to find Hesterberg's 1988 thesis and to read it carefully enough to notice the "may be infinite or undefined" caveat, is due to my supervisor Pierre Jacob, who also kept pushing me to turn the delta-method intuition into a proper moment argument.
+*Acknowledgements.* Thanks to my supervisor Pierre Jacob for pushing me to track down the first occurrence of this formula, and for finding Hesterberg's 1988 thesis along the way.
 
 *Image: Hubert Robert, [Vue imaginaire de la Grande Galerie du Louvre en ruines](https://collections.louvre.fr/en/ark:/53355/cl010065518), 1796 (Musée du Louvre, Paris).*
