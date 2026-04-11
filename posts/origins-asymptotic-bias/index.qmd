@@ -90,11 +90,15 @@ A rare but large spike is invisible to the CDF at any fixed $z$ yet shifts the m
 
 ## What we are trying to do about it
 
-In the revision of [@djkw] we are working on the missing moment statement: a clean set of conditions on $\pi$, $q$ and $f$ under which
+In the revision of [@djkw] we are working on the missing moment statement. Concretely, we assume that $f$ satisfies $\pi(|f|) < \infty$ and that, for some $\epsilon > 0$ and some $\eta > 0$,
 $$
-\lim_{N\to\infty} N \cdot \mathbb{E}[\widehat F_N - \pi(f)] \;=\; -\, q(\omega^2 (f-\pi(f)))
+q(|\omega^2 (f - \pi(f))|^{1+\epsilon}) < \infty, \qquad q(\omega^{-\eta}) < \infty,
 $$
-holds as a statement about expectations rather than CDFs. This is not a new formula, only a question of turning a known expression into a rigorous first-order moment expansion. At the moment we are still tuning the assumptions, in particular the inverse-moment condition on $\omega$ and how much it can be traded off against moment conditions on $\omega$ and $\omega f$. The precise statements will appear in the revised version of [@djkw], and we will update this post once they do.
+and under these conditions we show that
+$$
+\lim_{N\to\infty} N \cdot \mathbb{E}[\widehat F_N - \pi(f)] \;=\; -\, q(\omega^2 (f-\pi(f))),
+$$
+as a statement about expectations rather than CDFs. The first assumption is the natural moment condition on the quantity that appears on the right-hand side. The second, the inverse-moment condition $q(\omega^{-\eta}) < \infty$, controls the behaviour of the weights $\omega$ near $0$, which in turn governs the behaviour of $\bar\omega$ on the event where it is small; this is exactly where the subtlety in passing from a distributional to a moment statement lives. We expect this inverse-moment assumption to be relaxable at the price of stronger (higher) moment conditions on $\omega$ and $\omega f$, and we are currently trying to work out the sharp trade-off. The precise statements will appear in the revised version of [@djkw], and we will update this post once they do.
 
 ## A parallel, independent result
 
