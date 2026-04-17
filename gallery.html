@@ -1,0 +1,41 @@
+<div id="rotating-gallery" class="rotating-gallery">
+  <div class="gallery-fade">
+    <img id="gallery-img" src="" alt="" class="gallery-painting">
+  </div>
+  <div id="gallery-caption" class="gallery-caption"></div>
+</div>
+
+<script>
+(function() {
+  var paintings = [
+    { src: "/images/cherkaoui-couronnement.jpg", caption: 'Ahmed Cherkaoui, <em>Le couronnement</em>, 1964. Centre national des arts plastiques.' },
+    { src: "/images/delacroix-fantasia.jpg", caption: 'Eugène Delacroix, <em>Fantasia arabe</em>, 1833. Oil on canvas, Städel Museum, Frankfurt am Main.' },
+    { src: "/images/belkahia.jpg", caption: 'Farid Belkahia, <em>Main</em>, henné sur peau, 1980.' },
+    { src: "/images/belkahia-dignite.png", caption: 'Farid Belkahia, <em>La dignité de l\'homme</em>, henné sur peau, 248 × 289 cm, 1994.' },
+    { src: "/images/constitution-puzzle.jpg", caption: 'Farid Belkahia, <em>Constitution in Puzzle B</em>, 2013.' },
+    { src: "/images/david-horaces.jpg", caption: 'Jacques-Louis David, <em>Le Serment des Horaces</em>, 1784. Oil on canvas, Musée du Louvre, Paris.' },
+    { src: "/images/david-marat.png", caption: 'Jacques-Louis David, <em>La Mort de Marat</em>, 1793. Oil on canvas, Musées royaux des Beaux-Arts de Belgique, Brussels.' }
+  ];
+
+  var idx = Math.floor(Math.random() * paintings.length);
+  var img = document.getElementById("gallery-img");
+  var cap = document.getElementById("gallery-caption");
+
+  function show(i) {
+    img.style.opacity = 0;
+    setTimeout(function() {
+      img.src = paintings[i].src;
+      img.alt = paintings[i].caption.replace(/<[^>]*>/g, "");
+      cap.innerHTML = paintings[i].caption;
+      img.style.opacity = 1;
+    }, 600);
+  }
+
+  show(idx);
+
+  setInterval(function() {
+    idx = (idx + 1) % paintings.length;
+    show(idx);
+  }, 120000);
+})();
+</script>

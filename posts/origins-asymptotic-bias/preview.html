@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="dcterms.date" content="2026-04-07" />
+  <title>Origins of the Asymptotic Bias of SNIS</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script src="/usr/share/javascript/mathjax/tex-mml-chtml.js" type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Origins of the Asymptotic Bias of SNIS</h1>
+<p class="date">2026-04-07</p>
+</header>
+<nav id="TOC" role="doc-toc">
+
+</nav>
+<p><em>Everyone “knows” that the self-normalised importance sampling estimator has bias <span class="math inline">\(O(1/N)\)</span>. It is one of those folk results that gets stated without proof in textbooks, invoked casually in papers, and waved away as obvious. While working on our paper <span class="citation" data-cites="djkw">[@djkw]</span>, we decided to actually prove it—and in the process, went looking for who first wrote the formula down. This is the story of that search, and of the surprisingly subtle gap between knowing a formula and proving it.</em></p>
+<h2 id="the-formula-everyone-knows">The formula everyone knows</h2>
+<p>Self-normalised importance sampling (SNIS) is the workhorse of Monte Carlo: given i.i.d. draws <span class="math inline">\(x_1, \ldots, x_N\)</span> from a proposal <span class="math inline">\(q\)</span>, the estimator <span class="math display">\[
+\hat{F}_N = \frac{\sum_{n=1}^N \omega(x_n) f(x_n)}{\sum_{n=1}^N \omega(x_n)}, \qquad \omega(x) = \frac{\pi(x)}{q(x)},
+\]</span> targets <span class="math inline">\(\pi(f)\)</span> but is biased, because <span class="math inline">\(\mathbb{E}[A/B] \neq \mathbb{E}[A]/\mathbb{E}[B]\)</span> in general. The “well-known” leading-order bias is <span class="math display">\[
+\mathbb{E}[\hat{F}_N] - \pi(f) \approx -\frac{1}{N} \int (f(x) - \pi(f))\, \omega^2(x)\, q(dx).
+\]</span> You can find this formula (or close variants) in <span class="citation" data-cites="liu2008">@liu2008</span> (Section 2.5), in countless lecture notes, and in the kind of back-of-the-envelope delta-method calculations that get passed around at conferences. But where does it <em>actually</em> come from? And has anyone ever proved it?</p>
+<h2 id="the-search-a-phd-thesis-from-1988">The search: a PhD thesis from 1988</h2>
+<p>During the preparation of <span class="citation" data-cites="djkw">[@djkw]</span>, my co-author <a href="https://sites.google.com/site/pierrejacob/">Pierre Jacob</a> started digging into the history. The trail led to a surprising place: a PhD thesis from 1988.</p>
+<p><span style="color: #1a5276;"><em>Timothy C. Hesterberg</em></span>, working under Brad Efron at Stanford, wrote a thesis titled “Advances in Importance Sampling” <span class="citation" data-cites="hesterberg1988">[@hesterberg1988]</span>—Technical Report No. 300, Department of Statistics, Stanford University. On page 40, in Section 2.5.2 (“Bias”), Hesterberg writes down the bias formula as his equation (2.63). In his notation (where <span class="math inline">\(f\)</span> is the target, <span class="math inline">\(g\)</span> the proposal, <span class="math inline">\(W = f/g\)</span> the weight, <span class="math inline">\(\theta\)</span> the test function, and <span class="math inline">\(Y = \theta W\)</span>): <span class="math display">\[
+E[\hat\mu_{\text{ratio}} - \mu] = -\frac{1}{n}\, E_g[W(Y - \mu W)] + \text{lower-order terms}.
+\]</span> Translating to our notation (<span class="math inline">\(\pi\)</span> for target, <span class="math inline">\(q\)</span> for proposal, <span class="math inline">\(\omega = \pi/q\)</span>, <span class="math inline">\(f\)</span> for test function), this becomes exactly: <span class="math display">\[
+\mathbb{E}[\hat{F}_N - \pi(f)] = -\frac{1}{N}\, q(\omega^2(f - \pi(f))) + \text{lower-order terms}.
+\]</span></p>
+<p>As far as we can tell, this is the <em>oldest</em> explicit statement of the SNIS bias formula in the literature. Hesterberg also published a Technometrics paper <span class="citation" data-cites="hesterberg1995">[@hesterberg1995]</span> covering related material, but the bias formula appears most clearly in the thesis itself.</p>
+<h2 id="how-hesterberg-derives-it-and-where-he-stops">How Hesterberg derives it (and where he stops)</h2>
+<p>Hesterberg’s derivation has two layers, neither of which constitutes a proof of the moment result.</p>
+<p><span style="color: #1a5276;"><em>Layer 1: Delta method.</em></span> In Appendix 3 (pp. 215–218), he writes <span class="math inline">\(\hat{F} = \bar{Y}/\bar{W}\)</span> as a ratio of sample averages and performs a second-order Taylor expansion around <span class="math inline">\((\mathbb{E}_q[\omega f],\, \mathbb{E}_q[\omega]) = (\pi(f),\, 1)\)</span>. Setting <span class="math inline">\(C = \overline{\omega f} - \pi(f)\)</span> and <span class="math inline">\(D = \bar\omega - 1\)</span>, one expands <span class="math inline">\((\pi(f) + C)/(1 + D)\)</span> and takes expectations term by term, using <span class="math inline">\(\mathbb{E}[C] = \mathbb{E}[D] = 0\)</span>: <span class="math display">\[
+\mathbb{E}[\hat{F}] \approx \pi(f) - \mathbb{E}[CD] + \pi(f)\,\mathbb{E}[D^2] = \pi(f) - \frac{1}{N}\, q(\omega^2(f - \pi(f))).
+\]</span> This is elegant but <em>purely formal</em>: the Taylor expansion is truncated and its expectation taken term by term, with no control on the remainder.</p>
+<p><span style="color: #1a5276;"><em>Layer 2: Edgeworth expansion.</em></span> To lend this analytical support, Hesterberg appeals to the Edgeworth expansion of <span class="citation" data-cites="bhattacharya1978">@bhattacharya1978</span> (their Theorem 2), which gives the distributional approximation: <span class="math display">\[
+\mathbb{P}\!\left\{\sqrt{N}(\hat{F} - \pi(f)) \leq z\sigma\right\} = \Phi(z) + \frac{1}{\sqrt{N}}\!\left(-\frac{b}{\sigma} + \frac{\kappa_3}{6\sigma^3}(z^2 - 1)\right)\phi(z) + o(N^{-1/2}),
+\]</span> where <span class="math inline">\(b = -q(\omega^2(f - \pi(f)))\)</span> is the “bias term” read off from the expansion.</p>
+<p>And then Hesterberg writes something remarkable on page 40:</p>
+<blockquote>
+<p>“These are the first order bias terms in the Edgeworth expansion of the distributions of these estimates. These are more useful than the actual biases, <strong>which may be infinite or undefined.</strong>”</p>
+</blockquote>
+<p>He <em>knows</em> that what he has is a distributional result, not a moment result, and he explicitly flags that the actual expectation <span class="math inline">\(\mathbb{E}[\hat{F}]\)</span> might not even exist. This is intellectually honest and, as it turns out, mathematically sharp.</p>
+<h2 id="the-gap-cdf-neq-moments">The gap: CDF <span class="math inline">\(\neq\)</span> moments</h2>
+<p>This brings us to what I think is the most interesting part of the story, and the piece that motivated me to understand the distinction more carefully.</p>
+<p>The Edgeworth expansion tells you about the <em>distribution</em> of <span class="math inline">\(\sqrt{N}(\hat{F} - \pi(f))\)</span>—it approximates the CDF. But knowing the CDF to high accuracy does <em>not</em> tell you the mean. This is a basic fact of probability, but it is worth pausing on because it is so easy to forget.</p>
+<p><span style="color: #1a5276;"><em>Why not?</em></span> The mean of a random variable <span class="math inline">\(X\)</span> can be written as a tail integral: <span class="math display">\[
+\mathbb{E}[X] = \int_0^\infty (1 - F_X(t))\, dt - \int_{-\infty}^0 F_X(t)\, dt.
+\]</span> If the CDF <span class="math inline">\(F_X\)</span> is approximated by <span class="math inline">\(\Phi + r_N\)</span> with <span class="math inline">\(|r_N(t)| = o(N^{-1/2})\)</span> uniformly in <span class="math inline">\(t\)</span>, you might hope to integrate this to get the mean. But the integral <span class="math inline">\(\int_{-\infty}^\infty r_N(t)\, dt\)</span> need not be small—or even finite. The CDF error is <em>pointwise small</em> (it vanishes at every fixed <span class="math inline">\(t\)</span>) but it is not <em><span class="math inline">\(L^1\)</span>-small</em> (it might not be integrable). The tails of <span class="math inline">\(r_N\)</span> can decay as slowly as <span class="math inline">\(|t|^{-2}\)</span>, making the integral diverge even though <span class="math inline">\(\sup_t |r_N(t)|\)</span> is tiny.</p>
+<p><span style="color: #1a5276;"><em>A counterexample.</em></span> Here is a clean construction that drives the point home. For each <span class="math inline">\(N \geq 1\)</span>, let <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span> and let <span class="math inline">\(V_N\)</span> be independent of <span class="math inline">\(Z\)</span> with <span class="math display">\[
+V_N = \begin{cases} 0 &amp; \text{with probability } 1 - 1/N, \\ N^{3/4} &amp; \text{with probability } 1/N. \end{cases}
+\]</span> Define <span class="math inline">\(T_N = Z + V_N/\sqrt{N}\)</span>. Since <span class="math inline">\(V_N = 0\)</span> with probability <span class="math inline">\(1 - 1/N\)</span>: <span class="math display">\[
+F_{T_N}(z) = (1 - 1/N)\,\Phi(z) + (1/N)\,\Phi(z - N^{1/4}) = \Phi(z) + O(N^{-1}) \quad \text{uniformly in } z.
+\]</span> The CDF looks Gaussian to <span class="math inline">\(O(N^{-1})\)</span>—the Edgeworth “bias term” is <span class="math inline">\(b = 0\)</span>. But: <span class="math display">\[
+\mathbb{E}[T_N] = \frac{N^{3/4}}{N \sqrt{N}} = N^{-3/4} \neq 0.
+\]</span> The perturbation <span class="math inline">\(V_N\)</span> is a rare, large spike: it happens with probability <span class="math inline">\(1/N\)</span> (invisible to the CDF at any fixed <span class="math inline">\(z\)</span>), but when it fires it contributes <span class="math inline">\(N^{3/4}/\sqrt{N} = N^{1/4}\)</span> to <span class="math inline">\(T_N\)</span>, which is enough to move the mean. The CDF sees nothing; the expectation feels everything.</p>
+<p><span style="color: #1a5276;"><em>The missing ingredient: uniform integrability.</em></span> The classical tool for bridging this gap is <em>uniform integrability</em>. By <span class="citation" data-cites="billingsley1999">@billingsley1999 [Theorem 3.5]</span>: if <span class="math inline">\(X_N \xrightarrow{d} X\)</span> and <span class="math inline">\(\{X_N\}\)</span> is uniformly integrable, then <span class="math inline">\(\mathbb{E}[X_N] \to \mathbb{E}[X]\)</span>. A sufficient condition is <span class="math inline">\(\sup_N \mathbb{E}[|X_N|^{1+\delta}] &lt; \infty\)</span> for some <span class="math inline">\(\delta &gt; 0\)</span>. The Edgeworth expansion provides no such control, and Hesterberg does not supply it.</p>
+<p>For more on this distinction, see <span class="citation" data-cites="bhattacharya1986">@bhattacharya1986 [Chapter 2]</span> who discuss explicitly when Edgeworth expansions yield valid moment approximations, and <span class="citation" data-cites="hall1992">@hall1992 [Chapter 2, Section 2.5]</span> who makes the same point in the bootstrap context.</p>
+<h2 id="our-result-a-rigorous-bias-theorem">Our result: a rigorous bias theorem</h2>
+<p>In <span class="citation" data-cites="djkw">[@djkw]</span>, we prove what appears to be the first rigorous version of the asymptotic bias formula.</p>
+<section id="theorem-theorem-2.1-in-djkw" class="callout-note">
+<h2>Theorem (Theorem 2.1 in <span class="citation" data-cites="djkw">@djkw</span>)</h2>
+<p>Let <span class="math inline">\(f\)</span> with <span class="math inline">\(\pi(|f|) &lt; \infty\)</span>. Assume <span class="math inline">\(x_1, \ldots, x_N\)</span> are i.i.d. from <span class="math inline">\(q\)</span>, <span class="math inline">\(\omega = \pi/q\)</span>, and <span class="math inline">\(\hat{F}_N = \sum \omega_n f_n / \sum \omega_n\)</span>. If <span class="math inline">\(q(|\omega^2(f - \pi(f))|^{1+\epsilon}) &lt; \infty\)</span> for some <span class="math inline">\(\epsilon &gt; 0\)</span> and <span class="math inline">\(q(\omega^{-\eta}) &lt; \infty\)</span> for some <span class="math inline">\(\eta &gt; 0\)</span>, then: <span class="math display">\[
+\lim_{N \to \infty} N \times \mathbb{E}[\hat{F}_N - \pi(f)] = -q(\omega^2(f - \pi(f))).
+\]</span></p>
+</section>
+<p>The proof avoids Edgeworth expansions entirely. Instead, it uses the exchangeability of the sample to isolate a single particle <span class="math inline">\(x_1\)</span> and write the rescaled bias as an expectation <span class="math inline">\(-\mathbb{E}[A_N]\)</span> where <span class="math inline">\(A_N = \omega_1^2(f_1 - \pi(f)) / (\hat{Z}_N \cdot \hat{Z}_{N-1}&#39;)\)</span> (with <span class="math inline">\(\hat{Z}&#39;_{N-1}\)</span> the leave-one-out average). By the strong law, <span class="math inline">\(A_N \to \omega_1^2(f_1 - \pi(f))\)</span> a.s. Then the key step: we establish uniform integrability of <span class="math inline">\(\{A_N\}\)</span> by bounding <span class="math inline">\(\sup_N \mathbb{E}[|A_N|^{1+\epsilon}] &lt; \infty\)</span>. The numerator is handled by the moment condition on <span class="math inline">\(\omega^2(f - \pi(f))\)</span>; the denominator is controlled by a standalone result (Proposition 2.1 in our paper) that bounds inverse moments of the sample average of <span class="math inline">\(\omega\)</span> using only <span class="math inline">\(q(\omega^{-\eta}) &lt; \infty\)</span>. Vitali’s convergence theorem then lets us exchange limit and expectation.</p>
+<p>Compared to Hesterberg’s conditions (third moments of <span class="math inline">\(\omega\)</span> and <span class="math inline">\(\omega f\)</span> under <span class="math inline">\(q\)</span>, plus Cramer’s condition on the characteristic function), our assumptions are strictly weaker: we need only slightly more than second moments, no Cramer condition, and we get a genuine moment result rather than a distributional approximation.</p>
+<p>An independent result on the same asymptotic bias was obtained by <a href="https://kameliadaudel.github.io/">Kamelia Daudel</a> and co-authors <span class="citation" data-cites="daudel2024">[@daudel2024]</span>, whose Proposition 6 applied to IS yields the same leading term under separate moment conditions on <span class="math inline">\(\omega\)</span> and on <span class="math inline">\(\omega(f - \pi(f))\)</span>. We show in our appendix that the conditions of <span class="citation" data-cites="daudel2024">@daudel2024</span> imply ours but not conversely, so our theorem is strictly more general—but credit where credit is due, the result was found independently.</p>
+<h2 id="the-moral">The moral</h2>
+<p>There are a few takeaways from this story that I find interesting beyond the specific result.</p>
+<p>First, <em>folk results deserve proofs</em>. The SNIS bias formula had been floating around for nearly 40 years without a rigorous proof. Hesterberg had the formula and the intellectual honesty to flag the gap; everyone after him (including textbook authors) simply repeated the formula without comment. It took actually sitting down to write a proof to discover that the standard approach (Edgeworth expansions) is fundamentally insufficient.</p>
+<p>Second, <em>distributional results and moment results are different things</em>, and the gap between them is not a technicality—it is a genuine mathematical obstacle that requires a specific tool (uniform integrability) to bridge. The counterexample above shows this is not pedantry: you can have perfect CDF approximation and completely wrong moments.</p>
+<p>Third, <em>searching the literature is underrated</em>. Pierre’s detective work in tracking down the Hesterberg thesis—a scanned Stanford technical report from 1988, not indexed in the usual databases—saved us from either failing to cite the originator or, worse, claiming novelty for the formula itself rather than for its proof. The formula is Hesterberg’s; what is new is that it is actually true (under mild conditions).</p>
+<h2 id="image-suggestion">Image suggestion</h2>
+<p>For the blog header, I am thinking of an image evoking “origins” and “roots”—perhaps a large old tree with deep, visible roots, or an archaeological dig uncovering something ancient. The idea is to visually suggest tracing something back to its source. If you have a good photo of an ancient tree or a library archive, that would work nicely. I will add the image once I find the right one.</p>
+</body>
+</html>

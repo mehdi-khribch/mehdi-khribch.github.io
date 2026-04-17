@@ -1,8 +1,6 @@
 /.quarto/
-/docs/
 /_site/
 .DS_Store
-*.html
 !.github/
 
 **/*.quarto_ipynb
