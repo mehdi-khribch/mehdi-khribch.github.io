@@ -1,215 +1,438 @@
 /*-- scss:defaults --*/
-$font-family-sans-serif: "Latin Modern Roman", "Computer Modern", "CMU Serif", Georgia, serif;
-$font-family-monospace: "Latin Modern Mono", "CMU Typewriter Text", "Courier New", monospace;
-$body-bg: #fafbfd;
-$body-color: #2c2c2c;
-$link-color: #1b4f72;
-$navbar-bg: #1b4f72;
+
+// ============================================================================
+// Mehdi Khribch — site design system
+// Derived from the PhD thesis (EB Garamond, two-tone navy, hairline rules).
+// Aesthetic: minimal / restrained brutalist, clean, academic. Square geometry,
+// no gradients, no shadows — hairlines only.
+// ============================================================================
+
+// === Thesis design tokens (source of truth) ===
+$ink:        #17212b;  // near-black body ink
+$navy-deep:  #061A40;  // titles, page-title, chapter-head  (thesisbluedark)
+$navy:       #0F3264;  // section headings, primary          (thesisblue)
+$navy-light: #285591;  // eyebrows, rules, accents           (thesisbluelight)
+$link:       #0F3CA5;  // links / urls                        (citationblue)
+$slate:      #1F6FA2;  // callout/box frame accent            (qboxframe)
+$panel:      #F2F7FB;  // callout / panel background          (qboxfill)
+$paper:      #ffffff;  // page background
+$rule:       #d7dee6;  // hairline separator grey
+$muted:      #5b6b7a;  // meta / secondary text
+
+// === Bootstrap / Quarto (cosmo) variable overrides ===
+$font-family-sans-serif:  "EB Garamond", Georgia, "Times New Roman", serif;
+$font-family-monospace:   "Latin Modern Mono", "CMU Typewriter Text", "Courier New", monospace;
+
+$body-bg:     $paper;
+$body-color:  $ink;
+$link-color:  $link;
+
+$font-family-base:  $font-family-sans-serif;
+$body-font-family:  $font-family-sans-serif;
+
+$navbar-bg:   $navy-deep;
 
 /*-- scss:rules --*/
 
-// Global LaTeX feel
+// ============================================================================
+// FOUNDATIONS — base typography, links, eyebrow, rules, Arabic/RTL
+// ============================================================================
+
 body {
-  font-family: "CMU Serif", "Latin Modern Roman", "Computer Modern", Georgia, serif !important;
-  font-size: 11.5pt;
-  line-height: 1.65;
-  color: #2c2c2c;
+  font-family: "EB Garamond", Georgia, "Times New Roman", serif !important;
+  font-size: 1.06rem;              // ~11.5pt
+  line-height: 1.6;
+  color: $ink;
+  background-color: $paper;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-// Headings
+// Heading base — page-title & section-rule specifics live further down.
 h1, h2, h3, h4, h5, h6 {
-  font-family: "CMU Serif", "Latin Modern Roman", "Computer Modern", Georgia, serif !important;
-  font-weight: 700;
-  color: #1b2a3d;
+  font-family: "EB Garamond", Georgia, "Times New Roman", serif !important;
+  font-weight: 600;
+  color: $navy;
+  line-height: 1.25;
   margin-top: 1.5em;
   margin-bottom: 0.5em;
+  letter-spacing: 0;
 }
 
-h1 {
-  font-size: 1.8em;
-  color: #1b4f72;
+h1 { font-size: 1.85em; color: $navy-deep; }
+h2 { font-size: 1.4em;  color: $navy; }
+h3 { font-size: 1.18em; color: $navy; }
+h4 { font-size: 1.05em; color: $navy-deep; }
+h5, h6 { font-size: 0.95em; color: $navy-deep; }
+
+// Links — thesis restraint, no red anywhere.
+a {
+  color: $link;
+  text-decoration: none;
+  transition: color 0.15s ease;
+
+  &:hover,
+  &:focus {
+    color: $navy;
+    text-decoration: underline;
+    text-underline-offset: 0.12em;
+    text-decoration-thickness: 1px;
+  }
 }
 
-h2 {
-  font-size: 1.4em;
-  color: #1b4f72;
+// Eyebrow / kicker — thesis small-caps label.
+.eyebrow,
+.kicker {
+  display: block;
+  font-family: "EB Garamond", Georgia, "Times New Roman", serif;
+  font-variant: small-caps;
+  text-transform: none;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  font-size: 0.82em;
+  color: $navy-light;
+  line-height: 1.3;
+  margin-bottom: 0.4em;
 }
 
-h3 {
+// Section-heading rule (mirrors thesis \titlerule) — subtle hairline under h2.
+#quarto-document-content,
+.quarto-container,
+main {
+  & > h2,
+  .content > h2,
+  section > h2 {
+    padding-bottom: 0.25em;
+    border-bottom: 1px solid $rule;
+  }
+}
+
+// Diamond divider — thesis cover ornament (thin rule broken by a navy diamond).
+.rule-diamond {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9em;
+  border: 0;
+  height: auto;
+  margin: 2.5em 0;
+  overflow: visible;
+  background: none;
+
+  &::before,
+  &::after {
+    content: "";
+    flex: 1 1 auto;
+    height: 1px;
+    background: $rule;
+  }
+}
+
+.rule-diamond > span {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  background: $navy;
+  transform: rotate(45deg);
+  border-radius: 0;
+}
+
+.rule-diamond:empty {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    background: $navy;
+    transform: translate(-50%, -50%) rotate(45deg);
+    border-radius: 0;
+  }
+}
+
+// Arabic / RTL — Amiri (the thesis Arabic face).
+[lang="ar"],
+.arabic {
+  font-family: "Amiri", serif;
+  direction: rtl;
+  text-align: right;
+  font-size: 1.15em;
+  line-height: 1.9;
+  unicode-bidi: isolate;
+}
+
+figcaption[lang="ar"],
+figcaption .arabic,
+.arabic figcaption,
+[lang="ar"] figcaption {
+  font-family: "Amiri", serif;
+  direction: rtl;
+  text-align: right;
   font-size: 1.15em;
 }
 
-// Links
-a {
-  color: #1b4f72;
-  text-decoration: none;
-  transition: color 0.15s;
-  &:hover {
-    text-decoration: underline;
-    color: #c0392b;
-  }
-}
+// ============================================================================
+// CHROME — navbar, footer, page-title (chapter-head) block
+// ============================================================================
 
-// Navbar — deep blue with white text
 .navbar {
-  border-bottom: none;
-  font-family: 'Cormorant Garamond', "CMU Serif", Georgia, serif !important;
+  background: $navy-deep !important;
+  background-image: none !important;   // kill the old linear-gradient
+  box-shadow: none !important;         // kill the old drop shadow
+  border-bottom: 1px solid $navy-light;
+  border-radius: 0 !important;
+  font-family: "EB Garamond", "CMU Serif", Georgia, serif !important;
   font-size: 11pt;
-  padding: 0.6em 0;
-  background: linear-gradient(135deg, #1b4f72 0%, #1a3a5c 100%) !important;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  padding: 0.55em 0;
 
   .navbar-brand {
-    font-family: 'Cormorant Garamond', Georgia, serif !important;
-    font-weight: 700;
-    font-size: 1.4em;
+    font-family: "EB Garamond", "CMU Serif", Georgia, serif !important;
+    font-weight: 600;
     color: #ffffff !important;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.03em;
+    border-radius: 0;
     display: flex;
     align-items: center;
-    gap: 0.3em;
+    gap: 0.4em;
 
-    img {
-      height: 28px;
-      width: 28px;
-      border-radius: 4px;
+    img,
+    .navbar-logo {
+      height: 36px;
+      width: auto;
+      border-radius: 0 !important;
+      box-shadow: none;
     }
   }
 
+  .navbar-title {
+    font-family: "EB Garamond", "CMU Serif", Georgia, serif !important;
+    font-weight: 600;
+    font-size: 1.35em;
+    color: #ffffff !important;
+    letter-spacing: 0.03em;
+  }
+
   .nav-link {
-    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-family: "EB Garamond", "CMU Serif", Georgia, serif !important;
     font-weight: 500;
     font-size: 1.05em;
-    letter-spacing: 0.03em;
-    color: rgba(255,255,255,0.88) !important;
-    padding: 0.4em 0.85em !important;
-    border-radius: 4px;
-    transition: all 0.2s ease;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.88) !important;
+    padding: 0.4em 0.8em !important;
+    border-radius: 0 !important;
+    border-bottom: 2px solid transparent;
+    transition: background-color 0.18s ease, color 0.18s ease;
 
-    &:hover {
-      background: rgba(255,255,255,0.12);
+    &:hover,
+    &:focus {
+      background: rgba(255, 255, 255, 0.10);
       color: #ffffff !important;
       text-decoration: none;
     }
 
     &.active {
       color: #ffffff !important;
-      background: rgba(255,255,255,0.18);
-      border-bottom: 2px solid rgba(255,255,255,0.6);
+      background: transparent;
+      border-bottom: 2px solid #ffffff;
     }
   }
 
-  // Icons in navbar (scholar, github, linkedin, email)
   .navbar-nav .nav-item .nav-link i,
   .navbar-nav .nav-item .nav-link .bi {
-    color: rgba(255,255,255,0.85);
+    color: rgba(255, 255, 255, 0.85);
     font-size: 1.1em;
-    transition: color 0.2s;
+    transition: color 0.18s ease;
+  }
 
-    &:hover {
+  .navbar-nav .nav-item .nav-link:hover i,
+  .navbar-nav .nav-item .nav-link:hover .bi {
+    color: #ffffff;
+  }
+
+  .navbar-toggler {
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 0;
+  }
+}
+
+.nav-footer {
+  background: $navy-deep;
+  background-image: none;
+  border-top: 1px solid $navy-light;
+  border-radius: 0;
+  font-family: "EB Garamond", "CMU Serif", Georgia, serif;
+  font-size: 0.85em;
+  color: rgba(255, 255, 255, 0.65);
+  padding: 1.1em 0;
+
+  a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
       color: #ffffff;
+      text-decoration: underline;
     }
   }
 }
 
-// Profile sidebar
-.about-entity {
-  text-align: center;
+// Page-title chapter-head lives in latex.css (scoped to content pages via the
+// .default title block, so the home masthead is never framed by rules).
+body:not(.quarto-post) .quarto-title-banner {
+  background: transparent !important;
+  background-image: none !important;
+  color: $navy-deep;
+  border-radius: 0;
+  padding: 0;
+}
 
-  img {
-    border-radius: 6px;
-    max-width: 200px;
-    border: 1px solid #d0d9e0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+// ============================================================================
+// CONTENT COMPONENTS — publications, entries, callouts, subscribe, profile
+// ============================================================================
+
+.pub-item {
+  padding: 1.6em 0;
+  border-bottom: 1px solid $rule;
+  border-radius: 0;
+
+  &:first-child { padding-top: 0.4em; }
+  &:last-child  { border-bottom: none; }
+
+  .pub-title {
+    display: block;
+    font-family: "EB Garamond", Georgia, serif !important;
+    font-weight: 600;
+    font-size: 1.15em;
+    line-height: 1.3;
+    color: $navy-deep !important;
+    margin-bottom: 0.35em;
+    text-decoration: none;
+
+    &:hover { color: $link !important; text-decoration: none; }
+  }
+
+  .pub-authors {
+    display: block;
+    font-family: "EB Garamond", Georgia, serif;
+    font-weight: 400;
+    font-size: 0.98em;
+    color: $ink;
+    opacity: 0.85;
+    margin-bottom: 0.3em;
+
+    .me,
+    strong { font-weight: 600; opacity: 1; }
+  }
+
+  .pub-venue {
+    display: block;
+    font-family: "EB Garamond", Georgia, serif;
+    font-style: italic;
+    font-size: 0.95em;
+    color: $navy-light;
+    letter-spacing: 0.01em;
+    margin-bottom: 0.5em;
+
+    em, i { font-style: italic; }
+  }
+
+  .pub-link {
+    font-size: 0.86em;
+    color: $muted;
+
+    a {
+      color: $link;
+      text-decoration: none;
+      border-radius: 0;
+
+      &:hover { color: $navy-deep; text-decoration: underline; }
+    }
+  }
+
+  p {
+    color: $muted;
+    font-size: 0.96em;
+    line-height: 1.65;
+    max-width: 68ch;
+    margin-top: 0.8em;
+    margin-bottom: 0;
   }
 }
 
-// Content cards
 .entry-card {
-  padding: 1em 0;
-  border-bottom: 1px solid #e8ecf0;
+  padding: 1.1em 0;
+  border-bottom: 1px solid $rule;
+  border-radius: 0;
 
-  &:last-child {
-    border-bottom: none;
-  }
+  &:last-child { border-bottom: none; }
 
   h3 {
     margin-top: 0;
-    font-size: 1.05em;
+    margin-bottom: 0.2em;
+    font-family: "EB Garamond", Georgia, serif !important;
+    font-weight: 600;
+    font-size: 1.08em;
+    color: $navy-deep;
   }
 
-  .meta {
-    color: #666;
-    font-size: 0.92em;
-    font-style: italic;
-  }
-
-  .venue {
-    color: #555;
-    font-size: 0.9em;
-  }
+  .meta  { color: $muted; font-size: 0.92em; font-style: italic; }
+  .venue { color: $muted; font-size: 0.9em; }
 }
 
-// Page footer
-.nav-footer {
-  background: #1b2a3d;
-  border-top: none;
-  font-size: 0.85em;
-  color: rgba(255,255,255,0.6);
-  padding: 1.2em 0;
-
-  a {
-    color: rgba(255,255,255,0.7);
-    &:hover {
-      color: #ffffff;
-    }
-  }
-}
-
-// Theorem-like blocks
-.theorem, .definition, .lemma, .proposition {
-  background: #f0f4f8;
-  border-left: 3px solid #1b4f72;
-  padding: 1em 1.2em;
-  margin: 1.5em 0;
+// Callout / theorem boxes — thesis chapterabstract / questionbox.
+.theorem,
+.definition,
+.lemma,
+.proposition {
+  background: $panel;
+  border: none;
+  border-left: 2.2px solid $navy-light;
+  border-radius: 0;
+  padding: 1em 1.3em;
+  margin: 1.6em 0;
   font-style: italic;
-  border-radius: 0 4px 4px 0;
+  color: $ink;
+  line-height: 1.6;
 
-  strong {
+  strong,
+  b {
+    font-family: "EB Garamond", Georgia, serif;
     font-style: normal;
-    color: #1b4f72;
+    font-weight: 600;
+    color: $navy;
   }
 }
 
-// CV iframe
-iframe {
-  border: 1px solid #d0d9e0;
-  border-radius: 4px;
-}
-
-// Subscribe box
 .subscribe-box {
-  background: #f0f4f8;
-  border-left: 3px solid #1b4f72;
-  border-radius: 0 4px 4px 0;
+  background: $panel;
+  border: none;
+  border-left: 2.2px solid $navy-light;
+  border-radius: 0;
   padding: 1.2em 1.5em;
   margin: 1.5em 0 2em 0;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 1em;
+  font-family: "EB Garamond", Georgia, serif;
 }
 
 .subscribe-text {
-  font-size: 0.95em;
-  color: #2c2c2c;
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: 1em;
+  line-height: 1.5;
+  color: $ink;
   flex: 1 1 300px;
 }
 
 .subscribe-icon {
-  font-size: 1.2em;
+  font-size: 1.15em;
+  color: $navy;
   margin-right: 0.3em;
 }
 
@@ -220,360 +443,402 @@ iframe {
 }
 
 .subscribe-input {
-  font-family: "CMU Serif", "Latin Modern Roman", Georgia, serif;
-  font-size: 0.9em;
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: 0.92em;
   padding: 0.45em 0.8em;
-  border: 1px solid #c0c8d0;
-  border-radius: 3px;
-  background: #ffffff;
-  color: #2c2c2c;
-  width: 200px;
+  border: 1px solid $rule;
+  border-radius: 0;
+  background: $paper;
+  color: $ink;
+  width: 210px;
   transition: border-color 0.15s;
 
-  &:focus {
-    outline: none;
-    border-color: #1b4f72;
-  }
+  &:focus { outline: none; border-color: $navy-light; }
 }
 
 .subscribe-btn {
-  font-family: "CMU Serif", "Latin Modern Roman", Georgia, serif;
-  font-size: 0.9em;
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: 0.92em;
   padding: 0.45em 1.2em;
-  background: #1b4f72;
-  color: #ffffff;
+  background: $navy;
+  color: $paper;
   border: none;
-  border-radius: 3px;
+  border-radius: 0;
   cursor: pointer;
   transition: background 0.15s;
 
-  &:hover {
-    background: #163d5c;
-  }
+  &:hover { background: $navy-deep; }
 }
 
 @media (max-width: 600px) {
-  .subscribe-box {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .subscribe-form {
-    flex-direction: column;
-  }
-  .subscribe-input {
-    width: 100%;
+  .subscribe-box  { flex-direction: column; align-items: stretch; }
+  .subscribe-form { flex-direction: column; }
+  .subscribe-input { width: 100%; }
+}
+
+.about-entity {
+  text-align: center;
+
+  img {
+    max-width: 200px;
+    border: 1px solid $rule;
+    border-radius: 0;
+    box-shadow: none;
   }
 }
 
-// === ENHANCED SITE-WIDE TYPOGRAPHY ===
-// Crisper, more refined text rendering across the whole site
-
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+.painting-section {
+  margin: 2.5em 0;
+  text-align: center;
 }
 
-// All page titles get Cormorant Garamond
-h1, h2, h3 {
-  font-family: 'Cormorant Garamond', "CMU Serif", Georgia, serif !important;
+.featured-painting {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border: 1px solid $rule;
+  border-radius: 0;
+  box-shadow: none;
 }
 
-// === LRB-INSPIRED BLOG POST STYLES (blog section only) ===
-// Clean, literary-magazine aesthetic scoped to post pages
+.painting-caption {
+  margin-top: 0.7em;
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: 0.85em;
+  font-style: italic;
+  color: $muted;
+  text-align: center;
+  line-height: 1.5;
+}
 
-// Post title block
+iframe {
+  border: 1px solid $rule;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+// ============================================================================
+// BLOG — LRB-style literary listing + post pages, migrated to thesis system
+// ============================================================================
+
 body.quarto-post .quarto-title-block {
   margin-bottom: 2em;
   padding-bottom: 1.5em;
-  border-bottom: 1px solid #ccc;
+  border-top: 2px solid $navy-light;
+  padding-top: 1.1em;
+  border-bottom: 1px solid $rule;
 }
 
 body.quarto-post .quarto-title h1.title {
-  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-family: "EB Garamond", Georgia, serif !important;
   font-size: 2.6em;
   font-weight: 600;
   line-height: 1.15;
-  color: #1a1a1a;
-  letter-spacing: -0.01em;
+  color: $navy-deep;
+  letter-spacing: -0.005em;
   margin-bottom: 0.15em;
 }
 
 body.quarto-post .quarto-title .subtitle {
-  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-family: "EB Garamond", Georgia, serif !important;
   font-size: 1.2em;
   font-style: italic;
-  color: #555;
+  color: $muted;
   line-height: 1.4;
 }
 
 body.quarto-post .quarto-title-meta {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: "EB Garamond", Georgia, serif;
   font-size: 0.95em;
-  color: #666;
-  letter-spacing: 0.03em;
+  color: $muted;
+  font-variant: small-caps;
+  letter-spacing: 0.10em;
+  text-transform: none;
 }
 
-// Blog post body: generous reading width, refined line height
 body.quarto-post #quarto-document-content {
   max-width: 720px;
   margin: 0 auto;
+  font-family: "EB Garamond", Georgia, serif;
 
   p {
-    font-size: 11.5pt;
+    font-size: 1.06rem;
     line-height: 1.75;
     margin-bottom: 1.2em;
+    color: $ink;
   }
 
-  // Section headings: understated, LRB-style
   h2 {
-    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-family: "EB Garamond", Georgia, serif !important;
     font-size: 1.5em;
     font-weight: 600;
-    color: #1a1a1a;
+    color: $navy;
     margin-top: 2.5em;
     margin-bottom: 0.6em;
     padding-bottom: 0.2em;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid $rule;
   }
 
   h3 {
-    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-family: "EB Garamond", Georgia, serif !important;
     font-size: 1.2em;
     font-weight: 600;
-    color: #333;
+    color: $navy-deep;
     font-style: italic;
     margin-top: 2em;
   }
 
-  // Blockquotes: refined, LRB-style indented
   blockquote {
-    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-family: "EB Garamond", Georgia, serif;
     font-size: 1.05em;
     line-height: 1.65;
-    color: #333;
+    color: $ink;
     font-style: italic;
-    border-left: 2px solid #999;
+    border-left: 2px solid $navy-light;
     background: transparent;
     padding: 0.3em 0 0.3em 1.5em;
     margin: 1.8em 0 1.8em 1em;
     border-radius: 0;
   }
 
-  // Images: clean presentation
-  figure {
-    margin: 2em 0;
-  }
+  figure { margin: 2em 0; }
 
   figcaption {
+    font-family: "EB Garamond", Georgia, serif;
     font-size: 0.85em;
-    color: #777;
+    color: $muted;
     font-style: italic;
     text-align: center;
     margin-top: 0.5em;
   }
 
-  // Further reading section: subtle
   hr {
     border: none;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid $rule;
     margin: 2.5em 0;
   }
 }
 
-// === LRB-STYLE BLOG LISTING PAGE ===
-// Literary magazine aesthetic for the blog index
-
-// Blog page title
+// Blog listing (index) title
 .quarto-title h1.title {
-  font-family: 'Cormorant Garamond', Georgia, serif !important;
-  font-size: 2.8em;
+  font-family: "EB Garamond", Georgia, serif !important;
   font-weight: 600;
-  color: #1a1a1a;
-  letter-spacing: 0.02em;
+  color: $navy-deep;
+  letter-spacing: 0.005em;
 }
 
-.quarto-title .subtitle {
-  font-family: 'Cormorant Garamond', Georgia, serif !important;
-  font-size: 1.15em;
-  font-style: italic;
-  color: #666;
-}
-
-// Categories sidebar: clean, understated
 .quarto-listing-category {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: "EB Garamond", Georgia, serif;
 
   .category {
     font-size: 0.95em;
-    color: #444;
+    color: $ink;
     padding: 0.25em 0;
     transition: color 0.15s;
 
-    &:hover {
-      color: #1b4f72;
-    }
+    &:hover { color: $navy; }
   }
 
-  .category.active {
-    font-weight: 600;
-    color: #1b4f72;
-  }
+  .category.active { font-weight: 600; color: $navy; }
 }
 
-// Grid listing: LRB newspaper-style side-by-side layout
 .quarto-listing {
 
-  // Grid container
-  .list.grid {
-    gap: 1.8em !important;
-  }
+  .list.grid { gap: 1.8em !important; }
 
-  // Each grid card
   .g-col-1 {
     border: none !important;
     border-bottom: none !important;
     background: transparent;
     padding: 0;
 
-    .card {
+    .card,
+    .quarto-grid-item.card {
       background: transparent;
       border: none;
-      border-top: 2px solid #1a1a1a;
-      border-radius: 0;
+      border-top: 1px solid $navy-deep;
+      border-radius: 0 !important;
+      box-shadow: none !important;
       padding: 1em 0 0 0;
       height: 100%;
       transition: none;
 
-      &:hover {
-        box-shadow: none;
-        background: transparent;
-      }
+      &:hover { box-shadow: none; background: transparent; }
     }
 
-    // Thumbnail images: full width, newspaper feel
     .card-img-top,
+    .card-img,
+    .thumbnail-image,
     .thumbnail {
-      border-radius: 0;
-      box-shadow: none;
+      border-radius: 0 !important;
+      box-shadow: none !important;
       margin-bottom: 0.8em;
       width: 100%;
       object-fit: cover;
       max-height: 200px;
     }
 
-    .card-body {
-      padding: 0;
-    }
-
-    // No border/background on card text area
-    .card-text {
-      padding: 0;
-    }
+    .card-body { padding: 0; }
+    .card-text { padding: 0; }
   }
 
-  // Post titles: bold serif, LRB-style
   .card-title,
   .listing-title {
-    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-family: "EB Garamond", Georgia, serif !important;
     font-size: 1.3em;
     font-weight: 700;
-    color: #1a1a1a;
+    color: $navy-deep;
     line-height: 1.25;
     margin-bottom: 0.3em;
     transition: color 0.15s;
 
     a {
-      color: #1a1a1a;
+      color: $navy-deep;
       text-decoration: none;
 
-      &:hover {
-        color: #1b4f72;
-        text-decoration: none;
-      }
+      &:hover { color: $navy; text-decoration: none; }
     }
+
+    &:hover { color: $navy; }
   }
 
-  // Dates: quiet, above the title
   .listing-date {
-    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-family: "EB Garamond", Georgia, serif;
     font-size: 0.85em;
-    color: #999;
-    letter-spacing: 0.03em;
-    margin-bottom: 0.2em;
+    font-style: italic;
+    color: $muted;
+    letter-spacing: 0;
+    text-transform: none;
+    margin-bottom: 0.25em;
   }
 
-  // Descriptions: compact, literary
   .listing-description,
   .card-text .listing-description {
+    font-family: "EB Garamond", Georgia, serif;
     font-size: 0.9em;
     line-height: 1.5;
-    color: #555;
+    color: $muted;
     margin-top: 0.4em;
   }
 
-  // Category tags: minimal, understated
   .listing-categories {
-    margin-top: 0.5em;
+    margin-top: 0.7em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45em 0.5em;          // roomier row + column gaps (de-crammed)
+    line-height: 1.6;
 
     .listing-category {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 0.72em;
+      font-family: "EB Garamond", Georgia, serif;
+      font-size: 0.82em;
       font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #1b4f72;
-      background: #eef3f7;
-      border: 1px solid #d0dce5;
-      border-radius: 2px;
-      padding: 0.12em 0.5em;
+      text-transform: none;      // no longer all-caps
+      letter-spacing: 0.01em;
+      color: $navy;
+      background: $panel;
+      border: 1px solid $rule;
+      border-radius: 0 !important;
+      padding: 0.2em 0.7em;      // more breathing room
+      margin: 0;
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
+
+      &:hover { color: $navy-deep; border-color: $navy-light; background: #eaf0f6; }
     }
   }
 }
 
-// Override Quarto grid card default styling
 .quarto-grid-item {
   border: none !important;
   background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 
-  &.borderless {
-    border: none !important;
-  }
+  &.borderless { border: none !important; }
 }
 
-// Make the grid 2 columns on medium screens, 1 on mobile
 @media (max-width: 991px) {
-  .quarto-listing .list.grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
+  .quarto-listing .list.grid { grid-template-columns: repeat(2, 1fr) !important; }
 }
 
 @media (max-width: 600px) {
-  .quarto-listing .list.grid {
-    grid-template-columns: 1fr !important;
-  }
+  .quarto-listing .list.grid { grid-template-columns: 1fr !important; }
 }
 
-// Subscribe box: more LRB-like, refined
-.subscribe-box {
-  background: #f8f8f6;
-  border-left: 2px solid #1b4f72;
-  border-radius: 0;
-  font-family: 'Cormorant Garamond', Georgia, serif;
+// ============================================================================
+// RESPONSIVE / OVERFLOW SAFETY — friendly on laptop and mobile
+// ============================================================================
 
-  .subscribe-text {
-    font-size: 1em;
-    line-height: 1.5;
-    color: #333;
-  }
+// Nothing should push the page wider than the screen.
+html, body { max-width: 100%; overflow-x: hidden; }
+
+// Media never overflows its column.
+img, svg, iframe, video, table {
+  max-width: 100%;
+  height: auto;
 }
 
-// Print styles
+// Long words / URLs wrap instead of stretching the layout.
+#quarto-document-content,
+.pub-item, .entry-card, .listing-description, p, li {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+// Display math (KaTeX) is the main overflow culprit on phones:
+// let a long equation scroll inside its own box instead of widening the page.
+.katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 2px;
+}
+// Inline math shouldn't force width either.
+.katex { white-space: normal; }
+
+// Wide code / output blocks scroll internally.
+pre, .cell-output, .sourceCode {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+// --- Tablet / small-laptop ---
+@media (max-width: 992px) {
+  body:not(.quarto-post) .quarto-title h1.title { font-size: 1.95em; }
+}
+
+// --- Mobile ---
+@media (max-width: 600px) {
+  body { font-size: 1.02rem; }
+
+  // Page titles scale down so they never wrap awkwardly or overflow.
+  body:not(.quarto-post) .quarto-title h1.title { font-size: 1.7em; line-height: 1.2; }
+  body.quarto-post .quarto-title h1.title { font-size: 2em; }
+
+  h1 { font-size: 1.6em; }
+  h2 { font-size: 1.28em; }
+
+  // Comfortable edge padding on phones.
+  .pub-item, .entry-card { padding-left: 0; padding-right: 0; }
+  .pub-item p { max-width: 100%; }
+
+  // Blog post reading column fills the phone width.
+  body.quarto-post #quarto-document-content { max-width: 100%; padding: 0 2px; }
+
+  // Callout / subscribe boxes get tighter padding.
+  .theorem, .definition, .lemma, .proposition,
+  .subscribe-box { padding: 0.9em 1em; }
+
+  // Profile image centers and never gets too large.
+  .about-entity img { max-width: 62%; }
+}
+
+// ============================================================================
+// PRINT
+// ============================================================================
 @media print {
-  body {
-    font-size: 10pt;
-  }
-  .navbar, .nav-footer {
-    display: none;
-  }
+  body { font-size: 10pt; }
+  .navbar, .nav-footer { display: none; }
 }

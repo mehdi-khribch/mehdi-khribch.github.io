@@ -8,9 +8,9 @@ website:
   site-url: https://mehdi-khribch.github.io
   favicon: images/favicon.png
   navbar:
-    logo: images/favicon.png
+    logo: images/logo.png
     logo-alt: "MK"
-    background: "#1b4f72"
+    background: "#061A40"
     foreground: "#ffffff"
     left:
       - text: "About"
@@ -47,7 +47,7 @@ format:
     css: latex.css
     fontsize: "11.5pt"
     linestretch: 1.5
-    mainfont: "Latin Modern Roman"
+    mainfont: "EB Garamond"
     monofont: "Latin Modern Mono"
     toc: false
     code-copy: true
@@ -57,4 +57,8 @@ format:
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css">
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-          <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+    include-after-body:
+      - _includes/scroll-reveal.html
