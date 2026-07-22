@@ -19,7 +19,7 @@ We introduce the $\tilde{\rho}$-posterior, a modified version of the $\rho$-post
 
 [George Deligiannidis, Pierre E. Jacob, El Mahdi Khribch, Guanyang Wang]{.pub-authors}
 
-[*Major revision at The Annals of Statistics*]{.pub-venue}
+[*Accepted, [The Annals of Statistics](https://imstat.org/journals-and-publications/annals-of-statistics/)*]{.pub-venue}
 
 [[arXiv](https://arxiv.org/abs/2411.09514)]{.pub-link} | [[BibTeX](files/bib/deligiannidis2024importance.bib)]{.pub-link} | [[Google Scholar](https://scholar.google.com/scholar?q=%22On+importance+sampling+and+independent+Metropolis-Hastings+with+an+unbounded+weight+function%22)]{.pub-link}
 
