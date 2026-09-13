@@ -3,6 +3,20 @@ title: "Publications"
 ---
 
 ::: {.pub-item}
+[Convex Order Comparisons for Sub-Gamma Random Variables](https://arxiv.org/abs/2609.02398){.pub-title}
+
+[El Mahdi Khribch, Badr-Eddine Chérief-Abdellatif]{.pub-authors}
+
+[*Submitted*]{.pub-venue}
+
+[[arXiv](https://arxiv.org/abs/2609.02398)]{.pub-link} | [[BibTeX](files/bib/khribch2026convex.bib)]{.pub-link} | [[Google Scholar](https://scholar.google.com/scholar?q=%22Convex+Order+Comparisons+for+Sub-Gamma+Random+Variables%22)]{.pub-link}
+
+Recent work shows that a sub-Gaussian variable is dominated in convex order by a sharp multiple of a Gaussian. We ask the same question for the sub-Gamma class underlying Bernstein's inequality, with the Laplace law as majorant,
+$$X \preceq_{\mathrm{cx}} c\,L, \qquad L \sim \mathrm{Laplace},$$
+where the moment generating function is controlled only over a finite range of frequencies. We give a variational formula for the optimal multiple $c$, show that it is strictly larger than the natural scale $\sigma \vee \alpha$, and prove sharpness: the value is attained by an asymmetric two-point distribution. The sub-exponential class behaves differently. There the optimal multiple is exactly $\sigma \vee \alpha$, but it is attained only when $\alpha \leq \sigma$; for $\alpha > \sigma$ the constant stays sharp while equality fails for every non-affine convex function. Both results rest on a sharp finite-range variant of the Kearns-Saul inequality, of independent interest.
+:::
+
+::: {.pub-item}
 [Robust Bayesian Inference via Variational Approximations of Generalized Rho-Posteriors](https://arxiv.org/abs/2601.07325){.pub-title}
 
 [El Mahdi Khribch, Pierre Alquier]{.pub-authors}
