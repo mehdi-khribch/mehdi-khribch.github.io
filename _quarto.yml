@@ -4,7 +4,7 @@ project:
 
 website:
   title: "Mehdi Khribch"
-  description: "Ph.D. candidate in Statistics & Machine Learning"
+  description: "Postdoctoral researcher in Statistics & Machine Learning"
   site-url: https://mehdi-khribch.github.io
   favicon: images/favicon.png
   navbar:
@@ -35,7 +35,7 @@ website:
         href: https://www.linkedin.com/in/el-mahdi-khribch/
         aria-label: LinkedIn
       - icon: envelope
-        href: mailto:elmahdi.khribch@essec.edu
+        href: mailto:el-mahdi.khribch@universite-paris-saclay.fr
 
   page-footer:
     center: "© 2026 Mehdi Khribch"
