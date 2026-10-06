@@ -3,6 +3,14 @@ title: "Publications"
 ---
 
 ::: {.pub-item}
+[Age-range dependence and prediction compression in blood-based chronological-age models]{.pub-title}
+
+[Ali Hanbashi, El Mahdi Khribch, et al.]{.pub-authors}
+
+[*Accepted, BMC Medical Informatics and Decision Making*. Applied collaboration with biologists.]{.pub-venue}
+:::
+
+::: {.pub-item}
 [Convex Order Comparisons for Sub-Gamma Random Variables](https://arxiv.org/abs/2609.02398){.pub-title}
 
 [El Mahdi Khribch, Badr-Eddine Chérief-Abdellatif]{.pub-authors}
