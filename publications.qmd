@@ -10,8 +10,6 @@ title: "Publications"
 [*Published, [BMC Medical Informatics and Decision Making](https://bmcmedinformdecismak.biomedcentral.com/), 2026*. Applied collaboration with biologists.]{.pub-venue}
 
 [[Paper](https://link.springer.com/article/10.1186/s12911-026-03898-z)]{.pub-link} | [[BibTeX](files/bib/hanbashi2026age.bib)]{.pub-link} | [[Google Scholar](https://scholar.google.com/scholar?q=%22Age-range+dependence+and+prediction+compression+in+blood-based+chronological-age+models%22)]{.pub-link}
-
-Test-set $R^2$ of blood-based age models depends on how widely chronological age varies in the evaluation sample, yet such models are routinely compared without their age distributions, absolute errors or simple baselines. Using 17 routine blood biomarkers in a Saudi laboratory cohort ($n = 18{,}651$) and NHANES 2017--2018 ($n = 2{,}067$), we refit random forests within broad and restricted age windows and compare them with mean-age and sex-only baselines. A broad-range $R^2$ of about $0.38$ falls to $0.07$--$0.13$ for ages 40--64 and to near zero within single decades, with predicted-age slopes around $0.35$. A respectable broad-range $R^2$ can therefore coexist with compressed predictions and little added discrimination within narrow age windows, and we recommend reporting the age distribution, absolute error, baselines, validation design and prediction-range slope alongside $R^2$.
 :::
 
 ::: {.pub-item}
