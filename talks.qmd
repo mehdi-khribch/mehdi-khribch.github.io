@@ -3,6 +3,16 @@ title: "Talks & Presentations"
 ---
 
 ::: {.talk-item}
+[**Statify Seminar, Inria Grenoble Rhône-Alpes**](https://team.inria.fr/statify/) --- Invited Talk\
+October 2026, Grenoble
+:::
+
+::: {.talk-item}
+[**Internal Statistics Seminar, Laboratoire de Mathématiques d'Orsay**](https://www.imo.universite-paris-saclay.fr/) --- Seminar\
+October 2026, Orsay
+:::
+
+::: {.talk-item}
 [**Monte Carlo and Quasi-Monte Carlo Methods (MCQMC 2026)**](https://maths.ed.ac.uk/events/mcqmc-2026) --- Contributed Talk\
 June 2026, Edinburgh
 :::
@@ -13,12 +23,12 @@ June 2026, Nagoya
 :::
 
 ::: {.talk-item}
-[**Fundamentals of Statistical Machine Learning (FSML) Research Group, UCL**](https://fsml-ucl.github.io/) --- Talk\
+[**Fundamentals of Statistical Machine Learning (FSML) Research Group, UCL**](https://fsml-ucl.github.io/) --- Invited Talk\
 March 2026, London
 :::
 
 ::: {.talk-item}
-[**Computational Statistics and Machine Learning Reading Group, University of Warwick**](https://warwick.ac.uk/fac/sci/statistics/) --- Talk\
+[**Computational Statistics and Machine Learning Reading Group, University of Warwick**](https://warwick.ac.uk/fac/sci/statistics/) --- Invited Talk\
 February 2026, Coventry
 :::
 
@@ -28,24 +38,24 @@ February 2026, Coventry
 :::
 
 ::: {.talk-item}
-**ESSEC APAC--CNRS--SMU Mini-Workshop** --- Talk\
+**ESSEC APAC--CNRS--SMU Mini-Workshop** --- Invited Talk\
 13 June 2025, Singapore
 :::
 
 ::: {.talk-item}
-[**Bayes Comp 2025**](https://bayescomp2025.sg/index.php#) --- Poster Session --- **Best Poster Prize**\
-Singapore
+[**Bayes Comp 2025**](https://bayescomp2025.sg/index.php#) --- Poster --- **Best Poster Prize**\
+June 2025, Singapore
 :::
 
 ::: {.talk-item}
-[**Bayesian Young Statisticians Meeting (BAYSM 2025)**](https://baysm2025.github.io/) --- Talk\
+[**Bayesian Young Statisticians Meeting (BAYSM 2025)**](https://baysm2025.github.io/) --- Invited Talk\
 "Convergence of Statistical Estimators via Mutual Information Bounds"\
 7--11 April 2025 (online)
 :::
 
 ::: {.talk-item}
-[**Bayes Comp 2023**](https://bayescomp2023.com/) --- Poster Session\
-Levi, Finland
+[**Bayes Comp 2023**](https://bayescomp2023.com/) --- Poster\
+March 2023, Levi, Finland
 :::
 
 ```{=html}
